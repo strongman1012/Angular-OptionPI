@@ -1,0 +1,47 @@
+<div class="contentArea">
+  <ul class="nav nav-tabs DashboardTab" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button [ngClass]="{'active' : currentTab === 'screener'}" class="nav-link" type="button"
+        (click)="setTab('screener')" aria-selected="true">Screener</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button [ngClass]="{'active' : currentTab === 'aiSignals'}" class="nav-link" type="button"
+        (click)="setTab('aiSignals')" aria-selected="true">A.I Signals</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button [ngClass]="{'active' : currentTab === 'trade'}" class="nav-link" type="button"
+        (click)="setTab('trade')" aria-selected="true">Trade</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button [ngClass]="{'active' : currentTab === 'watchList'}" class="nav-link" type="button"
+        (click)="setTab('watchList')" aria-selected="true">Watchlist</button>
+    </li>
+    
+    
+    <!-- <li class="nav-item" role="presentation">
+      <button [ngClass]="{'active' : currentTab === 'backOffice'}" class="nav-link" type="button"
+        (click)="setTab('backOffice')" aria-selected="true">Back Office</button>
+    </li> -->
+  </ul>
+  <div class="tab-content DashboardTabContent" id="myTabContent">
+    <!-- Screener Content -->
+    <div *ngIf="currentTab === 'screener'">
+      <ow-main-screener-tab (redirectToSubTab)="redirectToSubTab($event)"></ow-main-screener-tab>
+    </div>
+    <!-- A.I Signals Content -->
+    <div *ngIf="currentTab === 'aiSignals'">
+      <ow-main-aiSignals-tab (redirectToSubTab)="redirectToSubTab($event)" [currentTab]="currentSubTab"></ow-main-aiSignals-tab>
+    </div>
+    <!-- Trade Content -->
+    <div *ngIf="currentTab === 'trade'">
+      <ow-main-trade-tab [currentTab]="currentSubTab"></ow-main-trade-tab>
+    </div>
+    <!-- Watchlist Content -->
+    <div *ngIf="currentTab === 'watchList'">
+      <ow-main-watchList-tab (redirectToSubTab)="redirectToSubTab($event)"></ow-main-watchList-tab>
+    </div>
+    <!-- <div *ngIf="currentTab === 'backOffice'">
+      <ow-main-backOffice-tab></ow-main-backOffice-tab>
+    </div> -->
+  </div>
+</div>

@@ -1,0 +1,127 @@
+<div class="tab-pane fade show active PayoffPreTab" id="PayoffPre" role="tabpanel" aria-labelledby="PayoffPre-tab">
+
+
+  <div class="modal fade AccountModal OrderRejectModal" id="OrderRejected" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-body">
+          <h4>Order rejected!</h4>
+          <div>
+            <img src="//am708403.blob.core.windows.net/images/optionpi/img/cancel.png">
+            <h5>BUY 1 AAPL @ 162.2</h5>
+            <p>Your order has been rejected for following reason: <span class="text-alert">Market is closed</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="PayoffMain">
+    <div class="PayoffLft">
+      <div class="PayoffLftTop">
+        <h3>Relative Payoff Probability</h3>
+      </div>
+      <div class="PayoffLftBtm">
+        <!-- <div class="configure">
+          <img src="//am708403.blob.core.windows.net/images/optionpi/img/settings.png">
+          <h2>Please configure the parameter </h2>
+          <p>Please configure the parameter and select the value to show the graph</p>
+        </div> -->
+
+        <ng-container *ngIf="!isLoadingPayoffProbabilityChart">
+          <highcharts-chart
+            [Highcharts]="Highcharts"
+            [options]="payoffProbabilityChartOptions"
+            style="width: 100%; height: 600px; display: block; padding-top: 20px;"
+          ></highcharts-chart>
+        </ng-container>
+
+        <ng-container *ngIf="isLoadingPayoffProbabilityChart">
+          <div class="configure">
+            <img src="//am708403.blob.core.windows.net/images/optionpi/img/settings2.png">
+            <h2>Data on Process. Please wait ...</h2>
+            <p>Please wait. Your data is now under process.</p>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="PayoffRgt">
+      <form class="w-100 SideBarForm" [formGroup]="ConfigForm" (ngSubmit)="confirmConfigChange()">
+        <!-- <div class="form-control w-100">
+          <label>IVol at Expiry</label>
+          <ngx-slider formControlName="IVolatExpiry" [options]="IVolatExpiryOptions"></ngx-slider>
+          <div class="rangeData">
+            <span>0</span>
+            <span>100</span>
+          </div>
+        </div> -->
+        <!-- <div class="form-control w-100">
+          <label>Price at Expiry</label>
+          <ngx-slider formControlName="PriceatExpiry" [options]="PriceatExpiryOptions"></ngx-slider>
+          <div class="rangeData">
+            <span>0</span>
+            <span>100</span>
+          </div>
+        </div> -->
+        <div class="form-control w-100">
+          <label>Amount</label>
+          <input formControlName="Amount" type="text" name="amount" class="w-100">
+           
+          
+        </div>
+        <button type="submit" class="BtnDefault w-100">Compute <img
+            src="//am708403.blob.core.windows.net/images/optionpi/img/beaker.png"></button>
+        <!-- <a class="BtnDefault Load w-100">Data on Process. Please wait... <img src="//am708403.blob.core.windows.net/images/optionpi/img/beaker1.png"></a> -->
+      </form>
+      <div *ngIf="PayoffTableValue.length > 0" class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Expected Payoff</th>
+              <th>Winning Chance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr (click)="setSelectedPayoffEntry(payoff)" [ngClass]="{ 'Highlight' : payoff.IsSelected !== undefined && payoff.IsSelected }"
+            *ngFor="let payoff of PayoffTableValue">
+              <th>{{payoff.TimeToExpiry}}</th>
+              <td>{{payoff.ExpectedPayoff | currency:'USD'}}</td>
+              <td>{{payoff.WinningChance | percent:'1.2-2'}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade "
+  id="myModalPrediction"
+  tabindex="-1"
+  arial-modal="true"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog  modal-xl modal-dialog-centered Analytic">
+    <div class="modal-content ">
+      <!-- <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">PopUp</h5>
+
+      </div> -->
+      <div class="modal-body">
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h3 style="text-align:center">Hello! PopUp</h3>
+        <h2 > {{ ModalNumberPrediction }} </h2>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div> -->
+    </div>
+  </div>
+</div>

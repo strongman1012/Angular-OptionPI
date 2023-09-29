@@ -1,0 +1,41 @@
+{
+    "apiUrl": "https://stagingoptionpi.algomerchant.com",
+    "priceServerApiUrl": "https://stagingoptionpi.algomerchant.com",
+    "identityApiUrl": "https://stagingoptionpi.algomerchant.com",
+    "productApiUrl": "https://stagingoptionpi.algomerchant.com",
+    "dataApiUrl": "https://stagingoptionpi.algomerchant.com",
+    "userInfoApiUrl": "https://stagingoptionpi.algomerchant.com",
+    "serverApiKey": "",
+    "useSimulatedTrade": true,
+    "secret": "secret",
+    "tigerFirebase": {
+        "apiKey": "AIzaSyB88SxHmnaPHAOUUrwXwmOXx7H2XmSmyjQ",
+        "authDomain": "tigeropenapidemo.firebaseapp.com",
+        "databaseURL": "https://tigeropenapidemo.firebaseapp.com",
+        "projectId": "tigeropenapidemo",
+        "storageBucket": "tigeropenapidemo.appspot.com",
+        "messagingSenderId": "988169432067",
+        "appId": "1:988169432067:web:08f31ae594e4023dda3236",
+        "measurementId": "G-PBB183WR3J"
+    },
+    "futuFirebase": {
+        "apiKey": "AIzaSyCEaLpLZdbMkRL-Uv4VlDGXvqFTbY1BzF8",
+        "authDomain": "futu-optionpi.firebaseapp.com",
+        "databaseURL": "https://futu-optionpi.firebaseapp.com",
+        "projectId": "futu-optionpi",
+        "storageBucket": "futu-optionpi.appspot.com",
+        "messagingSenderId": "409765519865",
+        "appId": "1:409765519865:web:62d3bfee4051bacd58dd28",
+        "measurementId": "G-N0CMEXE03M"
+    },
+    "ibFirebase": {
+        "apiKey": "AIzaSyBdFn4a6fg-HC04rjQFaLdFI5x34iF3iQs",
+        "authDomain": "ib-optionpi.firebaseapp.com",
+        "databaseURL": "https://ib-optionpi.firebaseapp.com",
+        "projectId": "ib-optionpi",
+        "storageBucket": "ib-optionpi.appspot.com",
+        "messagingSenderId": "268758119020",
+        "appId": "1:268758119020:web:01bd25b6ae688d1f5cde49",
+        "measurementId": "G-6C6S2X1PRG"
+    }
+}

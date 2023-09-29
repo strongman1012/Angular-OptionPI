@@ -1,0 +1,201 @@
+<div class="tab-pane fade show active PathDiagram" id="PathDiagram" role="tabpanel" aria-labelledby="PathDiagram-tab">
+  <div class="PathDiagramMain SideBarContain">
+    <!-- Path Diagram Lft -->
+    <div class="PathDiagramLft  SideBarLft prediction" [ngClass]="{'Addwidth' : !isCollapsed}">
+      <!-- Path Diagram Sub Lft -->
+      <div class="PathDiagramSubLft">
+        <div class="PathDiagramSubTop">
+          <h3>Path Diagram</h3>
+        </div>
+
+        <ng-container *ngIf="isLoadingPathDiagramChart">
+          <div class="PayoffLftBtm">
+            <div class="configure">
+              <img src="//am708403.blob.core.windows.net/images/optionpi/img/settings.png">
+              <h2>Please configure the parameter </h2>
+              <p>Please configure the parameter and select the value to show the graph</p>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="!isLoadingPathDiagramChart">
+          <div class="PathDiagramSubBtm">
+            <highcharts-chart
+              [Highcharts]="Highcharts"
+              [options]="pathDiagramChartOptions"
+              [(update)]="pathDiagramChartUpdateFlag"
+              style="width: 100%; height: 600px; display: block; padding-top: 20px;"
+            ></highcharts-chart>
+          </div>
+        </ng-container>
+      </div>
+      <!-- Path Diagram Sub Rgt -->
+      <div class="PathDiagramSubRgt">
+        <a class="BtnSecondary w-100" (click)="addNewFormData()"><i class="bi bi-plus-circle"></i> Add New</a>
+        <form class="w-100 SideBarForm">
+
+          <div class="PathDiagramSubBlock" *ngFor="let addNewForm of addNewFormArray; let addNewFormIndex = index; " 
+          [id]="'popupID' + addNewFormIndex" >
+            <!-- <div class="PathDiagramSubBlock" *ngIf="addNewFormIndex > 0"> -->
+            <a  (click)="removeNewFormData(addNewFormIndex)" class="closeBlock"> <i class="bi bi-x-lg"></i> </a>
+            <div class="form-control w-100" >
+              <label>When stock price is:</label><br/>
+              <div class="PathDiagramInner w-100">
+                <div class="w-25">
+                  <input type="number" style="padding: 10px 7px;"   name="addNewForm.stockprice.name_{{addNewFormIndex}}" 
+                   (change)="onUserNameChange(addNewFormIndex)" min="-30" max="30" value="{{addNewForm.stockprice.value}}"  id="stockvalue{{addNewFormIndex}}"    class="w-100">
+                </div>
+                <div class="w-75" style="margin-top: -20px;">
+                  <ngx-slider [(value)]="addNewForm.stockprice.value" id="stockvalueslide{{addNewFormIndex}}" [options]="addNewForm.stockprice.options" 
+                  ></ngx-slider>
+                  <div class="rangeData">
+                    <button class="diagram-calc-btn" (click)="click_stockprice(addNewForm.stockprice.value,addNewFormIndex,'minus')" >-</button>
+                    <button class="diagram-calc-btn" (click)="click_stockprice(addNewForm.stockprice.value,addNewFormIndex,'plus')">+</button>
+                  </div>
+                  <div class="rangeData">
+                    <span>-30%</span>
+                    <span>30%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-control w-100" >
+              <label>When IV becomes:</label><br/>
+              <div class="PathDiagramInner w-100">
+                <div class="w-25">
+                  <input type="number" style="padding: 10px 7px;"  name="addNewForm.IV.name_{{addNewFormIndex}}" value="{{addNewForm.IV.value}}" id="ivvalue{{addNewFormIndex}}" (change)="onIVChange(addNewFormIndex)"  min="5" max="90" class="w-100">
+                </div>
+                <div class="w-75" style="margin-top: -20px;">
+                  <ngx-slider [(value)]="addNewForm.IV.value" [options]="addNewForm.IV.options"></ngx-slider>
+                  <div class="rangeData">
+                    <button class="diagram-calc-btn" (click)="click_IVvalue(addNewForm.IV.value,addNewFormIndex,'minus')">-</button>
+                    <button class="diagram-calc-btn" (click)="click_IVvalue(addNewForm.IV.value,addNewFormIndex,'plus')">+</button>
+                  </div>
+                  <div class="rangeData">
+                    <span>5%</span>
+                    <span>90%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-control w-100" >
+              <div class="PathDiagramInner w-100" style="align-items: center !important;">
+                <div class="w-25">
+                  <input type="number" style="padding: 10px 7px;" id="dayvalue{{addNewFormIndex}}" name="addNewForm.DayValue.name_{{addNewFormIndex}}" value="{{addNewForm.DayValue.value}}" min="1" max="25" (change)="onDayChange(addNewFormIndex)"  [readonly]="addNewForm.Button.active" class="w-100">
+                </div>
+                <label class="diagram-day-label" >Days from today</label>
+                
+              </div><br/><br/>
+              <div class="w-100" style="margin-top: -20px;">
+                <ngx-slider [(value)]="addNewForm.DayValue.value" [options]="addNewForm.DayValue.options"></ngx-slider>
+                <div class="rangeData">
+                  <button class="diagram-calc-btn" [disabled]="addNewForm.Button.active" (click)="click_DayValue(addNewForm.DayValue.value,addNewFormIndex,'minus')">-</button>
+                  <button class="diagram-calc-btn" [disabled]="addNewForm.Button.active" (click)="click_DayValue(addNewForm.DayValue.value,addNewFormIndex,'plus')">+</button>
+                </div>
+                <div class="rangeData">
+                  <span>1</span>
+                  <span>25</span>
+                </div>
+              </div>
+              
+            </div>
+            <button type="submit" class="BtnDefault w-100"  (click)="addNewFormSubmit(addNewFormIndex)"> {{addNewForm.Button.name}} </button>
+          <!-- </div> -->
+          </div>
+
+          
+        </form>
+      </div>
+    </div>
+    <!-- Path Diagram Rgt -->
+    <!-- <div class="PathDiagramRgt SideBarMain collapse" [ngClass]="{'show' : !isCollapsed}">
+      <a  class="close" (click)="toggleCollapsed()"> <i class="bi bi-x-lg"></i> </a>
+      <form class="w-100 SideBarForm" [formGroup]="ConfigForm" (ngSubmit)="confirmConfigChange()">
+          <div class="form-control w-100">
+            <label>Target Variable</label>
+            <div class="select2Style">
+              <select formControlName="SelectedTargetVariable" class="form-select selectMain">
+                <option *ngFor="let targetVariable of TargetVariableList" [ngValue]="targetVariable">
+                  {{ targetVariable.Display }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="SideBarFormSub w-100">
+            <div class="form-control w-50">
+              <label>Strategy</label>
+              <select (change)='onStrategyChanged(ConfigForm.value.SelectedStrategy)'
+              formControlName="SelectedStrategy" class="selectDefault w-100" aria-label="Default select example" >
+                <option *ngFor="let strategy of StrategyList" [ngValue]="strategy">
+                  {{ strategy.Display }}
+                </option>
+              </select>
+            </div>
+            <div class="form-control w-50">
+              <label>Parameter</label>
+              <select formControlName="SelectedParameter" class="form-select selectDefault w-100" aria-label="Default select example">
+                <option *ngFor="let parameter of OptionParameterList" [ngValue]="parameter">
+                  {{ parameter.Display }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="form-control w-100">
+            <label>Leg 1 distance (new)</label>
+            <ngx-slider formControlName="LegDistanceNew" [options]="LegDistanceNewOptions"></ngx-slider>
+            <div class="rangeData">
+              <span>2.5</span>
+              <span>25</span>
+            </div>
+          </div>
+          <div class="form-control w-100">
+            <label>Leg 2 distance (further)</label>
+            <ngx-slider formControlName="LegDistanceFurther" [options]="LegDistanceFurtherOptions"></ngx-slider>
+            <div class="rangeData">
+              <span>2.5</span>
+              <span>25</span>
+            </div>
+          </div>
+          <div class="form-control w-100">
+            <label>Risk Free Rate</label>
+            <ngx-slider formControlName="RiskFreeRate" [options]="RiskFreeRateOptions"></ngx-slider>
+            <div class="rangeData">
+              <span>0</span>
+              <span>100</span>
+            </div>
+          </div>
+          <div class="form-control w-100">
+            <label>Dividend Yield</label>
+            <ngx-slider formControlName="DividendYield" [options]="DividendYieldOptions"></ngx-slider>
+            <div class="rangeData">
+              <span>0</span>
+              <span>100</span>
+            </div>
+          </div>
+          <div class="form-control w-100">
+            <label>Time to Expiry</label>
+            <ngx-slider formControlName="TimeToExpiry" [options]="TimeToExpiryOptions"></ngx-slider>
+            <div class="rangeData">
+              <span>15</span>
+              <span>90</span>
+            </div>
+          </div>
+          <div class="form-control w-100">
+            <label>IV Skew Rate</label>
+            <ngx-slider formControlName="IVSkewRate" [options]="IVSkewRateOptions"></ngx-slider>
+            <div class="rangeData">
+              <span>0</span>
+              <span>2</span>
+            </div>
+          </div>
+          <div class="form-control w-100">
+            <label>Amount</label>
+            <input type="text" formControlName="Amount" class="w-100">
+          </div>
+          <button type="submit" class="BtnDefault w-100">Confirm</button>
+      </form>
+    </div> -->
+  </div>
+</div>
+
+  

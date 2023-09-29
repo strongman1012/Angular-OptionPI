@@ -1,0 +1,88 @@
+<div class="sticky-top TopMenu">
+  <div class="TopMenuLft InnerBradcrumb">
+
+    <img src="//am708403.blob.core.windows.net/images/optionpi/img/logo.png"  class="mobLogo" style="width: 50px;">
+    <h1>{{bradcrumb.title}}</h1>
+    <p *ngIf="bradcrumb.subtitle !==''">{{bradcrumb.subtitle}}</p>
+    <ul *ngIf="bradcrumb.data.length > 0">
+      <li *ngFor="let bradcrumbObj of bradcrumb.data">
+        <a *ngIf="bradcrumbObj.navigation" [routerLink]="bradcrumbObj.navigation">{{bradcrumbObj.name}}</a>
+        <span *ngIf="!bradcrumbObj.navigation">{{bradcrumbObj.name}}</span>
+      </li>
+    </ul>
+  </div>
+  <div class="TopMenuRgt">
+    <ul>
+      <li>
+        <div class="Search">
+          <form>
+            <div class="input-group">
+              <i class="fa fa-magnifying-glass"></i>
+              <div class="togglesearch">
+                <!-- <input type="text" class="form-control" placeholder="Search" aria-label="" aria-describedby="basic-addon1"> -->
+                  <ng-select
+                    class="header-search"
+                    dropdownPosition="bottom"
+                    (change)="onProductSelected($event)"
+                    [items]="Products$ | async"
+                    [trackByFn]="searchProductTrackByFn"
+                    bindLabel="Symbol"
+                    [loading]="ProductSearchLoading"
+                    [(ngModel)]="SelectedProduct"
+                    [ngModelOptions]="{standalone: true}"
+                    placeholder="Search"
+                    [typeahead]="ProductInput$">
+                    <ng-template ng-option-tmp let-item="item" let-index="index">
+                      <div class="product-name">
+                        {{item.ProductName}}
+                      </div>
+                      <div class="product-symbol">
+                        <b>{{item.Symbol}}</b> [{{item.Currency}}]
+                      </div>
+                    </ng-template>
+                  </ng-select>
+                  <a class="mobSearchIcon">
+                    <i class="fa fa-magnifying-glass"></i>
+                  </a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </li>
+      <li>
+        <a class="support">
+          <img src="//am708403.blob.core.windows.net/images/optionpi/img/support.png">
+        </a>
+      </li>
+      <li>
+        <a class="bell">
+          <span class="NotificationShape"></span>
+          <img src="//am708403.blob.core.windows.net/images/optionpi/img/bell.png">
+        </a>
+      </li>
+      <li>
+        <a class="UserImg">
+          <img src="//am708403.blob.core.windows.net/images/optionpi/img/UserImg.png">
+        </a>
+      </li>
+      <li style="cursor: pointer; position: relative;" (click)="toggleCollapseMenu()">
+        <div class="menu-icon">
+          <button class="c-hamburger c-hamburger--htx nav_bar" (click)="sidebar_show()">
+            <span></span>
+          </button>          
+          
+          <div *ngIf="isMenuCollapsed" style="position: absolute; right: 30px; top:30px;background-color:#f0f0f0; width:100px; height: 150px;">
+            <!-- <app-mobile-menu></app-mobile-menu> -->
+            
+            <!-- <ul style="display: flex; flex-direction: column; list-style-type: none;">              <li (click)="selectTab('Strategy')">Strategy</li>
+              <li (click)="selectTab('Trade')">Trade</li>
+              <li (click)="selectTab('AISignal')">A.I. Signal</li>
+              <li (click)="selectTab('WatchList')">Watch</li>
+            </ul> -->
+          </div>
+
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,479 @@
+<app-mobile-menu></app-mobile-menu>
+<main id="main" class="content-wrapper">
+  <div class="mainBlock">
+    <app-sidebar></app-sidebar>
+    <div class="RgtMain">
+      <app-header [bradcrumb]="bradcrumb"></app-header>
+
+
+      <!-- Modals start -->
+      <!-- Broker Link Modal-->
+      <div class="modal fade AccountModal" id="brokerLink">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-body">
+              <h3>Select broker to link</h3>
+              <form>
+                <div *ngFor="let brokerAccount of brokerAccounts; let i = index" class="radio form-control SelectBroker" [ngClass]="{ 'checked' : selectedBrokerIndex == i}">
+                  <div (click)="selectBrokerAccount(i)">
+                    <div>
+                      <img alt="{{brokerAccount.name}}" src="{{brokerAccount.image}}">
+                    </div>
+                    <h4>{{brokerAccount.name}}</h4>
+                  </div>
+                  <input (click)="selectBrokerAccount(i)" type="radio" id="broker_{{brokerAccount.id}}" name="broker[]" checked="{{(selectedBrokerIndex == i ? 'checked' : '')}}" />
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button class="BtnSecondary" data-bs-dismiss="modal" aria-label="Close">
+                <i class="bi bi-x-circle"></i> Cancel </button>
+              <button (click)="checkAccountType()" class="BtnDefault" attr.data-bs-target="#{{selectedBrokerAccount('name')}}Modal" data-bs-toggle="modal"
+                data-bs-dismiss="modal">Next <i class="bi bi-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ng-container *ngIf="selectedBrokerAccount('name') === 'Tiger'">
+        <!-- Tiger Account Modal -->
+        <div class="modal fade AccountModal " id="TigerModal" aria-hidden="true" tabindex="-1">
+          <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content LinkAccountMain">
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+              <div class="LinkAccountHead">
+                <div>
+                  <img src="//am708403.blob.core.windows.net/images/optionpi/img/tiger.png">
+                </div>
+                <h3>Link Tiger Account</h3>
+                <p>You are linking an Tiger account, please login with your tiger account follow the step by
+                  step guide bellow</p>
+              </div>
+              <div class="LinkAccountDtl">
+                <p>1. Go to Tiger login Page by clicking this button. Once you logged-in, open the  please go back to this page</p>
+                <a target="_blank" href="{{selectedBrokerAccount('link')}}" class="BtnDefault">Login at Tiger Page <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+                <br>
+                <p>Close the tab and navigate to tiger developer page by clicking this button and click next button on this page</p>
+                <a target="_blank" href="https://developer.itigerup.com/profile?lang=en_US" class="BtnDefault">Go to Tiger Developer Page <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+              <div class="modal-footer">
+                <button class="BtnSecondary" data-bs-target="#brokerLink" data-bs-toggle="modal" data-bs-dismiss="modal">
+                  <i class="bi bi-arrow-left"></i> Previous </button>
+                <button class="BtnDefault" data-bs-target="#TigerModal2" data-bs-toggle="modal"
+                  data-bs-dismiss="modal">Next <i class="bi bi-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Tiger Account Modal Step2 -->
+        <div class="modal fade AccountModal " id="TigerModal2" aria-hidden="true" tabindex="-1">
+          <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content LinkAccountMain">
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+              <div class="LinkAccountHead">
+                <div>
+                  <img src="//am708403.blob.core.windows.net/images/optionpi/img/tiger.png">
+                </div>
+                <h3>Link Tiger Account</h3>
+                <p>You are linking an Tiger account, please navigate to Tiger Developer Page, login and follow the step by
+                  step guide bellow</p>
+              </div>
+              <div class="LinkAccountDtl">
+                <p>2. Read the API Agreement, then click Agree button</p>
+                <div class="LinkAccountStep">
+                  <img src="//am708403.blob.core.windows.net/images/optionpi/img/api1.png">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="BtnSecondary" data-bs-target="#TigerModal" data-bs-toggle="modal"
+                  data-bs-dismiss="modal">
+                  <i class="bi bi-arrow-left"></i> Previous </button>
+                <button class="BtnDefault" data-bs-target="#TigerModal3" data-bs-toggle="modal"
+                  data-bs-dismiss="modal">Next <i class="bi bi-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Tiger Account Modal Step3 -->
+        <div class="modal fade AccountModal " id="TigerModal3" aria-hidden="true" tabindex="-1">
+          <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content LinkAccountMain">
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+              <div class="LinkAccountHead">
+                <div>
+                  <img src="//am708403.blob.core.windows.net/images/optionpi/img/tiger.png">
+                </div>
+                <h3>Link Tiger Account</h3>
+                <p>You are linking an Tiger account, please navigate to Tiger Developer Page, login and follow the step by
+                  step guide bellow</p>
+              </div>
+              <div class="LinkAccountDtl">
+                <p>3. On Developer Information, click <strong>Regenerate</strong> button  under <strong>Your RSA Key</strong></p>
+                <div class="LinkAccountStep">
+                  <img src="//am708403.blob.core.windows.net/images/optionpi/img/tiger-link-03.png">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="BtnSecondary" data-bs-target="#TigerModal2" data-bs-toggle="modal"
+                  data-bs-dismiss="modal">
+                  <i class="bi bi-arrow-left"></i> Previous </button>
+                <button class="BtnDefault" data-bs-target="#TigerModal4" data-bs-toggle="modal"
+                  data-bs-dismiss="modal">Next <i class="bi bi-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Tiger Account Modal Step4 -->
+        <div class="modal fade AccountModal " id="TigerModal4" aria-hidden="true" tabindex="-1">
+          <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content LinkAccountMain">
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+              <div class="LinkAccountHead">
+                <div>
+                  <img src="//am708403.blob.core.windows.net/images/optionpi/img/tiger.png">
+                </div>
+                <h3>Link Tiger Account</h3>
+                <p>You are linking an Tiger account, please navigate to Tiger Developer Page, login and follow the step by
+                  step guide bellow</p>
+              </div>
+              <div class="LinkAccountDtl">
+                <p>4. Click Get <strong>Verification Code</strong>, a 6-digit verification code will be sent via SMS to
+                  your registered mobile phone. Type the 6-digit into <strong>Verification code box</strong>, then click
+                  <strong>Confirm</strong> as shown below </p>
+                <div class="LinkAccountStep">
+                  <img src="//am708403.blob.core.windows.net/images/optionpi/img/tiger-link-04.png" style="left: 0px; right: unset;">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="BtnSecondary" data-bs-target="#TigerModal3" data-bs-toggle="modal"
+                  data-bs-dismiss="modal">
+                  <i class="bi bi-arrow-left"></i> Previous </button>
+                <button class="BtnDefault" data-bs-target="#TigerModal5" data-bs-toggle="modal"
+                  data-bs-dismiss="modal">Next <i class="bi bi-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Tiger Account Modal Step5 -->
+        <div class="modal fade AccountModal " id="TigerModal5" aria-hidden="true" tabindex="-1">
+          <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content LinkAccountMain">
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+              <div class="LinkAccountHead">
+                <div>
+                  <img src="//am708403.blob.core.windows.net/images/optionpi/img/tiger.png">
+                </div>
+                <h3>Link Tiger Account</h3>
+                <p>You are linking an Tiger account, please navigate to Tiger Developer Page, login and follow the step by
+                  step guide bellow</p>
+              </div>
+              <div class="LinkAccountDtl">
+                <p>5. Click <strong>Cancel</strong>
+                <div class="LinkAccountStep">
+                  <img src="//am708403.blob.core.windows.net/images/optionpi/img/tiger-link-05.png" style="left: 0px; right: unset;">
+                </div>
+                <p>and click <strong>Duplicate</strong>, you will need this private key at the last step</p>
+                <div class="LinkAccountStep">
+                  <img src="//am708403.blob.core.windows.net/images/optionpi/img/tiger-link-06.png" style="left: 0px; right: unset;">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="BtnSecondary" data-bs-target="#TigerModal4" data-bs-toggle="modal"
+                  data-bs-dismiss="modal">
+                  <i class="bi bi-arrow-left"></i> Previous </button>
+                <button class="BtnDefault" data-bs-target="#TigerModal6" data-bs-toggle="modal"
+                  data-bs-dismiss="modal">Next <i class="bi bi-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Tiger Account Modal Step6 -->
+        <div class="modal fade AccountModal " id="TigerModal6" aria-hidden="true" tabindex="-1">
+          <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content LinkAccountMain">
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+              <div class="LinkAccountHead">
+                <div>
+                  <img src="//am708403.blob.core.windows.net/images/optionpi/img/tiger.png">
+                </div>
+                <h3>Link Tiger Account</h3>
+                <p>You are linking an Tiger account, please navigate to Tiger Developer Page, login and follow the step by
+                  step guide bellow</p>
+              </div>
+              <div class="LinkAccountDtl">
+                <p>6. Note down your Tiger ID and Account ID, then click next and input both information in next screen
+                </p>
+                <div class="LinkAccountStep">
+                  <img src="//am708403.blob.core.windows.net/images/optionpi/img/tiger-link-07.png" style="left: 0px; right: unset;">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="BtnSecondary" data-bs-target="#TigerModal5" data-bs-toggle="modal"
+                  data-bs-dismiss="modal">
+                  <i class="bi bi-arrow-left"></i> Previous </button>
+                <button class="BtnDefault" data-bs-target="#brokerLinkAccount" data-bs-toggle="modal"
+                  data-bs-dismiss="modal">Next <i class="bi bi-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Broker Link Account -->
+        <div class="modal fade AccountModal" id="brokerLinkAccount" aria-hidden="true" tabindex="-1">
+          <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content LinkAccountMain">
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+              <div class="modal-body">
+                <div class="LinkAccountHead">
+                  <div>
+                    <img src="//am708403.blob.core.windows.net/images/optionpi/img/tiger.png">
+                  </div>
+                  <h3>Link Tiger Account</h3>
+                  <p>You are linking an Tiger account, please provide following information</p>
+                </div>
+                <form [formGroup]="tigerForm" class="LinkAccountForm">
+                  <div class="form-control">
+                    <label>Tiger ID</label>
+                    <input type="text" name="tigerid" formControlName="tigerID" placeholder="Your Tiger ID">
+                  </div>
+                  <div class="form-control">
+                    <label>Account ID</label>
+                    <input type="textarea" name="accountid" formControlName="accountID" placeholder="Your Account ID">
+                  </div>
+                  <div class="form-control">
+                    <label>Private Key</label>
+                    <textarea name="PrivateKey" formControlName="accountID" placeholder="Your Private Key"></textarea>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button class="BtnSecondary" data-bs-target="#TigerModal6" data-bs-toggle="modal"
+                data-bs-dismiss="modal">
+                <i class="bi bi-arrow-left"></i> Previous </button>
+                <button (click)="linkTigerAccount()" class="BtnDefault" data-bs-target="#brokerLinkAccount2" data-bs-toggle="modal"
+                  data-bs-dismiss="modal">Link Account <i class="bi bi-link-45deg"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Broker Link Account -->
+        <div class="modal fade AccountModal" id="brokerLinkAccount2" aria-hidden="true" tabindex="-1">
+          <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content LinkedAccountMain">
+              <button type="button" class="btn-close btn-close-white" data-bs-target="#brokerAccountLinked"
+                data-bs-toggle="modal" data-bs-dismiss="modal"></button>
+              <!-- <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button> -->
+              <div class="modal-body">
+                <div class="LinkedAccountHead text-center">
+                  <h3>Link Tiger Account</h3>
+                  <div>
+                    <img src="//am708403.blob.core.windows.net/images/optionpi/img/tiger.png">
+                  </div>
+                  <h4>50327777</h4>
+                  <p>Your account is being linked, please wait...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Account Linked -->
+        <div class="modal fade AccountModal LinkedDone" id="brokerAccountLinked" aria-hidden="true" tabindex="-1">
+          <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content LinkedAccountMain">
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+              <div class="modal-body">
+                <div class="LinkedAccountHead text-center">
+                  <h3>Link Tiger Account</h3>
+                  <div>
+                    <img src="//am708403.blob.core.windows.net/images/optionpi/img/tiger.png">
+                  </div>
+                  <h4>50327777 is linked!</h4>
+                  <p>Your Tiger account is successfully linked</p>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="BtnSecondary" data-bs-target="#brokerLink" data-bs-toggle="modal"
+                data-bs-dismiss="modal"> Add another Account </button>
+                <button type="button" class="BtnDefault" data-bs-dismiss="modal" aria-label="Close">Start Trading Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modals end -->
+      </ng-container>
+
+      <ng-container *ngIf="selectedBrokerAccount('name') === 'FUTU'">
+        <div class="modal fade AccountModal" id="FUTUModal" aria-hidden="true" tabindex="-1">
+          <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content LinkAccountMain">
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+              <div class="modal-body">
+                <div class="LinkAccountHead">
+                  <div>
+                    <img src="//am708403.blob.core.windows.net/images/optionpi/img/futu.png">
+                  </div>
+                  <h3>Link Futu Account</h3>
+                  <p>You are linking an Futu account, please provide following information</p>
+                </div>
+                <form [formGroup]="futuForm" class="LinkAccountForm" autocomplete="false">
+                  <div class="form-control">
+                    <label>ID</label>
+                    <input type="text" name="FutuId" autocomplete="false" formControlName="futuId" placeholder="Your Tiger ID">
+                  </div>
+                  <div class="form-control">
+                    <label>Password</label>
+                    <input type="password" name="FutuPwd" autocomplete="off" formControlName="futuPassword" placeholder="Your Account ID">
+                  </div>
+                  <div class="form-control">
+                    <label>Trading Password</label>
+                    <input type="password" name="FutuTradingPwd" autocomplete="off" formControlName="tradingPassword" placeholder="Your Account ID">
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button class="BtnSecondary" data-bs-target="#brokerLink" data-bs-toggle="modal" data-bs-dismiss="modal">
+                  <i class="bi bi-arrow-left"></i> Previous </button>
+                <button (click)="linkFutuAccount()" class="BtnDefault" data-bs-target="#FutuModal2" data-bs-toggle="modal"
+                  data-bs-dismiss="modal">Link Account <i class="bi bi-link-45deg"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Broker Link Account -->
+        <div class="modal fade AccountModal" id="FutuModal2" aria-hidden="true" tabindex="-1">
+          <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content LinkedAccountMain">
+              <button type="button" class="btn-close btn-close-white" data-bs-target="#brokerAccountLinked"
+                data-bs-toggle="modal" data-bs-dismiss="modal"></button>
+              <!-- <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button> -->
+              <div class="modal-body">
+                <div class="LinkedAccountHead text-center">
+                  <h3>Link Futu Account</h3>
+                  <div>
+                    <img src="//am708403.blob.core.windows.net/images/optionpi/img/futu.png">
+                  </div>
+                  <h4>{{futuForm.value.futuId}}</h4>
+                  <p>Your account is being linked, please wait...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Account Linked -->
+        <div class="modal fade AccountModal LinkedDone" id="FutuModal3" aria-hidden="true" tabindex="-1">
+          <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content LinkedAccountMain">
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+              <div class="modal-body">
+                <div class="LinkedAccountHead text-center">
+                  <h3>Link Futu Account</h3>
+                  <div>
+                    <img src="//am708403.blob.core.windows.net/images/optionpi/img/futu.png">
+                  </div>
+                  <h4>50327777 is linked!</h4>
+                  <p>Your Tiger account is successfully linked</p>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="BtnSecondary" data-bs-target="#brokerLink" data-bs-toggle="modal"
+                data-bs-dismiss="modal"> Add another Account </button>
+                <button type="button" class="BtnDefault" data-bs-dismiss="modal" aria-label="Close">Start Trading Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modals end -->
+      </ng-container>
+
+      <!-- Content Area -->
+      <div class="contentArea">
+        <div class="ContentAreaCard AccountList">
+          <div class="AccountListHead">
+            <h3>Account List</h3>
+            <a class="BtnDefault" data-bs-toggle="modal" href="#brokerLink" role="button">
+              <i class="bi bi-plus-circle"></i> Add New Account </a>
+          </div>
+          <div class="AccountListBody">
+
+            <ng-container *ngIf="myAddedBokerAccounts.length > 0">
+            <div class="AccountListBlock" *ngFor="let myAddedBokerAccount of myAddedBokerAccounts; let baIndex = index">
+              <div class="AccountListLft">
+                <div class="BrokerName">
+                  <div class="BrokerLogo"><img src="//am708403.blob.core.windows.net/images/optionpi/img/tiger.png"></div>
+                  <div class="BrokerDtl">
+                    <h4>Tiger</h4>
+                    <p>({{myAddedBokerAccount.tigerID}})</p>
+                  </div>
+                </div>
+                <div class="AccountType">
+                  <h4>Account Type</h4>
+                  <p>Margin</p>
+                </div>
+                <div class="AccountCapital text-end">
+                  <img src="//am708403.blob.core.windows.net/images/optionpi/img/piechart.png">
+                  <table class="chart">
+                    <tr>
+                      <td>
+                        <h3>Available Capital</h3>
+                      </td>
+                      <td>
+                        <p>S$ 10,958.91</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h3>Account Capital</h3>
+                      </td>
+                      <td>
+                        <p>S$ 185,329.13</p>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <div class="AccountListRft text-center">
+                <div>
+                  <a>
+                    <i class="bi bi-search"></i>
+                    <span>Detail</span>
+                  </a>
+                </div>
+                <div>
+                  <a (click)="removeTigerAccount(baIndex)">
+                    <i class="bi bi-trash3"></i>
+                    <span>Delete</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            </ng-container>
+
+            <ng-container *ngIf="myAddedBokerAccounts.length == 0">
+              <div class="EmptyAccount text-center">
+                <img src="//am708403.blob.core.windows.net/images/optionpi/img/empty-box.png">
+                <h2>Please add new account</h2>
+                <p>You have not linked any account yet. Please Add New Account to get started</p>
+                <a class="BtnDefault" data-bs-toggle="modal" href="#brokerLink" role="button">
+                  <i class="bi bi-plus-circle"></i> Add New Account </a>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</main>

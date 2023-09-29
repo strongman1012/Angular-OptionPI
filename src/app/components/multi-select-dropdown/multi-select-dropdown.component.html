@@ -1,0 +1,57 @@
+
+  <div (mouseleave)="showDropDown = false">
+      <button class="drop-toggle btn flat" (click)="onShowDropDown()">
+        <div style="display: flex; align-items: center;justify-content: space-around;">
+            <img src="//am708403.blob.core.windows.net/images/optionpi/img/Columns.png" width="20px" height="20px">
+        </div>
+        <!-- <span *ngIf="checkedList.length==0" style="padding-right: 20px;">Select {{placeHolder}}</span>
+        <span *ngIf="checkedList.length<=0">Select {{placeHolder}}</span> -->
+        <!-- <span *ngIf="checkedList.length>0" style="padding-right: 20px;">Selected {{checkedList.length}}</span> -->
+      </button>
+      <div class="drop-show" *ngIf="showDropDown">
+            <label *ngFor="let a of list; let i = index;">
+                <div class="left">
+                    <span>{{a.name}}</span>
+                </div>
+                <div class="right">
+                    <div class="form-check">
+                        <input *ngIf="a.checked !== undefined"
+                            class="form-check-input"
+                            type="checkbox"
+                            [(ngModel)]="a.checked"
+                            name="{{a.name}}"
+                            (change)="getSelectedValue(a.checked, a.name, i)" 
+                        />
+                        <label class="form-check-label ml-3">
+                        </label>
+                    </div>
+                </div>
+            </label>
+      </div>
+  </div>
+
+  <div class="modal fade" id="multiDropDownModal" tabindex="-1" role="dialog" aria-labelledby="customModalLabel" aria-hidden="true" style="background-color: #3e3e3f;" data-bs-backdrop-opacity="0.5">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="justify-content: center; display: flex;">
+        <div class="modal-content radius" style="border-radius: 25px; width: 300px; overflow: hidden;">
+            <div class="modal-body px-0 pb-0" style="height: 500px; overflow-y: auto; text-align: left;">
+                <div *ngFor="let a of list; let i = index;">
+                    <div class="list-item">
+                        <label class="w-100" for="{{a.name}}">{{a.name}}</label>
+                        <div class="form-check">
+                            <input
+                            (change)="getSelectedValue(a.checked, a.name, i)" 
+                            id="{{a.name}}"
+                            [(ngModel)]="a.checked"
+                            class="form-check-input"
+                            type="checkbox"
+                            name="filterName" 
+                            />
+                            <label class="form-check-label ml-3"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="list-item justify-content-start" (click)="onBackButtonClick()" style="background-color: #e8e8e8; color: black;">Back</div>
+        </div>
+    </div>
+</div>

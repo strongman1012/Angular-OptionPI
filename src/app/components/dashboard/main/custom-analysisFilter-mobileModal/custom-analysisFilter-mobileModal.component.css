@@ -1,0 +1,53 @@
+.custom-radio {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #AE8F4D; /* Outer circle color */
+    outline: none;
+    background-color: transparent;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .custom-radio::before,
+  .custom-radio::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .custom-radio::after {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: transparent; /* Innermost circle color */
+  }
+  
+  .custom-radio:checked::after {
+    background-color: #AE8F4D; /* Inner circle color when checked */
+  }
+
+  .list-item {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    font-family: monospace;
+    font-size: 16px;
+    color: #888888;
+    border-bottom: 1px solid #a6a5a4;
+    cursor: pointer;
+    transition: all .3s ease;
+  }
+  .list-item > * {
+    cursor: pointer;
+  }
+  .list-item:hover{
+    background: #ededed;
+  }

@@ -1,0 +1,28 @@
+table {
+  position: absolute;
+  background-color: white;
+  left: 10px;
+  z-index: 99990;
+  border-radius: 5px;
+  padding: 50px;
+}
+
+table.bottom {
+  bottom: 20px;
+  top: unset;
+}
+
+@media (max-width:992px) {
+  table{
+    position: absolute;
+    background-color: white;
+    left: -200px;
+    z-index: 99990;
+    border-radius: 5px;
+    padding: 50px;
+    width: 150px !important;
+  }
+  .ScreenerTable td {
+    width: 50px !important;
+  }
+}

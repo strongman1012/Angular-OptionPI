@@ -1,0 +1,77 @@
+<div class="tab-pane AccountSummaryTab show active" role="tabpanel" aria-labelledby="AccountSummary-tab">
+    <div class="AccountSummaryMain">
+      <div class="AccountSummaryLft">
+        <div class="AccountSummaryLftTable1">
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                <th>NAV</th>
+                <td>{{AccountSummary.NAV | currency:AccountSummary.Currency}}</td>
+              </tr>
+              <tr>
+                <th>Trading Limit</th>
+                <td>{{AccountSummary.TradingLimit | currency:AccountSummary.Currency}}</td>
+              </tr>
+              <tr>
+                <th>Margin Used</th>
+                <td>{{AccountSummary.MarginUsed | currency:AccountSummary.Currency}} </td>
+              </tr>
+              <tr>
+                <th>Margin Available</th>
+                <td>{{AccountSummary.MarginAvailable | currency:AccountSummary.Currency}}</td>
+              </tr>
+              <tr>
+                <th>Unrealized PL</th>
+                <td [ngClass]="{'red_number' : AccountSummary.UnrealizedPL < 0, 'green_number' : AccountSummary.UnrealizedPL > 0}">{{AccountSummary.UnrealizedPL | currency:AccountSummary.Currency}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- <div class="AccountSummaryLftTable2">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th></th>
+                <th class="SuccessBg">LONG</th>
+                <th class="DangerBg">SHORT</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Allocation</td>
+                <td><span>{{AccountPositionSummary.Long.Allocation | currency:AccountPositionSummary.Currency}}</span> ({{AccountPositionSummary.Long.AllocationPct | percent:'1.2-2'}})</td>
+                <td><span>{{AccountPositionSummary.Short.Allocation | currency:AccountPositionSummary.Currency}}</span> ({{AccountPositionSummary.Short.AllocationPct | percent:'1.2-2'}})</td>
+              </tr>
+              <tr>
+                <td>Exposure</td>
+                <td><span>{{AccountPositionSummary.Long.Exposure | currency:AccountPositionSummary.Currency}}</span> ({{AccountPositionSummary.Long.ExposurePct | percent:'1.2-2'}})</td>
+                <td><span>{{AccountPositionSummary.Short.Exposure | currency:AccountPositionSummary.Currency}}</span> ({{AccountPositionSummary.Short.ExposurePct | percent:'1.2-2'}})</td>
+              </tr>
+            </tbody>
+          </table>
+        </div> -->
+      </div>
+      <div class="AccountSummaryRgt">
+        <h4>Broker’s Raw Information</h4>
+        <h6>Information from <span>{{SelectedBrokerAccount.brokerType}}</span></h6>
+        <div class="AccountSummaryLftTable3">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>Fund</td>
+                <td><span>{{RawInformation.Currency}} {{RawInformation.Fund | number:'':'en-US'}}</span></td>
+              </tr>
+              <tr>
+                <td>Available to Deal</td>
+                <td><span>{{RawInformation.Currency}} {{RawInformation.AvailableToDeal | number:'':'en-US'}}</span></td>
+              </tr>
+              <tr>
+                <td>Margin</td>
+                <td><span>{{RawInformation.Currency}} {{RawInformation.Margin | number:'':'en-US'}}</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>

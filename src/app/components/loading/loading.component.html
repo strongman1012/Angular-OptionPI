@@ -1,0 +1,21 @@
+
+<div *ngIf="status" class="page-preloader">
+  <div class="spinner" *ngIf="Contract">
+        <div class="rec-spinner rect1"></div>
+        <div class="rec-spinner rect2"></div>
+        <div class="rec-spinner rect3"></div>
+        <div class="rec-spinner rect4"></div>
+        <div class="rec-spinner rect5"></div>
+  </div>
+  <div *ngIf="!Contract" class="maintenance">
+    <img src="//am708403.blob.core.windows.net/images/optionpi/img/Maintenance.gif" style="width: 150px; height: 120px;">
+    <div style="margin-top: 15px;">
+      <p style="font-weight: 600; color: rgb(91, 86, 86); font-size: 22px;">
+        Data on Process. Please wait ...
+      </p>
+      <span style="font-size: 13px; color: #94A0B8;">
+        please wait. Your data is now under process.
+      </span>
+    </div>
+  </div>
+</div>

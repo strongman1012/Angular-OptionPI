@@ -1,0 +1,2159 @@
+<!-- Modal start -->
+
+<!-- Analysis Filter -->
+<div class="modal fade AccountModal AnalysisFilterModal PlaceOrderModal responsiveModal" id="AnalysisFilter" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content PlaceOrderContent AnalysisFilterContent">
+      <button type="button" (click)="closeMobileAnalysis()" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      <h3>Analysis Filter</h3>
+      <!-- Modal Content Start -->
+      <div class="AnalysisFilterTop">
+        <div class="d-flex justify-content-between align-items-center" style="margin-bottom: 10px;">
+          <p>Summary Filter: <span style="color: #2fa298;">{{SelectedAnalysisFilterList.length}}</span></p>
+        </div>
+        <div class="summary-filter">
+          <div class="summary-filter-main">
+            <div style="display: flex; flex-wrap: wrap; flex-direction: row; gap:10px">
+              <span style="line-height: 30px;">Rules:</span>
+              <span class="summary-filter-value" *ngFor="let selectedAnalysisFilter of SelectedAnalysisFilterList">
+                {{selectedAnalysisFilter.name}} 
+                <button (click)="hideRules(selectedAnalysisFilter)" class="btn-close" style="cursor: pointer;">
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="AnalysisFilterBtm d-flex">
+        <div class="AnalysisFilterBtmLft">
+          <ul class="nav nav-tabs DashboardTab" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="Fundamental-tab" data-bs-toggle="tab" data-bs-target="#Fundamental" type="button" role="tab" aria-controls="Fundamental" aria-selected="true">Fundamental</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="Event-tab" data-bs-toggle="tab" data-bs-target="#Event" type="button" role="tab" aria-controls="Event" aria-selected="false">Event</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="Technical-tab" data-bs-toggle="tab" data-bs-target="#Technical" type="button" role="tab" aria-controls="Technical" aria-selected="false">Technical</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="Statistical-tab" data-bs-toggle="tab" data-bs-target="#Statistical" type="button" role="tab" aria-controls="Statistical" aria-selected="false">Statistical</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="Volatility-tab" data-bs-toggle="tab" data-bs-target="#Volatility" type="button" role="tab" aria-controls="Volatility" aria-selected="false">Volatility</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="ATM-tab" data-bs-toggle="tab" data-bs-target="#ATM" type="button" role="tab" aria-controls="ATM" aria-selected="false">ATM</button>
+            </li>
+          </ul>
+
+          <div class="tab-content DashboardTabContent" id="myTabContent">
+            
+            <div class="tab-pane fade active show" id="Fundamental" role="tabpanel" aria-labelledby="Fundamental-tab">
+              <div class="accordion accordion-flush AnalysisFilterAccordion" id="accordionFund">
+                <div class="col-sm-15">
+                  <div class="accordion-body">
+
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('Price To Earning', 'PriceToEarning', 'Fundamental')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Fundamental/PriceToEarning.png">
+                        </div>
+                        <h4>Price Earnings Rank</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('Price To Book', 'PriceToBook', 'Fundamental')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Fundamental/PriceToBook.png">
+                        </div>
+                        <h4>Price to Book Rank</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('Price To Sales', 'PriceToSales', 'Fundamental')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Fundamental/PriceToSales.png">
+                        </div>
+                        <h4>PS Rank</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('Price To Earning Growth','PriceToEarningGrowth', 'Fundamental')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Fundamental/RelativePriceToEarningGrowth.png">
+                        </div>
+                        <h4>PEG Rank</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('Price To Sales Growth','PriceToSalesGrowth', 'Fundamental')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Fundamental/OptionPiIcon_PSGRank.png">
+                        </div>
+                        <h4>PSG Rank</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('ZScore Rank', 'ZScore', 'Fundamental')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Fundamental/ZScoreRank.png">
+                        </div>
+                        <h4>ZScore Rank</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('Analyst Rating', 'AnalystRating', 'Fundamental')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Fundamental/AnalystRating.png">
+                        </div>
+                        <h4>Analyst Rating</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane event" id="Event" role="tabpanel" aria-labelledby="Event-tab">
+              <div class="accordion accordion-flush AnalysisFilterAccordion" id="accordionFund">
+                <div class="col-sm-15">
+                  <div class="accordion-body">
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('Analyst Update', 'AnalystUpdate','Event')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Event/AnalystUpdate.png">
+                        </div>
+                        <h4>Analyst Update</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('Earning Event', 'EarningEvent','Event')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Event/EarningEvent.png">
+                        </div>
+                        <h4>Earning Event</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('News','News','Event')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Event/News.png">
+                        </div>
+                        <h4>News</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('Volume Breakout','VolumeBreakout','Event')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Event/VolumeBreakout.png">
+                        </div>
+                        <h4>Volume Breakout</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('PutCall Ratio Breakout', 'PutCallRatioBreakout', 'Event')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Event/PutCallRatioBreakout.png">
+                        </div>
+                        <h4>PutCall Ratio Breakout</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane technical" id="Technical" role="tabpanel" aria-labelledby="Technical-tab">
+              <div class="accordion accordion-flush AnalysisFilterAccordion" id="accordionFund">
+                <div class="col-sm-15">
+
+                  <div class="accordion-body">
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('MA Analysis', 'MaAnalysis', 'Technical')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Technical/MAAnalysis.png">
+                        </div>
+                        <h4>MA Analysis</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('Momentum Rank', 'Momentum', 'Technical')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Technical/MomentumRank.png">
+                        </div>
+                        <h4>Momentum Rank</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 fl" style="margin-bottom: 10px;">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('Relative Strength to Benchmark', 'RelativeStrengthToBenchmark', 'Technical')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Technical/OptionPiIcon_RSBench.png">
+                        </div>
+                        <h4>Relative Strength Benchmark</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('RSI', 'RSI', 'Technical')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Technical/RSI.png">
+                        </div>
+                        <h4>RSI</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('Distance to Bottom Stock', 'DistanceToBottomStock', 'Technical')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Technical/DistancetoBottomStock.png">
+                        </div>
+                        <h4>Distance to Bottom Stock</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('Distance to Peak', 'DistanceToPeak', 'Technical')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Technical/DistancetoPeak.png">
+                        </div>
+                        <h4>Distance to Peak</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('Distance to Peak', 'DistanceToPeak', 'Technical')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Technical/DistancetoPeak.png">
+                        </div>
+                        <h4>Bottom to Peak Analysis</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane statistical" id="Statistical" role="tabpanel" aria-labelledby="Statistical-tab">
+              <div class="accordion accordion-flush AnalysisFilterAccordion" id="accordionFund">
+                <div class="col-sm-15">
+                  <div class="accordion-body">
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('Correlation To Benchmark', 'CorrelationToBenchmark', 'Statistical')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Statistical/Correlation.png">
+                        </div>
+                        <h4>Correlation to Benchmark</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('Beta','Beta', 'Statistical')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Statistical/Beta.png">
+                        </div>
+                        <h4>Beta</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('Sharpe Ratio', 'SharpeRatio', 'Statistical')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Statistical/SharpeRatio.png">
+                        </div>
+                        <h4>Sharpe Ratio</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('Sortino Ratio', 'SortinoRatio', 'Statistical')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Statistical/SortinoRatio.png">
+                        </div>
+                        <h4>Sortino Ratio</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('Trend Analysis', 'TrendAnalysis', 'Statistical')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Statistical/TrendAnalysis.png">
+                        </div>
+                        <h4>Trend Analysis</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane volatility" id="Volatility" role="tabpanel" aria-labelledby="Volatility-tab">
+              <div class="accordion accordion-flush AnalysisFilterAccordion" id="accordionFund">
+                <div class="col-sm-15">
+                  <div class="accordion-body">
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('Implied Volatility', 'ImpliedVolatility', 'Volatility')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Volatility/IV.png">
+                        </div>
+                        <h4>IV</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('Historical Volatility', 'HistoricalVolatility', 'Volatility')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Volatility/HV.png">
+                        </div>
+                        <h4>HV</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('IV Percentile', 'IVPercentile', 'Volatility')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Volatility/IVPercentile.png">
+                        </div>
+                        <h4>IV Percentile</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('HV Percentile', 'HVPercentile', 'Volatility')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Volatility/HVPercentile.png">
+                        </div>
+                        <h4>HV Percentile</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('ATR Percent', 'ATRPercent', 'Volatility')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Volatility/ATRPercent.png">
+                        </div>
+                        <h4>ATR Percent</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('IV Change', 'IVChange', 'Volatility')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Volatility/IVChange.png">
+                        </div>
+                        <h4>IV Change</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('HV Change', 'HVChange', 'Volatility')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Volatility/HVChange.png">
+                        </div>
+                        <h4>HV Change</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane atm" id="ATM" role="tabpanel" aria-labelledby="ATM-tab">
+              <div class="accordion accordion-flush AnalysisFilterAccordion" id="accordionFund">
+                <div class="col-sm-15">
+                  <div class="accordion-body">
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('PutCall Ratio', 'PutCallRatio', 'ATM')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/ATM/PutCallRatio.png">
+                        </div>
+                        <h4>PutCall Ratio</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 fl mb-20">
+                      <div class="AnalysisFilterBlock">
+                        <div (click)="viewModalOptions('Open Interest Rank', 'OpenInterestRank', 'ATM')" style="cursor: pointer;">
+                          <img src="//am708403.blob.core.windows.net/images/optionpi/img/ATM/OpenInterestRank.png">
+                        </div>
+                        <h4>Open Interest Rank</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="align-content-center d-flex BtnFilter checkButtonGroup">
+            <button class="BtnSecondary disable" (click)="resetAnalysisFilterOptions()">
+              <img src="//am708403.blob.core.windows.net/images/optionpi/img/trash.png" style="width: 20px; height: 20px;">Clear All
+            </button>
+            <button class="BtnDefault" (click)="submitFilters()">
+              <img src="//am708403.blob.core.windows.net/images/optionpi/img/check.png" style="width: 22px; height: 20px;">Confirm
+            </button>
+          </div>
+        </div>
+
+        <div class="AnalysisFilterBtmRgt">
+          <div style="background-color: white; padding: 10px 10px; height: 590px; overflow-y: auto;">
+            
+            <ng-container *ngFor="let analysisFilter of SelectedAnalysisFilterList">
+              <app-analysis-filter 
+                [item]="analysisFilter.value" 
+                [SelectedAnalysisFilterList]="SelectedAnalysisFilterList"
+                (selectedAnalysisFilterListChange)="onSelectedAnalysisFilterListChange($event)"
+              >
+              </app-analysis-filter>
+            </ng-container>
+        
+          </div>
+        </div>
+      </div>
+      <!-- Modal Content End -->
+    </div>
+  </div>
+</div>
+
+<!-- PlaceOrder -->
+<div class="modal fade AccountModal PlaceOrderModal" id="PlaceOrder" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content PlaceOrderContent">
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      <h3>Place Order</h3>
+      <!-- Modal Content Start -->
+      <div class="PlaceOrderTabPannel">
+        <ul class="nav nav-tabs PlaceOrderTab1" id="PlaceTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="ProductList-tab" data-bs-toggle="tab" data-bs-target="#ProductList"
+              type="button" role="tab" aria-controls="ProductList" aria-selected="true">Product List</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button (click)="switchToStrategyTab()" class="nav-link" id="PlaceOrderStrategy-tab"
+              data-bs-target="#PlaceOrderStrategy" data-bs-toggle="modal" data-bs-dismiss="modal">Strategy
+              Template</button>
+          </li>
+        </ul>
+        <div class="tab-content PlaceOrderTabContent1" id="PlaceTabContent">
+          <!-- Product List-->
+          <div class="tab-pane fade show active ProductListContent" id="ProductList" role="tabpanel"
+            aria-labelledby="ProductList-tab">
+            <div class="ProductListContentTop">
+              <div class="optionStockMain">
+                <div class="SelectSymbol">
+                  <label>Symbol</label>
+                  <div class="selectpicker dash-select OptionSelect">
+                    <ng-select dropdownPosition="bottom" (change)="onProductSelected($event)"
+                      [items]="Products$ | async" [trackByFn]="searchProductTrackByFn" bindLabel="Symbol"
+                      [loading]="ProductSearchLoading" [(ngModel)]="SelectedProduct"
+                      [ngModelOptions]="{standalone: true}" placeholder="Type to Search" [typeahead]="ProductInput$">
+                      <ng-template ng-option-tmp let-item="item" let-index="index">
+                        <div class="product-name">
+                          {{item.ProductName}}
+                        </div>
+                        <div class="product-symbol">
+                          <b>{{item.Symbol}}</b> [{{item.Currency}}]
+                        </div>
+                      </ng-template>
+                    </ng-select>
+                  </div>
+                </div>
+                <ul class="nav nav-tabs  PlaceOrderTab1" id="OptionStock" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button [ngClass]="{'active' : currentProductListTab === 'product-list-option'}" (click)="switchToOptionTab()" 
+                      class="nav-link" id="Option-tab" data-bs-toggle="tab"
+                      data-bs-target="#Option" type="button" role="tab" aria-controls="Option"
+                      aria-selected="false">Option</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button [ngClass]="{'active' : currentProductListTab === 'product-list-stock'}" (click)="switchToStockTab()" 
+                      class="nav-link" id="Stock-tab" data-bs-toggle="tab"
+                      data-bs-target="#Stock" type="button" role="tab" aria-controls="Stock"
+                      aria-selected="true">Stock</button>
+                  </li>
+                </ul>
+              </div>
+              <div class="tab-content OptionStockContent" id="OptionStockContent">
+                <!-- Option Content -->
+                <div [ngClass]="{'active' : currentProductListTab === 'product-list-option'}"
+                  class="tab-pane fade show" id="Option" role="tabpanel" aria-labelledby="Option-tab">
+                  <div class="OptionContentMain">
+                    <!-- Option Left Pannel -->
+                    <div class="OptionContentLft">
+                      <div class="OptionContentLftTop">
+                        <div class="OptionContentFilter1">
+                          <form>
+                            <div class="form-control">
+                              <label>Type</label>
+                              <select #typeSelect class="form-select selectDefault"
+                                (change)='onTypeChanged(typeSelect.value)'>
+                                <option value="All" selected>All</option>
+                                <option value="Call">Call</option>
+                                <option value="Put">Put</option>
+                              </select>
+                            </div>
+                            <div class="form-control">
+                              <label>Expiry Date</label>
+                              <select (ngModelChange)='onExpiryDateChanged($event)'
+                                [(ngModel)]="SelectedOptionExpiryDate" [ngModelOptions]="{standalone: true}"
+                                class="form-select selectDefault DateSelect" aria-label="">
+                                <option *ngFor="let expiryDate of (OptionExpiryDates$ | async)?.ExpiryDates"
+                                  [ngValue]="expiryDate">
+                                  {{ expiryDate }}
+                                </option>
+                              </select>
+                            </div>
+                          </form>
+                        </div>
+                        <div class="OptionContentFilter2">
+                          <a class="BtnDefault2" id="FiltertDropdown" data-bs-toggle="dropdown"
+                            data-bs-auto-close="true" aria-expanded="false"> Filter
+                            <img src="//am708403.blob.core.windows.net/images/optionpi/img/filter2.png">
+                          </a>
+                          <ul
+                            class="dropdown-menu dropdownDefault FilterDrop  dropdown-menu-lg-end dropdown-menu-lg-start"
+                            aria-labelledby="FiltertDropdown">
+                            <li>
+                              <form [formGroup]="stockDataFilterForm" (ngSubmit)="filterStockData()">
+                                <table>
+                                  <tr>
+                                    <td>
+                                      <label>Volume</label>
+                                    </td>
+                                    <td>
+                                      <div>
+                                        <label>Greater than</label>
+                                        <input type="text" name="volume_grater_then"
+                                          formControlName="volume_grater_then" />
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div>
+                                        <label>Less than</label>
+                                        <input type="text" name="volume_less_then" formControlName="volume_less_then" />
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <label>Delta %</label>
+                                    </td>
+                                    <td>
+                                      <div>
+                                        <label>Greater than</label>
+                                        <input type="text" name="delta_grater_then"
+                                          formControlName="delta_grater_then" />
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div>
+                                        <label>Less than</label>
+                                        <input type="text" name="delta_less_then" formControlName="delta_less_then" />
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <label>Open Interest</label>
+                                    </td>
+                                    <td>
+                                      <div>
+                                        <label>Greater than</label>
+                                        <input type="text" name="open_interest_grater_then"
+                                          formControlName="open_interest_grater_then" />
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div>
+                                        <label>Less than</label>
+                                        <input type="text" name="open_interest_less_then"
+                                          formControlName="open_interest_less_then" />
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </table>
+                                <div class="d-flex justify-content-end">
+                                  <button class="BtnDefault" type="submit" name="submit"
+                                    style="margin-right: 10px;">Confirm</button>
+                                </div>
+                              </form>
+                            </li>
+                          </ul>
+                          <a class="BtnDefault2" id="ColumnDropdown" data-bs-toggle="dropdown"
+                            data-bs-auto-close="outside" aria-expanded="false">
+                            Column
+                            <img src="//am708403.blob.core.windows.net/images/optionpi/img/column.png">
+                          </a>
+                          <ul class="dropdown-menu dropdownDefault ColumnDrop dropdown-menu-end"
+                            aria-labelledby="dropdownMenuClickableInside">
+                            <li>
+                              <form>
+                                <div class="form-group checkbox"
+                                  *ngFor="let placeOrderColumn of placeOrderColumns; let i = index">
+                                  <input (click)="filterColumns(i)" type="checkbox" id={{placeOrderColumn.name}}
+                                    name={{placeOrderColumn.name}} [ngModel]="placeOrderColumn.checked"
+                                    ng-checked="placeOrderColumn.checked">
+                                  <label for={{placeOrderColumn.name}}>{{placeOrderColumn.name}}</label>
+                                </div>
+                              </form>
+                            </li>
+                          </ul>
+
+                          <div>
+                            <div style="display: flex;">
+                              <a (click)="reloadOptionData()" class="BtnSecondary ReloadButton">Reload <img
+                                  src="//am708403.blob.core.windows.net/images/optionpi/img/reload.png"></a>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                      <div class="OptionContentLftBtm">
+                        <div style="padding-top: 50px; text-align: center;" *ngIf="!isLoading && OptionSnapshotData.length === 0">There is currently no entries available</div>
+                        <app-loading [status]="isLoading"></app-loading>
+                        <div class="d-flex flex-wrap fixedTable">
+                          <div [ngClass]="OptionTable4Classes" *ngIf="OptionSnapshotData.length > 0">
+                            <aside class="fixedTable-sidebar table4" #table4ScrollElement
+                              (scroll)="scrollTable4Handler($event)">
+                              <table *ngIf="!isLoading" class="table selectTable text-center myTable4" id="myTable4"
+                                [ngStyle]="dynamicStyleTable4">
+                                <thead>
+                                  <tr class="callHead">
+                                    <th rowspan="2" class="NonClick">Strike Price</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let snapshoot of OptionSnapshotData">
+                                    <td class="NonClick">{{snapshoot.StrikePrice}}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </aside>
+                          </div>
+                          <div [ngClass]="OptionTable1Classes" *ngIf="OptionSnapshotData.length > 0">
+                            <div class="fixedTable-body table1" #table1ScrollElement
+                              (scroll)="scrollTable1Handler($event)">
+                              <!-- <div class="table-responsive"> -->
+                              <table *ngIf="!isLoading" class="table selectTable text-center myTable1" id="myTable1"
+                                [ngStyle]="dynamicStyleTable1">
+                                <thead>
+                                  <tr class="callHead">
+                                    <ng-container *ngFor="let callTableColumn of callTableColumns">
+                                      <th
+                                        *ngIf="placeOrderColumns.length > 0 && getStatusByColumn(callTableColumn.key)">
+                                        {{callTableColumn.label}}</th>
+                                    </ng-container>
+                                  </tr>
+                                  <tr class="callHead">
+                                    <th colspan="6">Call</th>
+                                  </tr>
+                                </thead>
+                                <tbody style="width: 100%; float: left;">
+                                  <tr (click)="setSelectedPlaceOrderRowCall(snapshoot)"
+                                    [ngClass]="{ 'Highlight' : snapshoot.Call.isSelected !== undefined && snapshoot.Call.isSelected, 'callBG': (snapshoot.StrikePrice < placeOrderLastTradedPrice) }"
+                                    *ngFor="let snapshoot of OptionSnapshotData; let i = index;">
+                                    <ng-container *ngFor="let callTableColumn of callTableColumns">
+                                      <td
+                                        *ngIf="placeOrderColumns.length > 0 && getStatusByColumn(callTableColumn.key)">
+                                        {{checkValueByKey(snapshoot.Call, callTableColumn)}}</td>
+                                    </ng-container>
+                                  </tr>
+                                </tbody>
+
+
+                                <!-- <thead *ngIf="selectedType === 'Call'" style="display: none;" >
+                                  <tr class="callHead">
+                                    <th *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('BidVolume')">Bid Vol.</th>
+                                    <th *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('Bid')">Bid</th>
+                                    <th *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('Ask')">Ask</th>
+                                    <th *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('AskVolume')">Ask Vol.</th>
+                                    <th *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('BreakEvenPct')">Break Even %</th>
+                                    <th *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('PctChange')">% Change</th>
+                                  </tr>
+                                  <tr class="callHead">
+                                    <th colspan="6">Call</th>
+                                  </tr>
+                                </thead>
+                                <thead *ngIf="selectedType === 'All'" style="display: none;">
+                                  <tr class="callHead">
+                                    <th *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('PctChange')">% Change</th>
+                                    <th *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('BreakEvenPct')">Break Even %</th>
+                                    <th *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('AskVolume')">Ask Vol. <i class="bi bi-arrow-down"></i></th>
+                                    <th *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('Ask')">Ask</th>
+                                    <th *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('Bid')">Bid</th>
+                                    <th *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('BidVolume')">Bid Vol.</th>
+                                  </tr>
+                                  <tr class="callHead">
+                                    <th colspan="6">Call</th>
+                                  </tr>
+                                </thead>
+                                <tbody style="width: 100%; float: left; display: none;" *ngIf="selectedType === 'Call'">
+                                  <tr (click)="setSelectedPlaceOrderRowCall(snapshoot)"
+                                    [ngClass]="{ 'Highlight' : snapshoot.Call.isSelected !== undefined && snapshoot.Call.isSelected, 'callBG': (snapshoot.StrikePrice < placeOrderLastTradedPrice) }"
+                                    *ngFor="let snapshoot of OptionSnapshotData">
+                                    <td *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('BidVolume')">{{snapshoot.Call.BidVolume}}</td>
+                                    <td *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('Bid')">{{snapshoot.Call.Bid}}</td>
+                                    <td *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('Ask')">{{snapshoot.Call.Ask}}</td>
+                                    <td *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('AskVolume')">{{snapshoot.Call.AskVolume}}</td>
+                                    <td *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('BreakEvenPct')">{{snapshoot.Call.BreakEvenPct | percent:'1.2-2'}}</td>
+                                    <td *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('PctChange')"><span [ngClass]="{'red_number' : snapshoot.Call.PctChange < 0, 'green_number' : snapshoot.Call.PctChange > 0}">{{snapshoot.Call.PctChange | percent:'1.2-2'}}</span></td>
+                                  </tr>
+                                </tbody>
+                                <tbody style="width: 100%; float: left; display: none" *ngIf="selectedType === 'All'" >
+                                  <tr (click)="setSelectedPlaceOrderRowCall(snapshoot)"
+                                    [ngClass]="{ 'Highlight' : snapshoot.Call.isSelected !== undefined && snapshoot.Call.isSelected, 'callBG': (snapshoot.StrikePrice < placeOrderLastTradedPrice) }"
+                                    *ngFor="let snapshoot of OptionSnapshotData">
+                                    <td *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('PctChange')"><span [ngClass]="{'red_number' : snapshoot.Call.PctChange < 0, 'green_number' : snapshoot.Call.PctChange > 0}">{{snapshoot.Call.PctChange | percent:'1.2-2'}}</span></td>
+                                    <td *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('BreakEvenPct')">{{snapshoot.Call.BreakEvenPct | percent:'1.2-2'}}</td>
+                                    <td *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('AskVolume')">{{snapshoot.Call.AskVolume}}</td>
+                                    <td *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('Ask')">{{snapshoot.Call.Ask}}</td>
+                                    <td *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('Bid')">{{snapshoot.Call.Bid}}</td>
+                                    <td *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('BidVolume')">{{snapshoot.Call.BidVolume}}</td>
+                                  </tr>
+                                </tbody> -->
+                              </table>
+                              <!-- </div> -->
+                            </div>
+                          </div>
+                          <div [ngClass]="OptionTable2Classes" *ngIf="OptionSnapshotData.length > 0">
+                            <aside class="fixedTable-sidebar table2" #table2ScrollElement
+                              (scroll)="scrollTable2Handler($event)">
+                              <!-- <div class="table-responsive w-auto overflow-x"> -->
+                              <table *ngIf="!isLoading" class="table selectTable text-center myTable2" id="myTable2"
+                                [ngStyle]="dynamicStyleTable2">
+                                <thead>
+                                  <tr class="callHead">
+                                    <th rowspan="2" class="NonClick">Strike Price</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr
+                                    [ngClass]="{ 'Highlight' : (snapshoot.Call.isSelected !== undefined && snapshoot.Call.isSelected || snapshoot.Put.isSelected !== undefined && snapshoot.Put.isSelected) }"
+                                    *ngFor="let snapshoot of OptionSnapshotData">
+                                    <td class="NonClick">{{snapshoot.StrikePrice}}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              <!-- </div> -->
+                            </aside>
+                          </div>
+                          <div [ngClass]="OptionTable3Classes" *ngIf="OptionSnapshotData.length > 0">
+                            <div class="fixedTable-body table3" #table3ScrollElement
+                              (scroll)="scrollTable3Handler($event)">
+                              <!-- <div class="table-responsive"> -->
+                              <table *ngIf="!isLoading" class="table selectTable text-center myTable3" id="myTable3"
+                                [ngStyle]="dynamicStyleTable3">
+
+                                <thead>
+                                  <tr class="putHead">
+                                    <ng-container *ngFor="let putTableColumn of putTableColumns">
+                                      <th *ngIf="placeOrderColumns.length > 0 && getStatusByColumn(putTableColumn.key)">
+                                        {{putTableColumn.label}}</th>
+                                    </ng-container>
+                                  </tr>
+                                  <tr class="putHead">
+                                    <th colspan="6">Put</th>
+                                  </tr>
+                                </thead>
+                                <tbody style="width: 100%; float: left;">
+                                  <tr (click)="setSelectedPlaceOrderRowPut(snapshoot)"
+                                    [ngClass]="{ 'Highlight' : snapshoot.Put.isSelected !== undefined && snapshoot.Put.isSelected, 'putBG': (snapshoot.StrikePrice > placeOrderLastTradedPrice) }"
+                                    *ngFor="let snapshoot of OptionSnapshotData; let i = index;">
+                                    <ng-container *ngFor="let putTableColumn of putTableColumns">
+                                      <td *ngIf="placeOrderColumns.length > 0 && getStatusByColumn(putTableColumn.key)">
+                                        {{checkValueByKey(snapshoot.Put, putTableColumn)}}</td>
+                                    </ng-container>
+                                  </tr>
+                                </tbody>
+
+                                <!-- <thead style="display: none;">
+                                  <tr class="putHead">
+                                    <th *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('BidVolume')">Bid Vol.</th>
+                                    <th *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('Bid')">Bid</th>
+                                    <th *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('Ask')">Ask</th>
+                                    <th *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('AskVolume')">Ask Vol.</th>
+                                    <th *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('BreakEvenPct')">Break Even %</th>
+                                    <th *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('PctChange')">% Change</th>
+                                  </tr>
+                                  <tr class="putHead">
+                                    <th colspan="6">Put</th>
+                                  </tr>
+                                </thead>
+                                <tbody style="width: 100%; float: left; display: none;">
+                                  <tr (click)="setSelectedPlaceOrderRowPut(snapshoot)"
+                                    [ngClass]="{ 'Highlight' : snapshoot.Put.isSelected !== undefined && snapshoot.Put.isSelected, 'putBG': (snapshoot.StrikePrice > placeOrderLastTradedPrice) }"
+                                    *ngFor="let snapshoot of OptionSnapshotData">
+                                    <td *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('BidVolume')">{{snapshoot.Put.BidVolume}}</td>
+                                    <td *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('Bid')">{{snapshoot.Put.Bid}}</td>
+                                    <td *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('Ask')">{{snapshoot.Put.Ask}}</td>
+                                    <td *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('AskVolume')">{{snapshoot.Put.AskVolume}}</td>
+                                    <td *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('BreakEvenPct')">{{snapshoot.Put.BreakEvenPct | percent:'1.2-2'}}</td>
+                                    <td *ngIf="placeOrderColumns.length > 0 && getStatusByColumn('PctChange')"><span [ngClass]="{'red_number' : snapshoot.Put.PctChange < 0, 'green_number' : snapshoot.Put.PctChange > 0}">{{snapshoot.Put.PctChange | percent:'1.2-2'}}</span></td>
+                                  </tr>
+                                </tbody> -->
+                              </table>
+                              <!-- </div> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Option Right Pannel -->
+                    <div class="OptionContentRgt">
+                      <form class="OptForm" [formGroup]="OptionOrderForm" (ngSubmit)="submitOptionOrder()">
+                        <div class="form-control">
+                          <label>Action</label>
+                          <select formControlName="SelectedOptionAction" class="form-select"
+                            aria-label="Default select example">
+                            <option value="Buy" selected="">Buy</option>
+                            <option value="Sell">Sell</option>
+                          </select>
+                        </div>
+                        <div class="form-control">
+                          <label>Contract</label>
+                          <input [(ngModel)]="SelectedOptionContract" [ngModelOptions]="{standalone: true}" type="text"
+                            name="product" placeholder="">
+                          <!-- <ng-select dropdownPosition="bottom" (change)="onOptionContractSelected($event)"
+                            [items]="OptionContracts$ | async" [trackByFn]="searchOptionContractTrackByFn"
+                            bindLabel="Symbol" [loading]="OptionContractSearchLoading"
+                            [(ngModel)]="SelectedOptionContract" [ngModelOptions]="{standalone: true}"
+                            placeholder="Choose Option Contract" [typeahead]="OptionContractInput$">
+                            <ng-template ng-option-tmp let-item="item" let-index="index">
+                              <div class="product-name">
+                                {{item.ProductName}}
+                              </div>
+                              <div class="product-symbol">
+                                <b>{{item.Symbol}}</b> [{{item.Currency}}]
+                              </div>
+                            </ng-template>
+                          </ng-select> -->
+                          <a *ngIf="SelectedOptionContract" class="BtnDefault ComputeButton"
+                            data-bs-target="#Calculator" data-bs-toggle="modal" data-bs-dismiss="modal"
+                            (click)="loadCalculatorModal()">Analyze<img
+                              src="//am708403.blob.core.windows.net/images/optionpi/img/beaker.png"></a>
+                        </div>
+                        <div class="form-control">
+                          <label>Quantity</label>
+                          <div>
+                            <input formControlName="OptionQuantity" type="text" name="quantity" value="1">
+                            <label>Lot</label>
+                          </div>
+                        </div>
+                        <div class="form-control">
+                          <label>Type: Limit</label>
+                        </div>
+                        <div class="form-control">
+                          <label>Limit Price</label>
+                          <div>
+                            <input formControlName="OptionLimitPrice" type="text" name="price">
+                            <a (click)="decreaseOptionLimitPrice()" class="DangerBg">
+                              <i class="bi bi-arrow-down-circle"></i>
+                            </a>
+                            <a (click)="increaseOptionLimitPrice()" class="SuccessBg">
+                              <i class="bi bi-arrow-up-circle"></i>
+                            </a>
+                          </div>
+                        </div>
+                        <div class="form-control">
+                          <label>Validity: Day</label>
+                        </div>
+                        <div class="form-control">
+                          <label>Account</label>
+                          <div>
+                            <select formControlName="SelectedAccount" class="form-select selectDefault"
+                              aria-label="Account" style="width: 100%;">
+                              <option *ngFor="let brokerAccount of AvailableBrokerAccounts" [ngValue]="brokerAccount">
+                                {{ brokerAccount.id }} ({{brokerAccount.brokerType}})
+                              </option>
+                            </select>
+                          </div>
+                        </div>
+                        <button class="BtnDefault w-100" type="submit" name="submit" data-bs-toggle="modal"
+                          data-bs-target="#ConfirmOptionOrder" data-bs-toggle="modal" data-bs-dismiss="modal"> Submit
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <!-- Stock Content -->
+                <div [ngClass]="{'active' : currentProductListTab === 'product-list-stock'}"
+                  class="tab-pane fade StockContentMain" id="Stock" role="tabpanel" aria-labelledby="Stock-tab">
+                  <div class="StockContentMainTop">
+                    <ul>
+                      <li>
+                        <div>
+                          <p>Last</p>
+                          <h2>{{(StockData$ | async)?.LastTradedPrice | number}}</h2>
+                        </div>
+                        <div>
+                          <p>Today Volume</p>
+                          <h2>{{(StockData$ | async)?.CumulativeVolume | number}}</h2>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="DangerBg">
+                          <div>
+                            <p>Bid Vol</p>
+                            <p>Bid</p>
+                          </div>
+                        </div>
+                        <div class="SuccessBg">
+                          <div>
+                            <p>Ask</p>
+                            <p>Ask Vol</p>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div>
+                          <div>
+                            <p>{{(StockData$ | async)?.BidSize | number}}</p>
+                            <p>{{(StockData$ | async)?.BidPrice | number}}</p>
+                          </div>
+                        </div>
+                        <div>
+                          <div>
+                            <p>{{(StockData$ | async)?.AskSize | number}}</p>
+                            <p>{{(StockData$ | async)?.AskPrice | number}}</p>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="StockContentMainBtm">
+                    <form class="OptForm" [formGroup]="StockOrderForm" (ngSubmit)="submitStockOrder()">
+                      <div class="form-control">
+                        <label>Action</label>
+                        <select (change)='onStockActionChanged(StockOrderForm.value.SelectedStockAction)'
+                          formControlName="SelectedStockAction" class="form-select" aria-label="Default select example">
+                          <option value="Buy" selected="">Buy</option>
+                          <option value="Sell">Sell</option>
+                        </select>
+                      </div>
+                      <div class="form-control">
+                        <label>Quantity</label>
+                        <div>
+                          <input formControlName="StockQuantity" type="text" name="quantity" placeholder="1">
+                          <select formControlName="SelectedStockUnitType" class="form-select w-50"
+                            aria-label="Default select example">
+                            <option *ngFor="let unitType of StockUnitTypeList" [ngValue]="unitType">
+                              {{ unitType.Display }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-control">
+                        <label>Type</label>
+                        <select formControlName="SelectedStockOrderType" class="form-select"
+                          aria-label="Default select example">
+                          <option *ngFor="let orderType of StockOrderTypeList" [ngValue]="orderType">
+                            {{ orderType.Display }}
+                          </option>
+                        </select>
+                        {{StockOrderForm.value.orderType}}
+                      </div>
+                      <div class="form-control" *ngIf="StockOrderForm.value.SelectedStockOrderType.Name === 'Limit'">
+                        <label>Limit Price</label>
+                        <div>
+                          <input formControlName="StockLimitPrice" type="text" name="price">
+                          <a (click)="decreaseStockLimitPrice()" class="DangerBg">
+                            <i class="bi bi-arrow-down-circle"></i>
+                          </a>
+                          <a (click)="increaseStockLimitPrice()" class="SuccessBg">
+                            <i class="bi bi-arrow-up-circle"></i>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="form-control" *ngIf="StockOrderForm.value.SelectedStockOrderType.Name === 'Stop'">
+                        <label>Stop Price</label>
+                        <div>
+                          <input formControlName="StockStopPrice" type="text" name="price">
+                          <a (click)="decreaseStockStopPrice()" class="DangerBg">
+                            <i class="bi bi-arrow-down-circle"></i>
+                          </a>
+                          <a (click)="increaseStockStopPrice()" class="SuccessBg">
+                            <i class="bi bi-arrow-up-circle"></i>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="form-control" *ngIf="StockOrderForm.value.SelectedStockOrderType.Name === 'Market'">
+                      </div>
+                      <div class="form-control">
+                        <label>Validity</label>
+                        <div class="radioDefault">
+                          <label>
+                            <input formControlName="SelectedStockValidity" type="radio" value="GTC" /> GTC </label>
+                          <label>
+                            <input formControlName="SelectedStockValidity" type="radio" value="Day" checked /> Day
+                          </label>
+                        </div>
+                      </div>
+                      <div class="form-control">&nbsp;</div>
+                      <div
+                        style="width: 100%; float: left; border-top: 1px solid #d3d3d3; height: 0; margin-bottom: 10px;">
+                        &nbsp;</div>
+                      <div class="form-control">
+                        <label style="width: 25%; float: left; margin-top: 10px;">Account</label>
+                        <select formControlName="SelectedAccount" class="form-select selectDefault" aria-label="Account"
+                          style="width: 75%; float: left;">
+                          <option *ngFor="let brokerAccount of AvailableBrokerAccounts" [ngValue]="brokerAccount">
+                            {{ brokerAccount.id }} ({{brokerAccount.brokerType}})
+                          </option>
+                        </select>
+                      </div>
+                      <div class="form-control">
+                        <button type="submit" name="submit" class="BtnDefault w-100" data-bs-toggle="modal"
+                          data-bs-target="#ConfirmStockOrder" data-bs-toggle="modal" data-bs-dismiss="modal"
+                          style="margin-top: 2px;"> Submit
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Strategy Template -->
+          <!-- <div class="tab-pane fade" id="Strategy" role="tabpanel" aria-labelledby="Strategy-tab">...</div> -->
+        </div>
+      </div>
+      <!-- Modal Content End -->
+    </div>
+  </div>
+</div>
+
+<!-- Place Order Strategy Templete -->
+<div class="modal fade AccountModal PlaceOrderModal" id="PlaceOrderStrategy" aria-hidden="true"
+  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content PlaceOrderContent">
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      <h3>Place Order</h3>
+      <!-- Modal Content Start -->
+      <div class="PlaceOrderTabPannel StrategyMain">
+         <div class="StrategyRgt">
+          <div class="StrategyRgtTop">
+            <p><strong>{{ByStrategyForm.value.SelectedStrategy.Display}} # {{SelectedProduct?.Symbol}},</strong>
+              Underlying Price = {{(StockData$ | async)?.LastTradedPrice | currency:'USD'}}</p>
+          </div>
+          <div class="StrategyRgtBtm">
+            <form class="w-100 SideDForm" [formGroup]="ByStrategyForm" (ngSubmit)="submitStrategyOrder()">
+              <div class="StrategyForm">
+                <div class="form-control">
+                  <label>Amount</label>
+                  <input formControlName="Amount" type="text" name="amount">
+                </div>
+                <div class="form-control">
+                  <label>Type</label>
+                  <div>
+                    Limit
+                  </div>
+                  <!-- <select class="form-select selectDefault w-100" aria-label="">
+                       <option selected="">Limit</option>
+                       <option value="1">Limit</option>
+                     </select> -->
+                </div>
+                <div class="form-control">
+                  <label>Validity</label>
+                  <div>Day</div>
+                  <!-- <div class="radioDefault">
+                       <label>
+                         <input type="radio" name="radio" />
+                         GTC
+                       </label>
+                       <label>
+                         <input type="radio" name="radio" checked />
+                         Day
+                       </label>
+                     </div> -->
+                </div>
+                <div class="form-control">
+                  <label>&nbsp;</label>
+                  <div style="display: flex; margin-top: -4px;">
+                    <a (click)="reloadStrategyData()" class="BtnSecondary ReloadButton">Reload <img
+                        src="//am708403.blob.core.windows.net/images/optionpi/img/reload.png"></a>&nbsp;&nbsp;
+                    <a (click)="loadStrategyCalculatorModal()" class="BtnDefault ComputeButton"
+                      data-bs-target="#Calculator" data-bs-toggle="modal" data-bs-dismiss="modal">Analyze <img
+                        src="//am708403.blob.core.windows.net/images/optionpi/img/beaker.png"></a>
+                  </div>
+                </div>
+              </div>
+              <div class="StrategyTable">
+                <div *ngIf="isLoadingStrategyContractResult" class="StrategyContractLoading">                  
+                  Loading Contracts... <app-loading [status]="isLoadingStrategyContractResult" [Contract] = "true"></app-loading>                                
+                </div>
+                <div *ngIf="!isLoadingStrategyContractResult" class="table-responsive">
+                  <table class="table table-striped" formArrayName="Legs">
+                    <tbody>
+                      <tr class="HighlightTableStripted">
+                        <td colspan="6">Option Contract</td>
+                      </tr>
+                      <tr>
+                        <th>Action</th>
+                        <th>Option</th>
+                        <th>Qty</th>
+                        <th>SP</th>
+                        <th>Expiry</th>
+                        <!-- <th>Price</th> -->
+                        <th *ngIf="ByStrategyForm.value.SelectedStrategy?.Name === 'IronCondor'"></th>
+                        <th *ngIf="ByStrategyForm.value.SelectedStrategy?.Name !== 'IronCondor'">Fair Value</th>
+                      </tr>
+                      <ng-container *ngFor="let Leg of ByStrategyForm.value.Legs;let i = index;">
+                        <tr *ngIf="Leg">
+                          <ng-container [formGroupName]="i">
+                            <td>
+                              <p>{{Leg.Direction}}</p>
+                            </td>
+                            <td>{{Leg.Rights}}</td>
+                            <td>{{Leg.Quantity}}</td>
+                            <td>{{Leg.StrikePrice}}</td>
+                            <td>{{Leg.Expiry}}</td>
+                            <!-- <td><input class="place-order-strategy-input" type="text" name="LimitPrice"
+                                value="{{Leg.LimitPrice}}" formControlName="LimitPrice"></td> -->
+                            <td *ngIf="ByStrategyForm.value.SelectedStrategy?.Name === 'IronCondor'"></td>
+                            <td *ngIf="ByStrategyForm.value.SelectedStrategy?.Name !== 'IronCondor'">{{Leg.FairValue}}</td>
+                          </ng-container>
+                        </tr>
+                      </ng-container>
+                    </tbody>
+                  </table>
+                  <table class="table table-striped"
+                    *ngIf="ByStrategyForm.value.SelectedStrategy?.Name === 'DeltaNeutral'">
+                    <tbody>
+                      <tr class="HighlightTableStripted">
+                        <td colspan="6">Stock</td>
+                      </tr>
+                      <tr>
+                        <th>Action</th>
+                        <th></th>
+                        <th>Qty</th>
+                        <th></th>
+                        <th></th>
+                        <!-- <th></th> -->
+                        <th>Price</th>
+                      </tr>
+                      <tr>
+                        <td>{{ByStrategyForm.value.Direction}}</td>
+                        <td></td>
+                        <td>{{ByStrategyForm.value.Quantity}}</td>
+                        <td></td>
+                        <td></td>
+                        <!-- <td><input class="place-order-strategy-input" type="text" name="price"
+                            value="{{ByStrategyForm.value.LimitPrice}}" formControlName="LimitPrice"></td> -->
+                        <td>{{ByStrategyForm.value.LimitPrice}}</td>
+                          <!-- <td><input type="text" name="price" value="$280"><span class="input" role="textbox" contenteditable>{{ByStrategyForm.value.LimitPrice}}</span></td> -->
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="w-100 SubmitBlock">
+                <div *ngIf="ByStrategyForm.value.SelectedStrategy?.Name === 'IronCondor'" class="w-25" 
+                  style="float: left;text-align: left;display: flex;">
+                  <label style="margin-top: 12px;">Bundle Price: {{getIronCondorBundlePrice()}}</label>
+                </div>
+                <div class="w-75" style="float: right;text-align: right;display: flex;">
+                  <label style="margin-top: 12px;margin-right: 20px;">Account</label>
+                  <select formControlName="SelectedAccount" class="form-select selectDefault" aria-label="Account"
+                    style="margin-right: 20px;float: right;width: 100%;">
+                    <option *ngFor="let brokerAccount of AvailableBrokerAccounts" [ngValue]="brokerAccount">
+                      {{ brokerAccount.id }} ({{brokerAccount.brokerType}})
+                    </option>
+                  </select>
+                </div>
+                <button class="BtnDefault" type="submit" data-bs-target="#StrategyConfrimOrder" data-bs-toggle="modal"
+                  data-bs-dismiss="modal">Submit <i class="bi bi-cart3"></i></button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- <div class="StrategyRgt EmptyParameter">
+              <div class="PayoffLftBtm h-100">
+                 <div class="configure">
+                    <img src="//am708403.blob.core.windows.net/images/optionpi/img/settings.png">
+                    <h2>Please configure the parameter </h2>
+                    <p>Please configure the parameter and select the value to show the graph</p>
+                 </div>
+              </div>
+           </div> -->
+      </div>
+      <!-- Modal Content End -->
+    </div>
+  </div>
+</div>
+
+<!-- Calculator Modal-->
+<div class="modal fade AccountModal PlaceOrderModal CalculatorModal" id="Calculator" aria-hidden="true" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content PlaceOrderContent">
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      <form [formGroup]="CalculatorFormGroup">
+        <h3>Calculator</h3>
+        <div class="CalculatorTop" *ngIf="CalculatorFormGroup.value.Strategy">
+          <div>
+            <ul>
+              <li>
+                <span>Symbol</span>
+                <p>{{CalculatorFormGroup.value.Symbol}}</p>
+              </li>
+              <li>
+                <span>Strategy</span>
+                <p>{{CalculatorFormGroup.value.Strategy}}</p>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <ul>
+              <li>
+                <span>Max Profit</span>
+                <p>{{ CalculatorFormGroup.value.Strategy == "Straddle"? "undefined" :
+                  "$"+(MaxProfitLoss$|async)?.MaxProfit}}</p>
+
+              </li>
+              <li>
+                <span>Max Loss</span>
+                <p>${{(MaxProfitLoss$|async)?.MaxLoss}}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="CalculatorBtm">
+          <div class="CalculatorLft" formGroupName="CurrentState">
+            <h3>Current State</h3>
+            <ul>
+              <li *ngFor="let leg of CalculatorFormGroup.value.CurrentState.Legs">
+                <span>Leg {{leg.LegId}} - Implied Volatility</span>
+                <p>{{leg.IV | percent:'1.2-2'}}</p>
+              </li>
+              <li>
+                <span>Stock Price</span>
+                <p>{{CalculatorFormGroup.value.CurrentState.StockPrice | currency:'USD'}}</p>
+              </li>
+              <li>
+                <span>ATM Mean IV</span>
+                <p>{{CalculatorFormGroup.value.CurrentState.ATMMeanIV | percent:'1.2-2'}}</p>
+              </li>
+              <li>
+                <span>Dividend Yield</span>
+                <p>{{CalculatorFormGroup.value.CurrentState.DividendYield | percent:'1.2-2'}}</p>
+              </li>
+              <li>
+                <span>Interest Rate</span>
+                <p>{{CalculatorFormGroup.value.CurrentState.InterestRate | percent:'1.2-2'}}</p>
+              </li>
+              <li>
+                <span>Mean Skew</span>
+                <p>{{CalculatorFormGroup.value.CurrentState.MeanSkew}}</p>
+              </li>
+              <li>
+                <span>Days To Expiry</span>
+                <p>{{CalculatorFormGroup.value.CurrentState.DaysToExpiry}}</p>
+              </li>
+            </ul>
+            <div class="BackBtn">
+              <a *ngIf="currentTradeTab === 'by-product'" class="BtnDefault w-100" data-bs-target="#PlaceOrder" data-bs-toggle="modal"
+                data-bs-dismiss="modal">Back</a>
+              <a *ngIf="currentTradeTab === 'by-strategy'" class="BtnDefault w-100" data-bs-target="#PlaceOrderStrategy" data-bs-toggle="modal"
+                data-bs-dismiss="modal">Back</a>
+            </div>
+          </div>
+          <div class="CalculatorRgt" formGroupName="NextState">
+            <h3>Next State</h3>
+            <div class="CalculatorMidl">
+              <table>
+                <tr>
+                  <td>ATM Mean IV</td>
+                  <td>
+                    <input value="{{ CalculatorFormGroup.value.NextState.ATMMeanIV}}" name="atmMeanIV"
+                      class="place-order-strategy-input" formControlName="ATMMeanIV" contenteditable>%
+                  </td>
+                </tr>
+                <tr>
+                  <td>Stock Price</td>
+                  <td>
+                    <input value="{{ CalculatorFormGroup.value.NextState.StockPrice}}" name="stockPrice"
+                      class="place-order-strategy-input" formControlName="StockPrice" contenteditable>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Days to Expiry</td>
+                  <td>
+                    <input value="{{CalculatorFormGroup.value.NextState.Period}}" class="place-order-strategy-input"
+                      formControlName="Period" value="0" name="period" contenteditable> days
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="ComputeBtn">
+              <a class="BtnDefault w-100" (click)="computeProfitLoss()">Compute <img
+                  src="//am708403.blob.core.windows.net/images/optionpi/img/beaker.png"></a>
+            </div>
+            <ul>
+              <li>
+                <span>Profit/Loss</span>
+              </li>
+              <li>
+                <p [ngClass]="ProfitLossResult > 0 ? 'SuccessTxt' : 'DangerTxt'">${{ProfitLossResult}}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Strategy Confrim Order -->
+<div class="modal fade AccountModal PlaceOrderModal StrategyConfrimOrderModal" id="StrategyConfrimOrder"
+  aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content PlaceOrderContent">
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      <h3>This order will be created</h3>
+      <!-- Modal Content Start -->
+      <div class="PlaceOrderTabPannel StrategyMain">
+        <div class="StrategyRgt">
+          <div class="StrategyRgtTop" style="width: 100%; float: left;">
+            <div style="width: 60%; float: left;">
+              <p><strong>{{ConfirmedStrategyOrder.strategy}} # {{ConfirmedStrategyOrder.symbol}},</strong> Underlying
+                Price = {{(StockData$ | async)?.LastTradedPrice | number}}</p>
+            </div>
+            <div style="width: 40%; float: right; text-align: right;">
+              <p>Account: <span style="color: #B39256;font-weight: bold;">{{ConfirmedStrategyOrder.account}}
+                  ({{ConfirmedStrategyOrder.broker}})</span></p>
+            </div>
+          </div>
+          <div class="StrategyRgtBtm">
+            <form class="w-100 SideBarForm">
+              <div class="StrategyTable">
+                <div class="table-responsive">
+                  <table class="table table-striped">
+                    <tbody>
+                      <tr class="HighlightTableStripted">
+                        <td colspan="6">Option Contract</td>
+                      </tr>
+                      <tr>
+                        <th>Action</th>
+                        <th>Option</th>
+                        <th>Qty</th>
+                        <th>SP</th>
+                        <th>Expiry</th>
+                        <!-- <th>Price</th> -->
+                        <th *ngIf="ByStrategyForm.value.SelectedStrategy?.Name === 'IronCondor'"></th>
+                        <th *ngIf="ByStrategyForm.value.SelectedStrategy?.Name !== 'IronCondor'">Fair Value</th>
+                      </tr>
+                      <tr *ngIf="ConfirmedStrategyOrder.legs[0]">
+                        <td>
+                          <p>{{ConfirmedStrategyOrder.legs[0].Direction}}</p>
+                        </td>
+                        <td>{{ConfirmedStrategyOrder.legs[0].Rights}}</td>
+                        <td>{{ConfirmedStrategyOrder.legs[0].Quantity}}</td>
+                        <td>{{ConfirmedStrategyOrder.legs[0].StrikePrice}}</td>
+                        <td>{{ConfirmedStrategyOrder.legs[0].Expiry}}</td>
+                        <!-- <td>{{ConfirmedStrategyOrder.legs[0].LimitPrice}}</td> -->
+                        <th *ngIf="ByStrategyForm.value.SelectedStrategy?.Name === 'IronCondor'"></th>
+                        <th *ngIf="ByStrategyForm.value.SelectedStrategy?.Name !== 'IronCondor'">{{ConfirmedStrategyOrder.legs[0].FairValue}}</th>
+                      </tr>
+                      <tr *ngIf="ConfirmedStrategyOrder.legs[1]">
+                        <td>
+                          <p>{{ConfirmedStrategyOrder.legs[1].Direction}}</p>
+                        </td>
+                        <td>{{ConfirmedStrategyOrder.legs[1].Rights}}</td>
+                        <td>{{ConfirmedStrategyOrder.legs[1].Quantity}}</td>
+                        <td>{{ConfirmedStrategyOrder.legs[1].StrikePrice}}</td>
+                        <td>{{ConfirmedStrategyOrder.legs[1].Expiry}}</td>
+                        <!-- <td>{{ConfirmedStrategyOrder.legs[1].LimitPrice}}</td> -->
+                        <th *ngIf="ByStrategyForm.value.SelectedStrategy?.Name === 'IronCondor'"></th>
+                        <th *ngIf="ByStrategyForm.value.SelectedStrategy?.Name !== 'IronCondor'">{{ConfirmedStrategyOrder.legs[1].FairValue}}</th>
+                      </tr>
+                      <tr *ngIf="ConfirmedStrategyOrder.legs[2]">
+                        <td>
+                          <p>{{ConfirmedStrategyOrder.legs[2].Direction}}</p>
+                        </td>
+                        <td>{{ConfirmedStrategyOrder.legs[2].Rights}}</td>
+                        <td>{{ConfirmedStrategyOrder.legs[2].Quantity}}</td>
+                        <td>{{ConfirmedStrategyOrder.legs[2].StrikePrice}}</td>
+                        <td>{{ConfirmedStrategyOrder.legs[2].Expiry}}</td>
+                        <!-- <td>{{ConfirmedStrategyOrder.legs[2].LimitPrice}}</td> -->
+                        <th *ngIf="ByStrategyForm.value.SelectedStrategy?.Name === 'IronCondor'"></th>
+                        <th *ngIf="ByStrategyForm.value.SelectedStrategy?.Name !== 'IronCondor'">{{ConfirmedStrategyOrder.legs[2].FairValue}}</th>
+                      </tr>
+                      <tr *ngIf="ConfirmedStrategyOrder.legs[3]">
+                        <td>
+                          <p>{{ConfirmedStrategyOrder.legs[3].Direction}}</p>
+                        </td>
+                        <td>{{ConfirmedStrategyOrder.legs[3].Rights}}</td>
+                        <td>{{ConfirmedStrategyOrder.legs[3].Quantity}}</td>
+                        <td>{{ConfirmedStrategyOrder.legs[3].StrikePrice}}</td>
+                        <td>{{ConfirmedStrategyOrder.legs[3].Expiry}}</td>
+                        <!-- <td>{{ConfirmedStrategyOrder.legs[3].LimitPrice}}</td> -->
+                        <th *ngIf="ByStrategyForm.value.SelectedStrategy?.Name === 'IronCondor'"></th>
+                        <th *ngIf="ByStrategyForm.value.SelectedStrategy?.Name !== 'IronCondor'">{{ConfirmedStrategyOrder.legs[3].FairValue}}</th>
+                      </tr>
+                    </tbody>
+                    <tbody *ngIf="ConfirmedStrategyOrder.strategy === 'DeltaNeutral'">
+                      <tr class="HighlightTableStripted">
+                        <td colspan="6">Stock</td>
+                      </tr>
+                      <tr>
+                        <th>Action</th>
+                        <th></th>
+                        <th>Qty</th>
+                        <th></th>
+                        <th></th>
+                        <!-- <th></th> -->
+                        <th>Price</th>
+                      </tr>
+                      <tr>
+                        <td>{{ConfirmedStrategyOrder.direction}}</td>
+                        <td></td>
+                        <td>{{ConfirmedStrategyOrder.quantity}}</td>
+                        <td></td>
+                        <td></td>
+                        <!-- <td></td> -->
+                        <td>{{ConfirmedStrategyOrder.limitPrice}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="w-100 SubmitBlock">
+        <div *ngIf="ByStrategyForm.value.SelectedStrategy?.Name === 'IronCondor'"
+          style="float: left;text-align: left;display: flex;">
+          <label style="margin-top: 12px;">Bundle Price: {{getIronCondorBundlePrice()}}</label>
+        </div>
+        <a class="BtnSecondary" data-bs-target="#PlaceOrderStrategy" data-bs-toggle="modal" data-bs-dismiss="modal"><i
+          class="bi bi-arrow-left"></i> Previous</a>
+        <a class="BtnDefault" data-bs-target="#OrderSuccess" data-bs-toggle="modal" data-bs-dismiss="modal"
+          (click)="confirmSendStrategyOrder()">Submit <i class="bi bi-cart3"></i></a>
+      </div>
+      <!-- Modal Content End -->
+    </div>
+  </div>
+</div>
+
+<!-- Strategy Success Order -->
+<div class="modal fade AccountModal OrderCreatedModal StrategyOrderSuccess" id="OrderSuccess" aria-hidden="true"
+  tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-body">
+        <h4>Order Created! </h4>
+        <div>
+          <img src="//am708403.blob.core.windows.net/images/optionpi/img/checked.png">
+          <p class="PriceLine">
+            <strong>{{StrategyOrderSuccessParameter.Strategy}} # {{StrategyOrderSuccessParameter.Underlying}},</strong>
+            Underlying Price = {{(StockData$ | async)?.LastTradedPrice | currency:'USD'}}
+          </p>
+          <p>Your order has been successfully placed</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="BtnDefault w-100" (click)="seeMyOrders()">See My Order </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Strategy Order Rejected #StrategyOrderRejected-->
+<div class="modal fade AccountModal OrderRejectModal StrategyOrderRejectedModal" id="StrategyOrderRejected"
+  aria-hidden="true" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-body">
+        <h4>Order rejected!</h4>
+        <div>
+          <img src="//am708403.blob.core.windows.net/images/optionpi/img/cancel.png">
+          <p class="PriceLine">
+            <strong>{{StrategyOrderRejectedParameter.Strategy}} #
+              {{StrategyOrderRejectedParameter.Underlying}},</strong> Underlying Price = {{(StockData$ |
+            async)?.LastTradedPrice | currency:'USD'}}
+          </p>
+          <p>Your order has been rejected for following reason:
+            <span class="text-alert">{{StrategyOrderRejectedParameter.RejectReason}}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Order Created -->
+<div class="modal fade AccountModal OrderCreatedModal" id="OrderCreated" aria-hidden="true" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-body">
+        <h4>Order Created! </h4>
+        <div>
+          <img src="//am708403.blob.core.windows.net/images/optionpi/img/checked.png">
+          <h5>{{OrderSuccessParameter.Action}} {{OrderSuccessParameter.Quantity}} {{OrderSuccessParameter.Symbol}}
+            <span *ngIf="OrderSuccessParameter.OrderType === 'Limit'">@ {{OrderSuccessParameter.LimitPrice}}</span>
+            <span *ngIf="OrderSuccessParameter.OrderType === 'Stop'">@ {{OrderSuccessParameter.StopPrice}}</span>
+          </h5>
+          <p>Your order has been successfully placed</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="BtnDefault w-100" (click)="seeMyOrders()">See My Order </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Order Rejected -->
+<div class="modal fade AccountModal OrderRejectModal" id="OrderRejected" aria-hidden="true" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-body">
+        <h4>Order rejected!</h4>
+        <div>
+          <img src="//am708403.blob.core.windows.net/images/optionpi/img/cancel.png">
+          <h5>{{OrderRejectedParameter.Action}} {{OrderRejectedParameter.Quantity}} {{OrderRejectedParameter.Symbol}}
+            <span *ngIf="OrderRejectedParameter.OrderType === 'Limit'">@ {{OrderRejectedParameter.LimitPrice}}</span>
+            <span *ngIf="OrderRejectedParameter.OrderType === 'Stop'">@ {{OrderRejectedParameter.StopPrice}}</span>
+          </h5>
+          <p>Your order has been rejected for following reason:
+            <span class="text-alert">{{OrderRejectedParameter.RejectReason}}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Set Portfolio Alert -->
+<div class="modal fade AccountModal PortfolioAlertModal" id="PortfolioAlert" aria-hidden="true" tabindex="-1"
+  data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      <h3>Set Portfolio alert</h3>
+      <div class="PortfolioAlertContent">
+        <form class="w-100 SideBarForm">
+          <div class="form-control w-100">
+            <label>Mode</label>
+            <div class="radioDefault">
+              <label>
+                <input type="radio" name="PortfolioRadio" id="Pal" checked /> P/L </label>
+              <label>
+                <input type="radio" name="PortfolioRadio" id="Time" /> Time </label>
+              <label>
+                <input type="radio" name="PortfolioRadio" id="Target" /> Target </label>
+            </div>
+          </div>
+          <div class="w-100" id="PalBlock">
+            <div class="form-control w-100">
+              <label>Profit Trigger (USD)</label>
+              <input type="text" name="profit" placeholder="Input Value" class="w-100">
+            </div>
+            <div class="form-control w-100">
+              <label>Loss Trigger (USD)</label>
+              <input type="text" name="loss" placeholder="Input Value" class="w-100">
+            </div>
+          </div>
+          <div class="w-100" id="TimeBlock">
+            <div class="form-control w-100">
+              <label>Days Left to Expiry</label>
+              <input type="text" name="expiry" placeholder="Input Value" class="w-100">
+            </div>
+          </div>
+          <div class="w-100" id="TargetBloack">
+            <div class="form-control w-100">
+              <label>% of Max Profit</label>
+              <input type="text" name="maxprofit" placeholder="Input Value" class="w-100">
+              <span>Max Profit USD 10000</span>
+            </div>
+            <div class="form-control w-100">
+              <label>% of Max Loss</label>
+              <input type="text" name="maxloss" placeholder="Input Value" class="w-100">
+              <span>Max Loss USD 3000</span>
+            </div>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button class="BtnDefault w-100">Set Alert</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm Order -->
+<div class="modal fade AccountModal ConfirmOrderModal" id="ConfirmStockOrder" aria-hidden="true" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-body">
+        <h4>This stock order will be created:</h4>
+        <table>
+          <tr>
+            <th>Action</th>
+            <td>
+              <span class="textHighlight">{{ConfirmedStockOrder.action}}</span>
+            </td>
+          </tr>
+          <tr>
+            <th>Account</th>
+            <td>{{ConfirmedStockOrder.account}} ({{ConfirmedStockOrder.broker}})</td>
+          </tr>
+          <tr>
+            <th>Product</th>
+            <td>{{ConfirmedStockOrder.product.ProductName}} ({{ConfirmedStockOrder.product.Symbol}})</td>
+          </tr>
+          <tr>
+            <th>Quantity</th>
+            <td>{{ConfirmedStockOrder.quantity}} {{ConfirmedStockOrder.unitType}}</td>
+          </tr>
+          <tr>
+            <th>Order Type</th>
+            <td>{{ConfirmedStockOrder.orderType}}</td>
+          </tr>
+          <tr *ngIf="ConfirmedStockOrder.orderType === 'Limit'">
+            <th>Limit Price</th>
+            <td>US$ {{ConfirmedStockOrder.limitPrice}}</td>
+          </tr>
+          <tr *ngIf="ConfirmedStockOrder.orderType === 'Stop'">
+            <th>Stop Price</th>
+            <td>US$ {{ConfirmedStockOrder.stopPrice}}</td>
+          </tr>
+          <tr>
+            <th>Validity</th>
+            <td>{{ConfirmedStockOrder.validity}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button class="BtnSecondary" data-bs-target="#PlaceOrder" data-bs-toggle="modal" data-bs-dismiss="modal">
+          <i class="bi bi-arrow-left"></i> Previous </button>
+        <button class="BtnDefault" (click)="confirmSendStockOrder()" data-bs-toggle="modal"
+          data-bs-dismiss="modal">Submit
+          <i class="bi bi-cart"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm Order -->
+<div class="modal fade AccountModal ConfirmOrderModal" id="ConfirmOptionOrder" aria-hidden="true" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-body">
+        <h4>This option order will be created:</h4>
+        <table>
+          <tr>
+            <th>Action</th>
+            <td>
+              <span class="textHighlight">{{ConfirmedOptionOrder.action}}</span>
+            </td>
+          </tr>
+          <tr>
+            <th>Account</th>
+            <td>{{ConfirmedOptionOrder.account}} ({{ConfirmedOptionOrder.broker}})</td>
+          </tr>
+          <tr>
+            <th>Product</th>
+            <td>{{ConfirmedOptionOrder.product}}</td>
+          </tr>
+          <tr>
+            <th>Quantity</th>
+            <td>{{ConfirmedOptionOrder.quantity}} {{ConfirmedOptionOrder.unitType}}</td>
+          </tr>
+          <tr>
+            <th>Order Type</th>
+            <td>{{ConfirmedOptionOrder.orderType}}</td>
+          </tr>
+          <tr>
+            <th>Limit Price</th>
+            <td>US$ {{ConfirmedOptionOrder.limitPrice}}</td>
+          </tr>
+          <tr>
+            <th>Validity</th>
+            <td>{{ConfirmedOptionOrder.validity}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button class="BtnSecondary" data-bs-target="#PlaceOrder" data-bs-toggle="modal" data-bs-dismiss="modal">
+          <i class="bi bi-arrow-left"></i> Previous </button>
+        <button class="BtnDefault" (click)="confirmSendOptionOrder()" data-bs-toggle="modal"
+          data-bs-dismiss="modal">Submit
+          <i class="bi bi-cart"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- Modal Ends -->
+
+<div class="tab-pane fade show active" id="Screener" role="tabpanel" aria-labelledby="Screener-tab" style="position: relative;">
+    <!-- Custom Filter Content -->
+    <div class="PredefinedScreeningTop" style="border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;">
+      <form>
+        <div class="PredefinedFormBtm border-top-none PreButtonLayout">
+          <div class="InputLayout">
+            <div>
+              <div class="form-control selectDefault2Main d-block">
+                <label>Stock Universe</label>
+                <div>
+                  <select (change)="setOption($event, 'parent')" [(ngModel)]="SelectedStockUniverseType" [ngModelOptions]="{standalone: true}"
+                    class="selectDefault2 form-select" style="width: 200px;">
+                    <option *ngFor="let StockUniverseType of StockUniverseTypeList" [ngValue]="StockUniverseType">
+                      {{ StockUniverseType.name }}
+                    </option>
+                  </select>
+                  <select (change)="setOption($event, 'child')" [(ngModel)]="selectedStockUniverse" [ngModelOptions]="{standalone: true}" class="form-select"
+                    aria-label="Choose Stock Universe" style="width: 200px;">
+                    <option *ngFor="let stockUniverse of selectedStockUniverseList" [ngValue]="stockUniverse">
+                      {{ stockUniverse.name }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-control selectDefault2Main d-block mr-8">
+                <label>Strategy</label>
+                <select [(ngModel)]="SelectedStrategy" [ngModelOptions]="{standalone: true}"
+                  class="selectDefault2 form-select">
+                  <option *ngFor="let strategy of StrategyList" [ngValue]="strategy">
+                    {{ strategy.Display }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <div class="form-control selectDefault2Main d-block">
+                <label>Time to Expiry</label>
+                <select [(ngModel)]="SelectedExpiryDate" [ngModelOptions]="{standalone: true}" class="form-select"
+                  aria-label="Choose Expiry Date" style="width: 110px;">
+                  <option *ngFor="let expiryDate of ExpiryDateList" [ngValue]="expiryDate">
+                    {{ expiryDate.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="form-control selectDefault2Main d-block">
+                <label>Breakeven Distance</label>
+                <select [(ngModel)]="selectedbreakEvenDistance" [ngModelOptions]="{standalone: true}" class="form-select"
+                aria-label="Choose Breakeven Distance" style="width: 150px;">
+                  <option *ngFor="let breakEvenDistance of breakEvenDistanceList" [ngValue]="breakEvenDistance">
+                    {{ breakEvenDistance.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="form-control selectDefault2Main d-block">
+                <label>Otm Distance</label>
+                <select [(ngModel)]="selectedotmDistance" [ngModelOptions]="{standalone: true}" class="form-select"
+                aria-label="Choose Otm Distance" style="width: 150px;">
+                  <option *ngFor="let otmDistance of otmDistanceList" [ngValue]="otmDistance">
+                    {{ otmDistance.name }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="filterIcon">
+            <div class="filter" style="margin-right: 11px; margin-top: 22px; cursor: pointer; position: relative;">
+              <div style="justify-content: space-between;" href="#AnalysisFilter" data-bs-toggle="modal" (click)="moreFilterClick()">
+                <label style="margin-right: 5px; color: black;  cursor: pointer; ">More Filters</label>
+                <img src="//am708403.blob.core.windows.net/images/optionpi/img/Filter.png" style="width: 20px; height: 20px;">
+              </div>
+              <div style="display: flex; justify-content: center; align-items: center; color: white; border-radius: 50%; background-color: #565656; width: 25px; height: 25px;
+                position: absolute; right: -12px; top: -12px;">
+                <span>{{SelectedAnalysisFilterList.length}}</span>
+              </div>
+            </div>
+            <div class="filter" style="margin-top: 22px; cursor: pointer; border:1px solid #B39256; justify-content: space-between; position: relative;">
+              <div style="justify-content: space-between;" >
+                <label style="color: #B39256; cursor: pointer; ">A.I Filters</label>
+                <img src="//am708403.blob.core.windows.net/images/optionpi/img/A.I. Filter.png" style="width: 20px; height: 20px;">
+              </div>
+              <div style="display: flex; justify-content: center; align-items: center; color: white; border-radius: 50%; background-color: #B39256; width: 25px; height: 25px;
+                position: absolute; right: -12px; top: -12px;">
+              <span>{{SelectedAnalysisFilterList.length}}</span>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="PredefinedFormRgt" style="padding: 22px 16px;">
+          <button [disabled]="disableButton" (click)="generateScreenerResult()" [class.disabled-button]="disableButton" style="cursor: pointer;">
+            <a class="GenerateBtn">
+              <img src="//am708403.blob.core.windows.net/images/optionpi/img/Add Button.png" style="width: 20px; height: 20px;">Generate
+            </a>
+          </button>
+        </div>
+      </form>
+    </div>
+    <div style="background-color:#f8f9fc; height: 10px;"></div>
+    <div class="PredefinedScreeningBtm">
+      <div class="form-control selectDefault2Main screenerColumnList" style="gap: 10px;">
+        <div class="mobileGenerateBtn">
+          <button [disabled]="disableButton" (click)="generateScreenerResult()" [class.disabled-button]="disableButton" style="cursor: pointer; width: 100%;">
+            <a class="GenerateBtn">
+              <img src="//am708403.blob.core.windows.net/images/optionpi/img/Add Button.png" style="width: 20px; height: 20px;">Generate
+            </a>
+          </button>
+        </div>
+        <div class="screenerColumn">
+          <app-multi-select-dropdown placeHolder="Column" [list]="columnList"
+            (shareCheckedList)="columnListShareCheckedList($event)"
+            (shareIndividualCheckedList)="columnListShareIndividualCheckedList($event)">
+          </app-multi-select-dropdown>
+        </div>
+      </div>
+      <div class="ScreenerTable" style="overflow: auto; width: 100%; height: 500px;">
+        <app-loading [status]="isLoadingScreenerResult"></app-loading>
+        <table *ngIf="!isLoadingScreenerResult" class="table table-striped">
+          <thead *ngIf="GetScreenerDataResult.Data.length">
+            <tr>
+              <th *ngFor="let column of columnShareFilterCheckedArrayList" class="col-md-1" (click)="sortColumns(column.name, currentSortedColumn.type === 'Desc' ? 'Asc' : 'Desc')">{{column.name}}
+                <a *ngIf="currentSortedColumn.name === column.name">
+                  <i class="fa" [ngClass]="{'fa-arrow-up' : currentSortedColumn.type === 'Asc', 'fa-arrow-down' : currentSortedColumn.type === 'Desc'}"></i>
+                </a>
+              </th>
+              <th class="col-md-1">
+                <div style="position: relative;"><div class="rectangle" style="top: -28px;"></div></div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="GetScreenerDataResult.Data.length == 0 && ! GetScreenerDataResult.Data.length">
+              <td colspan="8">There is currently no entries available</td>
+            </tr>
+            <ng-container *ngIf="GetScreenerDataResult">
+              <tr *ngFor="let screenerData of GetScreenerDataResult.Data; let i = index">
+                <td *ngIf="selectedColumnList.includes('Underlying')">{{screenerData.Underlying}}</td>
+                <td *ngIf="selectedColumnList.includes('Name')">{{screenerData.Name}}</td>
+                <td *ngIf="selectedColumnList.includes('Option Contracts')" style="display: flex; justify-content: center; width:300px">
+                  <div>
+                    <div style="color: #B39256;">
+                      {{extractContract(screenerData)}}
+                    </div>
+                    <div style="font-size: 10px;">
+                      {{extractDateAndValues(screenerData)}}
+                    </div>
+                  </div>
+                  <div style="position: relative; cursor: pointer; line-height: 38px; margin-left: 10px; ">
+                    <img src="//am708403.blob.core.windows.net/images/optionpi/img/Visualise.png" width="20px" height="20px"
+                      (mouseenter)="hoveredData = screenerData" (mouseleave)="hoveredData = null"
+                    >
+                    <div *ngIf="hoveredData === screenerData">
+                      <app-custom-eye-hover [ScreenerData] ="screenerData" [index]= "i"></app-custom-eye-hover>
+                    </div>
+                  </div>
+                </td>
+                <td *ngIf="selectedColumnList.includes('Breakeven Price 1')">{{screenerData.Breakeven1 | currency:'USD'}}</td>
+                <td *ngIf="selectedColumnList.includes('Breakeven Price 2')">{{screenerData.Breakeven2 | currency:'USD'}}</td>
+                <td *ngIf="selectedColumnList.includes('Max Loss')">
+                  <div *ngIf="screenerData.MaxLoss==='none'">
+                    -
+                  </div>
+                  <div>
+                    {{screenerData.MaxLoss | currency:'USD'}}
+                  </div>  
+                </td>
+                <td *ngIf="selectedColumnList.includes('Max Profit')">
+                  <div *ngIf="screenerData.MaxProfit==='none'">
+                    -
+                  </div>
+                  <div>
+                    {{screenerData.MaxProfit | currency:'USD'}}
+                  </div>  
+                </td>
+                <td *ngIf="selectedColumnList.includes('Max Profit To Loss')">
+                  <div *ngIf="screenerData.MaxProfitToLoss==='none'">
+                    -
+                  </div>
+                  <div>
+                    {{screenerData.MaxProfitToLoss}}
+                  </div>
+                </td>
+                <td *ngIf="selectedColumnList.includes('NetPremium')">{{screenerData.NetPremium | currency:'USD'}}</td>
+                <td *ngIf="selectedColumnList.includes('NetPremium To Max Loss')">
+                  <div *ngIf="screenerData.NetPremiumToMaxLoss===null">
+                    -
+                  </div>
+                  <div>
+                    {{screenerData.NetPremiumToMaxLoss}}
+                  </div>
+                </td>
+                <td *ngIf="selectedColumnList.includes('Risk Neutral WinProbability')">{{screenerData.RiskNeutralWinProbability}}%</td>
+                <td *ngIf="selectedColumnList.includes('Delta')">{{screenerData.Delta}}</td>
+                <td *ngIf="selectedColumnList.includes('Gamma')">{{screenerData.Gamma}}</td>
+                <td *ngIf="selectedColumnList.includes('HV')">{{screenerData.HV}}%</td>
+                <td *ngIf="selectedColumnList.includes('IV')">{{screenerData.IV}}%</td>
+                <td *ngIf="selectedColumnList.includes('IV Change')">{{screenerData.IVChange}}%</td>
+                <td *ngIf="selectedColumnList.includes('Underlying Price')">{{screenerData.UnderlyingPrice | currency:'USD'}}</td>
+                <td *ngIf="selectedColumnList.includes('HV Prediction')">
+                  <div *ngIf="screenerData.HVPrediction=='Down'">
+                    Down<i class="fa fa-light fa-arrow-trend-down" style="margin-left: 10px;"></i>
+                  </div>
+                  <div *ngIf="screenerData.HVPrediction=='Up'">
+                    Up<i class="fa fa-light fa-arrow-trend-up" style="margin-left: 10px;"></i>
+                  </div>
+                  <div *ngIf="screenerData.HVPrediction=='Neutral'">
+                    Neutral
+                  </div>
+                </td>
+                <td *ngIf="selectedColumnList.includes('IV Prediction')">
+                  <div *ngIf="screenerData.IVPrediction=='Down'">
+                    Down<i class="fa fa-light fa-arrow-trend-down" style="margin-left: 10px;"></i>
+                  </div>
+                  <div *ngIf="screenerData.IVPrediction=='Up'">
+                    Up<i class="fa fa-light fa-arrow-trend-up" style="margin-left: 10px;"></i>
+                  </div>
+                  <div *ngIf="screenerData.IVPrediction=='Neutral'">
+                    Neutral
+                  </div>
+                </td>
+                <td *ngIf="selectedColumnList.includes('Behavior Prediction')">{{screenerData.BehaviorPrediction}}</td>
+                <td *ngIf="selectedColumnList.includes('Sentiment Prediction')">{{screenerData.SentimentPrediction}}</td>
+                <!-- <td>
+                  <span *ngIf="screenerData.Change >= 0" class="badge rounded-pill TrendUp">
+                    <i class="fa fa-arrow-trend-up"></i>{{screenerData.Change | percent:'1.2-2'}} </span>
+                  <span *ngIf="screenerData.Change < 0" class="badge rounded-pill TrendDown">
+                    <i class="fa fa-arrow-trend-down"></i>{{screenerData.Change | percent:'1.2-2'}} </span>
+                </td> -->
+                <td *ngIf="selectedColumnList.length">
+                  <div style="position: relative;">
+                    <ul>
+                      <li style="display: flex; align-items: center;">
+                        <a class="PlaceOrder" (click)="loadOptionModal(screenerData.Underlying, extractContract(screenerData))"
+                        data-bs-toggle="modal" href="#PlaceOrderStrategy">Place Order</a>
+                        <app-custom-dropdown></app-custom-dropdown>
+                      </li>
+                    </ul>
+                    <div class="rectangle">
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+        <div class="mobileScreenerPagination">
+          <nav *ngIf="!isLoadingScreenerResult && GetScreenerDataResult.TotalData >= 10" aria-label="..." class="ScreenerPagination">
+            <ul class="pagination">
+              <li class="page-item" [ngClass]="{disabled: IsFirstPage}">
+                <a class="page-link" (click)="previousPage()">
+                  <i class="fa fa-arrow-left"></i>
+                  <span>Previous</span>
+                </a>
+              </li>
+              <li>
+                <ul>
+                  <li *ngFor="let pageNum of Pages" class="page-item" [ngClass]="{active: CurrentPage===pageNum}">
+                    <span class="page-link" (click)="goToPage(pageNum)">{{pageNum}}</span>
+                  </li>
+                </ul>
+                <span class="mobPagination">Page {{CurrentPage}} of {{TotalPage}}</span>
+              </li>
+              <li class="page-item" [ngClass]="{disabled: IsLastPage}">
+                <a class="page-link" (click)="nextPage()">
+                  <span>Next</span>
+                  <i class="fa fa-arrow-right"></i>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="mobileScreenerTable">
+          <div *ngFor="let screenerData of GetScreenerDataResult.Data, let i = index">
+            <div style="display: flex; justify-content: space-between; padding: 10px 14px;">
+              <div>
+                <span>{{screenerData.Name}}</span><br>
+                <span style="color: #B39256;">{{screenerData.Underlying}}</span>
+              </div>
+              <div>
+                <ul>
+                  <li style="display: flex; align-items: center; width: 165px;">
+                    <a class="mobilePlaceOrder" (click)="loadOptionModal(screenerData.Underlying, extractContract(screenerData))"
+                    data-bs-toggle="modal" href="#PlaceOrderStrategy">Place Order</a>
+                    <app-custom-dropdown></app-custom-dropdown>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div style="background-color: #f9fafc; font-size: 14px; color:#565656; padding-left: 10px;">
+              <div style="display: flex; padding: 0 14px;">
+                <div style="line-height: 36px;">
+                  <span style="font-weight: 500;">
+                    {{extractContract(screenerData)}}
+                  </span>
+                  <span style="font-size: 10px;">
+                    {{extractDateAndValues(screenerData)}}
+                  </span>
+                </div>
+                <div style="position: relative; cursor: pointer; line-height: 38px; margin-left: 10px;">
+                  <!-- <i (mouseenter)="hoveredData = screenerData" (mouseleave)="hoveredData = null" class="fa fa-light fa-eye"></i> -->
+                  <img src="//am708403.blob.core.windows.net/images/optionpi/img/Visualise.png" max-width="20px" height="20px"
+                    (mouseenter)="hoveredData = screenerData" (mouseleave)="hoveredData = null"
+                  >
+                  <div *ngIf="hoveredData === screenerData">
+                    <app-custom-eye-hover [ScreenerData] ="screenerData" [index]= "i"></app-custom-eye-hover>
+                  </div>
+                </div>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 10px; padding: 0 14px;">
+                <span *ngIf="selectedColumnList.includes('Breakeven Price 1')">Breakeven 1 : {{screenerData.Breakeven1 | currency:'USD'}}</span>
+                <span *ngIf="selectedColumnList.includes('Breakeven Price 2')">Breakeven 2 : {{screenerData.Breakeven2 | currency:'USD'}}</span>
+                <span *ngIf="selectedColumnList.includes('Max Loss')">
+                  <div *ngIf="screenerData.MaxLoss==='none'">
+                    -
+                  </div>
+                  <div>
+                    Max Loss : {{screenerData.MaxLoss | currency:'USD'}}
+                  </div>  
+                </span>
+                <span *ngIf="selectedColumnList.includes('Max Profit')">
+                  <div *ngIf="screenerData.MaxProfit==='none'">
+                    -
+                  </div>
+                  <div>
+                    Max Profit : {{screenerData.MaxProfit | currency:'USD'}}
+                  </div>  
+                </span>
+                <span *ngIf="selectedColumnList.includes('Max Profit To Loss')">
+                  <div *ngIf="screenerData.MaxProfitToLoss==='none'">
+                    -
+                  </div>
+                  <div>
+                    Max Profit To Loss : {{screenerData.MaxProfitToLoss}}
+                  </div>
+                </span>
+                <span *ngIf="selectedColumnList.includes('NetPremium')">NetPremium : {{screenerData.NetPremium | currency:'USD'}}</span>
+                <span *ngIf="selectedColumnList.includes('NetPremium To Max Loss')">
+                  <div *ngIf="screenerData.NetPremiumToMaxLoss===null">
+                    -
+                  </div>
+                  <div>
+                    <span>NetPremium To Max Loss :</span> {{screenerData.NetPremiumToMaxLoss}}
+                  </div>
+                </span>
+                <span *ngIf="selectedColumnList.includes('Risk Neutral WinProbability')">Risk Neutral WinProbability : {{screenerData.RiskNeutralWinProbability}}%</span>
+                <span *ngIf="selectedColumnList.includes('Delta')">Delta : {{screenerData.Delta}}</span>
+                <span *ngIf="selectedColumnList.includes('Gamma')">Gamma : {{screenerData.Gamma}}</span>
+                <span *ngIf="selectedColumnList.includes('HV')">HV : {{screenerData.HV}}%</span>
+                <span *ngIf="selectedColumnList.includes('IV')">IV : {{screenerData.IV}}%</span>
+                <span *ngIf="selectedColumnList.includes('IV Change')">IV Change : {{screenerData.IVChange}}%</span>
+                <span *ngIf="selectedColumnList.includes('Underlying Price')">Underlying Price : {{screenerData.UnderlyingPrice | currency:'USD'}}</span>
+                <span *ngIf="selectedColumnList.includes('HV Prediction')">
+                  <div *ngIf="screenerData.HVPrediction=='Down'">
+                    HV Prediction : Down<i class="fa fa-light fa-arrow-trend-down" style="margin-left: 10px;"></i>
+                  </div>
+                  <div *ngIf="screenerData.HVPrediction=='Up'">
+                    HV Prediction : Up<i class="fa fa-light fa-arrow-trend-up" style="margin-left: 10px;"></i>
+                  </div>
+                  <div *ngIf="screenerData.HVPrediction=='Neutral'">
+                    HV Prediction : Neutral
+                  </div>
+                </span>
+                <span *ngIf="selectedColumnList.includes('IV Prediction')">
+                  <div *ngIf="screenerData.IVPrediction=='Down'">
+                    IV Prediction : Down<i class="fa fa-light fa-arrow-trend-down" style="margin-left: 10px;"></i>
+                  </div>
+                  <div *ngIf="screenerData.IVPrediction=='Up'">
+                    IV Prediction : Up<i class="fa fa-light fa-arrow-trend-up" style="margin-left: 10px;"></i>
+                  </div>
+                  <div *ngIf="screenerData.IVPrediction=='Neutral'">
+                    IV Prediction : Neutral
+                  </div>
+                </span>
+                <span *ngIf="selectedColumnList.includes('Behavior Prediction')">Behavior Prediction : {{screenerData.BehaviorPrediction}}</span>
+                <span *ngIf="selectedColumnList.includes('Sentiment Prediction')">Sentiment Prediction : {{screenerData.SentimentPrediction}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav *ngIf="!isLoadingScreenerResult && GetScreenerDataResult.TotalData >= 10" aria-label="..." class="ScreenerPagination">
+        <ul class="pagination">
+          <li class="page-item" [ngClass]="{disabled: IsFirstPage}">
+            <a class="page-link" (click)="previousPage()">
+              <i class="fa fa-arrow-left"></i>
+              <span>Previous</span>
+            </a>
+          </li>
+          <li>
+            <ul>
+              <li *ngFor="let pageNum of Pages" class="page-item" [ngClass]="{active: CurrentPage===pageNum}">
+                <span class="page-link" (click)="goToPage(pageNum)">{{pageNum}}</span>
+              </li>
+            </ul>
+            <span class="mobPagination">Page {{CurrentPage}} of {{TotalPage}}</span>
+          </li>
+          <li class="page-item" [ngClass]="{disabled: IsLastPage}">
+            <a class="page-link" (click)="nextPage()">
+              <span>Next</span>
+              <i class="fa fa-arrow-right"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <!-- </div> -->
+    <div class="mobileAnalysisFilter" *ngIf="moreFilterClicked">
+      <div class="mobileAnalysisFilterHeader" style="background-color: #F8F9FC; width: 100%; padding: 10px 15px;">
+        <div style="display: flex; justify-content: end;">
+          <button type="button" class="BtnSecondary" (click)="onBackButtonClick()" >Back</button>
+        </div>
+        <div class="align-content-center d-flex BtnFilter checkButtonGroup" style="padding: 10px 0;">
+          <button class="BtnSecondary disable" (click)="resetAnalysisFilterOptions()">
+            <img src="//am708403.blob.core.windows.net/images/optionpi/img/trash.png" style="width: 20px; height: 20px;">Clear All
+          </button>
+          <button class="BtnDefault" (click)="submitFilters()">
+            <img src="//am708403.blob.core.windows.net/images/optionpi/img/check.png" style="width: 22px; height: 20px;">Confirm
+          </button>
+        </div>
+      </div>
+      <div class="modal-content AnalysisFilterTop">
+        <div class="d-flex justify-content-between align-items-center" style="margin-bottom: 10px;">
+          <p>Summary Filter: <span style="color: #2fa298;">{{SelectedAnalysisFilterList.length}}</span></p>
+        </div>
+        <div class="summary-filter">
+          <div class="summary-filter-main">
+            <div style="display: flex; flex-wrap: wrap; flex-direction: row; gap:10px">
+              <span style="line-height: 30px;">Rules:</span>
+              <span class="summary-filter-value" *ngFor="let selectedAnalysisFilter of SelectedAnalysisFilterList">
+                {{selectedAnalysisFilter.name}} 
+                <button (click)="hideRules(selectedAnalysisFilter)" class="btn-close" style="cursor: pointer;">
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="AnalysisFilterBtmRgt" style="width: auto;">
+        <div style="background-color: white; height: 100vh; overflow-y: auto;">  
+          <ng-container *ngFor="let analysisFilter of SelectedAnalysisFilterList">
+            <app-analysis-filter 
+              [item]="analysisFilter.value" 
+              [SelectedAnalysisFilterList]="SelectedAnalysisFilterList"
+              (selectedAnalysisFilterListChange)="onSelectedAnalysisFilterListChange($event)"
+            >
+            </app-analysis-filter>
+          </ng-container>
+          <div style="width: 100%; position: fixed; bottom: 0; right: 0;" class="BtnDefault" (click)="openMobileAnalysis()">
+            Add New
+          </div>
+          <app-custom-analysisFilter-mobileModal
+            [SelectedAnalysisFilterList]="SelectedAnalysisFilterList"
+            (selectedAnalysisFilterListChange)="onSelectedAnalysisFilterListChange($event)"
+          ></app-custom-analysisFilter-mobileModal>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="mobileFilterIcon" *ngIf="!moreFilterClicked">
+  <div class="aiFilters">
+    <div style="line-height: 25px;">
+      <label style="margin-right: 10px; color: #B39256; cursor: pointer; ">A.I Filters</label>
+      <img src="//am708403.blob.core.windows.net/images/optionpi/img/A.I. Filter.png" style="width: 20px; height: 20px;">
+    </div>
+    <div class="moreFilterIcon">
+      <span>{{SelectedAnalysisFilterList.length}}</span>
+    </div>
+  </div>
+  <div class="moreFilters" href="#AnalysisFilter" data-bs-toggle="modal" (click)="moreFilterClick()">
+    <div style="justify-content: space-between; line-height: 25px;">
+      <label style="margin-right: 10px; color: black;  cursor: pointer; ">More Filters</label>
+      <img src="//am708403.blob.core.windows.net/images/optionpi/img/Filter.png" style="width: 20px; height: 20px;">
+    </div>
+    <div class="AIfilterIcon">
+      <span>{{SelectedAnalysisFilterList.length}}</span>
+    </div>
+  </div>
+</div>
+<ow-analytics-tab></ow-analytics-tab>

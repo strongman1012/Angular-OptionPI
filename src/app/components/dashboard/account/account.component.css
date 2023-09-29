@@ -1,0 +1,14 @@
+.LinkAccountInputContent p {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 15px;
+    color: rgba(29, 36, 51, 0.65);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: visible;
+    text-overflow: unset;
+    width: 100%;
+    float: left;
+    word-break: break-all;
+}

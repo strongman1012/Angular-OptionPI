@@ -1,0 +1,221 @@
+<!-- <app-mobile-menu></app-mobile-menu>
+<main id="main" class="content-wrapper">
+  <div class="mainBlock">
+    <app-sidebar></app-sidebar>
+    <div class="RgtMain">
+      <app-header [bradcrumb]="bradcrumb"></app-header>
+
+      <div class="contentArea">
+        <div class="position-relative w-100">
+          <ul class="nav nav-tabs DashboardTab" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" [ngClass]="{'active' : currentTab === 'heatmap'}"
+              (click)="setTab('heatmap')" type="button" aria-selected="true">Heatmap</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" [ngClass]="{'active' : currentTab === 'payoffPrediction'}"
+              (click)="setTab('payoffPrediction')" type="button" aria-selected="true">Payoff Prediction</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" [ngClass]="{'active' : currentTab === 'payoffVisualizer'}"
+              (click)="setTab('payoffVisualizer')" type="button" aria-selected="true">Payoff Visualizer</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" [ngClass]="{'active' : currentTab === 'pathDiagram'}"
+              (click)="setTab('pathDiagram')" type="button" aria-selected="true">Path Diagram</button>
+            </li>
+          </ul> -->
+          
+          <!-- <a *ngIf="currentTab !== 'payoffPrediction'" class="BtnDefault configBtn" (click)="toggleCollapsed()">
+            <i class="bi bi-gear"></i>Configure
+          </a> -->
+        <!-- </div>
+        <div class="card info-section" >
+          <p class="info-title"> Info: </p>
+          <div class="info-content" >
+            <div class="info-item " >
+              <label class="info-item-title" >Strategy :</label>
+              <input readonly type="text" value="Iron Condor">
+            </div>
+            <div class="info-item" >
+              <label class="info-item-title">Option Contract :</label>
+              <input readonly type="text" value="23-06-30  40\45\50\55">
+            </div>
+            <div class="info-item" >
+              <label class="info-item-title" >Bundled Price :</label>
+              <input readonly type="text" [value]="BundlePrice" >
+            </div>
+            <div class="info-item" >
+              <label class="info-item-title" >Risk Free Rate :</label>
+              <input readonly type="text" [value]="RiskFreeRate" >
+            </div>
+            <div class="info-item" >
+              <label class="info-item-title" >Underlying :</label>
+              <input readonly type="text" value="AAPL" >
+            </div>
+            <div class="info-item" >
+              <label class="info-item-title" >Underlying Price :</label>
+              <input readonly type="text" [value]="UnderlyingPrice" >
+            </div>
+            <div class="info-item" >
+              <label class="info-item-title" >ATM IV :</label>
+              <input readonly type="text" [value]="AtmIV" >
+            </div>
+            <div class="info-item" >
+              <label class="info-item-title" >Div Yield :</label>
+              <input readonly type="text" [value]="DivYield" >
+            </div>
+          </div>
+        </div>
+        <div class="tab-content AnalyticDashboard DashboardTabContent" id="myTabContent">
+          <div *ngIf="currentTab === 'heatmap'">
+            <ow-analytic-heatmap-tab [isCollapsed]="isCollapsed"></ow-analytic-heatmap-tab>
+          </div> -->
+          <!-- <div *ngIf="currentTab === 'payoffPrediction'">
+            <ow-analytic-payoff-prediction-tab></ow-analytic-payoff-prediction-tab>
+          </div> -->
+          <!-- <div *ngIf="currentTab === 'payoffVisualizer'">
+            <ow-analytic-payoff-visualizer-tab [isCollapsed]=true></ow-analytic-payoff-visualizer-tab>
+          </div> -->
+          <!-- <div *ngIf="currentTab === 'pathDiagram'">
+            <ow-analytic-path-diagram-tab [isCollapsed]="isCollapsed"></ow-analytic-path-diagram-tab>
+          </div> -->
+        <!-- </div>
+      </div>
+
+
+    </div>
+  </div>
+</main> -->
+
+<div
+  class="modal fade "
+  id="myModalAnalytics"
+  tabindex="-1"
+  arial-modal="true"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog  modal-xl modal-dialog-centered Analytic">
+    <div class="modal-content ">
+      <!-- <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">PopUp</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div> -->
+      <div class="modal-header" style="border-bottom:none !important">
+        <h4 class="modal-title"></h4>
+        <button type="button" class="close " data-bs-dismiss="modal" >&times;</button>
+      </div>
+      <div class="modal-body">
+        <!-- <h3 style="text-align:center">Hello! PopUp Analytics</h3> -->
+        <!-- <h2 > {{ ModalNumber }} </h2> -->
+        <main id="main" class="content-wrapper" style="overflow-y: auto;">
+          <div class="mainBlock">
+             
+            <div class="Modal_RgtMain" >
+              <!-- <app-header [bradcrumb]="bradcrumb"></app-header> -->
+                <div style="display: flex;align-items: center;">
+                  <img src="//am708403.blob.core.windows.net/images/optionpi/img/logo.png" style="width:50px;height: 50px;">
+                  <h1 style="display: inline;margin-bottom: unset;" class="analytics_title">Analytic</h1>
+                  <div class="menu-icon-analytic-body" (click)="menu_click()">
+                    <button class="menu-icon-analytic c-hamburger c-hamburger--htx nav_bar" >
+                      <span></span>
+                    </button>
+                  </div>
+                </div>
+                
+              <div class="contentArea">
+                <div class="position-relative w-100 analytic-position">
+                  
+                  <ul class="nav nav-tabs DashboardTab analytic-modal" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" [ngClass]="{'active' : currentTab === 'heatmap'}"
+                      (click)="setTab('heatmap')" type="button" aria-selected="true">Heatmap</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" [ngClass]="{'active' : currentTab === 'payoffPrediction'}"
+                      (click)="setTab('payoffPrediction')" type="button" aria-selected="true">Payoff Prediction</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" [ngClass]="{'active' : currentTab === 'payoffVisualizer'}"
+                      (click)="setTab('payoffVisualizer')" type="button" aria-selected="true">Payoff Visualizer</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" [ngClass]="{'active' : currentTab === 'pathDiagram'}"
+                      (click)="setTab('pathDiagram')" type="button" aria-selected="true">Path Diagram</button>
+                    </li>
+                     
+                  </ul>
+                   
+                  <!-- <a *ngIf="currentTab !== 'payoffPrediction'" class="BtnDefault configBtn" (click)="toggleCollapsed()">
+                    <i class="bi bi-gear"></i>Configure
+                  </a> -->
+                </div>
+                <div class="card info-section" >
+                  <p class="info-title"> Info: </p>
+                  <div class="info-content" >
+                    <div class="info-item " >
+                      <label class="info-item-title" >Strategy :</label>
+                      <input readonly type="text" value="Iron Condor">
+                    </div>
+                    <div class="info-item" >
+                      <label class="info-item-title">Option Contract :</label>
+                      <input readonly type="text" value="23-06-30  40\45\50\55">
+                    </div>
+                    <div class="info-item" >
+                      <label class="info-item-title" >Bundled Price :</label>
+                      <input readonly type="text" [value]="'$' + BundlePrice" >
+                    </div>
+                    <div class="info-item" >
+                      <label class="info-item-title" >Risk Free Rate :</label>
+                      <input readonly type="text" [value]="RiskFreeRate + '%' " >
+                    </div>
+                    <div class="info-item" >
+                      <label class="info-item-title" >Underlying :</label>
+                      <input readonly type="text" value="AAPL" >
+                    </div>
+                    <div class="info-item" >
+                      <label class="info-item-title" >Underlying Price :</label>
+                      <input readonly type="text" [value]=" '$' + UnderlyingPrice" >
+                    </div>
+                    <div class="info-item" >
+                      <label class="info-item-title" >ATM IV :</label>
+                      <input readonly type="text" [value]="AtmIV + '%' " >
+                    </div>
+                    <div class="info-item" >
+                      <label class="info-item-title" >Div Yield :</label>
+                      <input readonly type="text" [value]="DivYield + '%' " >
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-content AnalyticDashboard DashboardTabContent" id="myTabContent">
+                  <div *ngIf="currentTab === 'heatmap'">
+                    <ow-analytic-heatmap-tab [isCollapsed]="isCollapsed"></ow-analytic-heatmap-tab>
+                  </div>
+                  <div *ngIf="currentTab === 'payoffPrediction'">
+                    <ow-analytic-payoff-prediction-tab [isCollapsed]="isCollapsed"></ow-analytic-payoff-prediction-tab>
+                  </div>
+                  <div *ngIf="currentTab === 'payoffVisualizer'">
+                    <ow-analytic-payoff-visualizer-tab [isCollapsed]=true></ow-analytic-payoff-visualizer-tab>
+                  </div>
+                  <div *ngIf="currentTab === 'pathDiagram'">
+                    <ow-analytic-path-diagram-tab [isCollapsed]="isCollapsed" [UnderlyingPrice]="UnderlyingPrice"></ow-analytic-path-diagram-tab>
+                  </div>
+                </div>
+              </div>
+        
+        
+            </div>
+          </div>
+        </main>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+

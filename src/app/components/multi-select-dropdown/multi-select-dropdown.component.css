@@ -1,0 +1,126 @@
+/***
+    css for multi select drop down
+**/
+.drop-toggle{
+    background-color: #fff;
+    border: none;
+    padding: 7px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    cursor: hand;
+    border: 1px solid #ccc;
+    /* width: 200px; */
+    text-align: left;
+    width: 100%;
+    min-width: 30px;
+}
+.drop-toggle i{
+    float:right;
+}
+.drop-show {
+    padding: 4px;
+    width: 200px;
+    background-color: #FFF;
+    border: 1px solid #BABABA;
+    position: absolute;
+    z-index: 100;
+    -webkit-box-shadow: 0 6px 10px rgba(0,0,0,.15);
+    -moz-box-shadow: 0 6px 10px rgba(0,0,0,.15);
+    box-shadow: 0 6px 10px rgba(0,0,0,.15);
+    margin-left: 1px;
+    height: 600px;
+    min-height: 300px;
+    overflow: scroll;
+}
+.drop-show label{
+    display:block;
+    font-size:15px;
+    cursor: pointer;
+    padding: 5px 10px;
+    width: 100%;
+    float: left;
+    height: 40px;
+}
+.drop-show label .left{
+    width: 90%;
+    float: left;
+}
+.drop-show label .right{
+    width: 10%;
+    float: right;
+}
+.drop-show label input{
+    vertical-align: top;
+    margin-top: 8px;
+}
+.drop-show label span{
+    display: inline-block;
+    padding-left: 0px;
+    padding-top: 5px;
+}
+.hidden-checkbox {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .form-check {
+    position: relative;
+  }
+  
+  input[type=checkbox] {
+    width: 20px;
+    height: 20px;
+  }
+  
+  input[type=checkbox]:checked+label::before {
+    content: "";
+    display: block;
+    position: absolute;
+    text-align: center;
+    height: 20px;
+    width: 20px;
+    left: 0;
+    top: 8px;
+    background-color: #FAF3E9;
+    font-family: "Montserrat";
+    border-radius: 2px;
+    border: 2px solid #B39256;
+  }
+  
+  input[type=checkbox]:checked+label::after {
+    color: #B39256;
+    content: '✓';
+    display: block;
+    position: absolute;
+    left: 3px;
+    top: 6px;
+  }
+
+  .list-item input[type=checkbox]:checked+label::before {
+    top: 4px;
+  }
+  .list-item input[type=checkbox]:checked+label::after {
+    top: 2px;
+  }
+
+  .list-item {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    font-family: monospace;
+    font-size: 16px;
+    color: #888888;
+    border-bottom: 1px solid #a6a5a4;
+    cursor: pointer;
+    transition: all .3s ease;
+  }
+  .list-item > * {
+    cursor: pointer;
+  }
+  .list-item:hover{
+    background: #ededed;
+  }

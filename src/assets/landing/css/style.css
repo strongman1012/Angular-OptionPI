@@ -1,0 +1,54 @@
+html {
+  -ms-overflow-style: scrollbar !important;
+}
+
+@font-face {
+  font-family: 'focoregular';
+  src: url('//am708403.blob.core.windows.net/images/optionpi/fonts/algo.woff2') format('woff2'), url('//am708403.blob.core.windows.net/images/optionpi/fonts/algo.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'focobold';
+  src: url('//am708403.blob.core.windows.net/images/optionpi/fonts/algo.woff2') format('woff2'), url('//am708403.blob.core.windows.net/images/optionpi/fonts/algo.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.section .p-5 {
+  padding: 5px !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.blink {
+  animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.disabled_item{
+  pointer-events: none;
+  opacity: 0.5;
+  backdrop-filter: blur(2px);
+  filter: blur(2px);
+}
+
+.toast-container .ngx-toastr{
+  width: auto !important;
+}

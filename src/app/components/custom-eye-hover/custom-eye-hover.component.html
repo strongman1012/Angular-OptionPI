@@ -1,0 +1,50 @@
+<div>
+    <ng-container *ngIf="index > 6">
+      <table class="bottom">
+        <tr *ngIf="symbols">
+          <th>Symbol</th>
+          <th>Type</th>
+          <th>Expiry</th>
+          <th>Strike</th>
+        </tr>
+        <tr *ngFor="let result of symbols">
+          <!-- <td>
+            <span>
+              {{result[0]}}
+            </span>
+            <span style="color: #667085 !important;">
+              {{result[4]}}
+            </span>
+          </td> -->
+          <td>{{result[0]}}</td>
+          <td>{{result[1]}}</td>
+          <td>{{result[2]}}</td>
+          <td>{{result[3]}}</td>
+        </tr>
+      </table>
+    </ng-container>
+    <ng-container *ngIf="index <= 6">
+      <table>
+        <tr *ngIf="symbols">
+          <th>Symbol</th>
+          <th>Type</th>
+          <th>Expiry</th>
+          <th>Strike</th>
+        </tr>
+        <tr *ngFor="let result of symbols">
+          <!-- <td>
+            <span>
+              {{result[0]}}
+            </span>
+            <span style="color: #667085 !important;">
+              {{result[4]}}
+            </span>
+          </td> -->
+          <td>{{result[0]}}</td>
+          <td>{{result[1]}}</td>
+          <td>{{result[2]}}</td>
+          <td>{{result[3]}}</td>
+        </tr>
+      </table>
+    </ng-container>    
+  </div>

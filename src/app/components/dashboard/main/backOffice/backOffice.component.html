@@ -1,0 +1,434 @@
+<div class="tab-pane fade show active" id="Trade" role="tabpanel" aria-labelledby="Trade-tab">
+    <!-- Trade Account Tab -->
+    <div class="TradeAccountTabMain">
+        <ul class="nav nav-tabs DashboardTab" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button [ngClass]="{'active' : currentTab === 'activeOrder'}" class="nav-link" id="activeOrder-tab"
+                    type="button" (click)="setTab('activeOrder')" aria-selected="true">Add Active Order</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button [ngClass]="{'active' : currentTab === 'openPosition'}" class="nav-link" type="button"
+                    (click)="setTab('openPosition')" aria-selected="true">Add Open Positions</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button [ngClass]="{'active' : currentTab === 'addGroup'}" class="nav-link" type="button"
+                    (click)="setTab('addGroup')" aria-selected="true">Add Group</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button [ngClass]="{'active' : currentTab === 'deleteOrderPosition'}" class="nav-link" type="button"
+                    (click)="setTab('deleteOrderPosition')" aria-selected="true">Delete Order/Position</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button [ngClass]="{'active' : currentTab === 'deleteGroup'}" class="nav-link" type="button"
+                    (click)="setTab('deleteGroup')" aria-selected="true">Delete Group</button>
+            </li>
+        </ul>
+        <div class="tab-content DashboardTabContent TradTabContent" id="myTabContent">
+            <div *ngIf="currentTab === 'activeOrder'">
+                <div class="tab-pane show active " role="tabpanel" aria-labelledby="HistoricalPosition-tab">
+                    <div class="StrategyLftBtm d-flex justify-content-center">
+                        <form class="w-75 SideBarForm" id="addActiveOrderForm">
+                            <div class="row w-100">
+                                <div class="form-group col-md-6">
+                                    <label>User Id</label>
+                                    <input type="text" name="userId" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Account Number</label>
+                                    <input type="text" name="accountNumber" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="form-group col-md-6">
+                                    <label>Asset Type</label>
+                                    <input type="text" name="assetType" class="form-control" value="option">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Broker</label>
+                                    <input type="text" name="broker" class="form-control" value="tiger">
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="form-group col-md-6">
+                                    <label>Underlying</label>
+                                    <input type="text" name="underlying" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Product</label>
+                                    <input type="text" name="product" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="form-group col-md-3">
+                                    <label>Quantity</label>
+                                    <input type="text" name="dealSize" class="form-control" value="1">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Multiplier</label>
+                                    <input type="text" name="multiplier" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Filled</label>
+                                    <input type="text" name="filled" class="form-control" value="0">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Remaining</label>
+                                    <input type="text" name="remaining" class="form-control" value="0">
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="form-group col-md-3">
+                                    <label>Strike Price</label>
+                                    <input type="text" name="strike" class="form-control" value="0">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Limit Price</label>
+                                    <input type="text" name="limitPrice" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Opening Price</label>
+                                    <input type="text" name="openingPrice" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Stop Price</label>
+                                    <input type="text" name="stopPrice" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="form-group col-md-3">
+                                    <label>Order Id</label>
+                                    <input type="text" name="orderId" class="form-control" value="0">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Group Id</label>
+                                    <input type="text" name="groupId" class="form-control" value="0">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Leg Id</label>
+                                    <input type="text" name="legId" class="form-control" value="0">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Leg Index</label>
+                                    <input type="text" name="legIndex" class="form-control" value="0">
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="form-group col-md-6">
+                                    <label>Trade Time</label>
+                                    <input type="date" name="tradeTime" class="form-control"
+                                        style="border: 1px solid #ced4da; border-radius: 8px;">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Order Time</label>
+                                    <input type="date" name="orderTime" class="form-control"
+                                        style="border: 1px solid #ced4da; border-radius: 8px;">
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="form-group col-md-6">
+                                    <label>Expiry</label>
+                                    <input type="text" name="expiry" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Validity</label>
+                                    <input type="text" name="validity" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="form-group col-md-4">
+                                    <label>Intension</label>
+                                    <input type="text" name="intention" class="form-control">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>Reason</label>
+                                    <input type="text" name="reason" class="form-control">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>Direction</label>
+                                    <select class="form-select selectDefaultl w-100" name="direction">
+                                        <option selected>Up</option>
+                                        <option>Down</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="form-group col-md-6">
+                                    <label>Order Status</label>
+                                    <select class="form-select selectDefaultl w-100" name="orderStatus">
+                                        <option selected>Held</option>
+                                        <option>Pending</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Right</label>
+                                    <select class="form-select selectDefault w-100" name="right">
+                                        <option selected>Buy</option>
+                                        <option>Sell</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="form-group col-md-6">
+                                    <label>Strategy</label>
+                                    <select class="form-select selectDefault w-100" name="strategy">
+                                        <option selected>Iron Condor</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Type</label>
+                                    <select class="form-select selectDefault w-100" name="type">
+                                        <option selected>Limit</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="form-group col-md-6">
+                                    <label>Trade Venue</label>
+                                    <select class="form-select selectDefault w-100" name="tradeVenue">
+                                        <option selected>US</option>
+                                        <option>SG</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Currency</label>
+                                    <select class="form-select selectDefault w-100" name="currency">
+                                        <option selected>USD</option>
+                                        <option>SGD</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <a class="BtnDefault w-100" (click)="addActiveOrder()">Submit</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="currentTab === 'openPosition'">
+                <div class="tab-pane show active " role="tabpanel" aria-labelledby="HistoricalPosition-tab">
+                    <div class="StrategyLftBtm d-flex justify-content-center">
+                        <form class="w-75 SideBarForm">
+                            <div class="row w-100">
+                                <div class="form-group col-md-6">
+                                    <label>User Id</label>
+                                    <input type="text" name="userId" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Account Number</label>
+                                    <input type="text" name="accountNumber" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="form-group col-md-6">
+                                    <label>Asset Type</label>
+                                    <input type="text" name="assetType" class="form-control" value="option">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Broker</label>
+                                    <input type="text" name="accountNumber" class="form-control" value="tiger">
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="form-group col-md-6">
+                                    <label>Underlying</label>
+                                    <input type="text" name="underlying" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Direction</label>
+                                    <input type="text" name="direction" class="form-control" value="BUY">
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="form-group col-md-6">
+                                    <label>Quantity</label>
+                                    <input type="text" name="dealSize" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Multiplier</label>
+                                    <input type="text" name="multiplier" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="form-group col-md-4">
+                                    <label>Opening Price</label>
+                                    <input type="text" name="openingPrice" class="form-control">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>Strike Price</label>
+                                    <input type="text" name="strike" class="form-control">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>Unrealized PNL</label>
+                                    <input type="text" name="unrealizedPNL" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="form-group col-md-6">
+                                    <label>Product</label>
+                                    <input type="text" name="product" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Expiry</label>
+                                    <input type="text" name="expiry" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="form-group col-md-6">
+                                    <label>Strategy</label>
+                                    <select class="form-select selectDefault w-100" name="strategy">
+                                        <option selected>Iron Condor</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Right</label>
+                                    <select class="form-select selectDefault w-100" name="right">
+                                        <option selected>Buy</option>
+                                        <option>Sell</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="form-group col-md-6">
+                                    <label>Trade Venue</label>
+                                    <select class="form-select selectDefault w-100" name="tradeVenue">
+                                        <option selected>US</option>
+                                        <option>SG</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Currency</label>
+                                    <select class="form-select selectDefault w-100" name="tradeVenue">
+                                        <option selected>USD</option>
+                                        <option>SGD</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <a class="BtnDefault w-100">Submit</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="currentTab === 'deleteOrderPosition'">
+                <div class="tab-pane show active " role="tabpanel" aria-labelledby="HistoricalPosition-tab">
+                    <div class="StrategyLftBtm d-flex">
+                        <form class="w-50 SideBarForm" id="deleteOrderPositionForm">
+                            <div class="radioDefault">
+                                <label>
+                                    <input type="radio" name="addType" checked (click)="setDeleteOrderPosition('activeOrder')"/>
+                                    Active Order
+                                </label>
+                                <label>
+                                    <input type="radio" name="addType" (click)="setDeleteOrderPosition('openPosition')"/>
+                                    Open Position
+                                </label>
+                            </div>
+                            <div class="row w-100">
+                                <div class="form-group col-md-6">
+                                    <label>User Id</label>
+                                    <input type="text" name="userId" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Account Number</label>
+                                    <input type="text" name="accountNumber" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="form-group col-md-6">
+                                    <label *ngIf="deleteOrderPositionValue === 'activeOrder'">Active Order Id</label>
+                                    <label *ngIf="deleteOrderPositionValue === 'openPosition'">Open Position Id</label>
+                                    <input type="text" name="orderId" class="form-control">
+                                </div>
+                            </div>
+                            <a class="BtnDefault" (click)="deleteOrderPosition()">Submit</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="currentTab === 'addGroup'">
+                <div class="tab-pane show active " role="tabpanel" aria-labelledby="HistoricalPosition-tab">
+                    <div class="StrategyLftBtm d-flex">
+                        <form class="w-50 SideBarForm" id="addGroupForm">
+                            <div class="radioDefault">
+                                <label>
+                                    <input type="radio" name="addType" checked (click)="setAddGroupType('activeOrder')"/>
+                                    Active Order
+                                </label>
+                                <label>
+                                    <input type="radio" name="addType" (click)="setAddGroupType('openPosition')"/>
+                                    Open Position
+                                </label>
+                            </div>
+                            <div class="row w-100">
+                                <div class="form-group col-md-6">
+                                    <label>User Id</label>
+                                    <input type="text" name="userId" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Account Number</label>
+                                    <input type="text" name="accountNumber" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="form-group col-md-6">
+                                    <label>Active Order Id</label>
+                                    <input type="text" name="orderId" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Strategy</label>
+                                    <input type="text" name="strategy" class="form-control">
+                                </div>
+                            </div>
+                            <a class="BtnDefault" (click)="addGroup()">Submit</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="currentTab === 'deleteGroup'">
+                <div class="tab-pane show active " role="tabpanel" aria-labelledby="HistoricalPosition-tab">
+                    <div class="StrategyLftBtm d-flex">
+                        <form class="w-75 SideBarForm" id="deleteGroupForm">
+                            <div class="radioDefault">
+                                <label>
+                                    <input type="radio" name="deleteType" checked (click)="setDeleteGroupType('activeOrder')"/>
+                                    Active Order
+                                </label>
+                                <label>
+                                    <input type="radio" name="deleteType" (click)="setDeleteGroupType('openPosition')"/>
+                                    Open Position
+                                </label>
+                                <label>
+                                    <input type="radio" name="deleteType" (click)="setDeleteGroupType('revPositionMap')"/>
+                                    Rev Position Map
+                                </label>
+                            </div>
+                            <div class="row w-100">
+                                <div class="form-group col-md-6">
+                                    <label>User Id</label>
+                                    <input type="text" name="userId" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Account Number</label>
+                                    <input type="text" name="accountNumber" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="form-group col-md-6">
+                                    <label>Delete By</label>
+                                    <select class="form-select selectDefault w-100" name="tradeVenue" [(ngModel)]='deleteBy' [ngModelOptions]="{standalone: true}">
+                                        <option value="id" selected>By Group Id</option>
+                                        <option value="collection">Collection</option>
+                                    </select>
+                                </div>
+                                <div *ngIf="deleteBy === 'id'" class="form-group col-md-6">
+                                    <label>Group Id</label>
+                                    <input type="text" name="groupId" class="form-control">
+                                </div>
+                            </div>
+     
+                            <a class="BtnDefault w-50" (click)="deleteGroup()">Submit</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="tab-pane fade" id="HistoricalTransaction" role="tabpanel" aria-labelledby="HistoricalTransaction-tab">...</div> -->
+        </div>
+    </div>
+</div>

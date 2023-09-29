@@ -1,0 +1,772 @@
+<div class="tab-pane ActiveOrderTab show active " role="tabpanel" aria-labelledby="ActiveOrder-tab">
+  <div class="ActivePositionFilterBar">
+    <form>
+      <div class="form-control">
+        <div class="FilterBarsearch">
+          <input type="text" class="form-control" placeholder="Search" aria-label="" aria-describedby="basic-addon1">
+          <a class="FilterBarSearchIcon">
+            <i class="fa fa-magnifying-glass" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="ActivePositionTable ActiveOrderTable">
+    <div class="table-responsive" style="min-height: 100px;">
+      <app-loading [status]="isLoadingActiveOrders"></app-loading>
+      <table *ngIf="!isLoadingActiveOrders" class="table">
+        <thead>
+          <tr>
+            <th class="text-center">Leg</th>
+            <th>Symbol <a><i class="fa fa-arrow-down" aria-hidden="true"></i></a></th>
+            <th class="OnClickDiplay">Pos</th>
+            <th class="text-center OnClickDiplay">Qty</th>
+            <th class="OnClickDiplay">Price</th>
+            <th>Status</th>
+            <th class="OnClickDiplay">Con</th>
+            <th class="OnClickDiplay">Expiry</th>
+            <th class="OnClickDiplay">Strike</th>
+            <th class="OnClickDiplay">Multiplier</th>
+            <th class="OnClickDiplay">Order Time</th>
+            <th style="text-align: center;width: 150px;"></th>
+          </tr>
+          <!-- <tr *ngIf="!isCollapsed">
+            <th class="text-center">Leg</th>
+            <th>Symbol <a><i class="fa fa-arrow-down" aria-hidden="true"></i></a></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>Status</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th style="text-align: center;width: 150px;"></th>
+          </tr> -->
+        </thead>
+        <tbody>
+          <tr *ngIf="!isLoadingActiveOrders && checkIsEmptyObject(ActiveOrderList)">
+            <td style="text-align: center;" colspan="12">There is currently no entries available</td>
+          </tr>
+          <!-- <tr class="OnClickAdd">
+            <td class="AddPlus">
+              <span class="Plus"></span>
+            </td>
+            <td>
+              <h4>AAPL Portfolio #1 - Entry</h4>
+            </td>
+            <td class="OnClickDiplay"></td>
+            <td class="OnClickDiplay"></td>
+            <td class="OnClickDiplay"></td>
+            <td>
+              <span class="textHighlight-Default">Pending</span>
+            </td>
+            <td class="OnClickDiplay"></td>
+            <td class="OnClickDiplay"></td>
+            <td class="OnClickDiplay"></td>
+            <td class="OnClickDiplay"></td>
+            <td class="OnClickDiplay"></td>
+            <td>
+              <div>
+                <a class="BtnSecondary w-auto">Cancel</a>
+              </div>
+            </td>
+          </tr>
+          <tr class="showhide">
+            <td class="text-center">
+              <table>
+                <tr>
+                  <td>1</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table>
+                <tr>
+                  <td>AAPL</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table>
+                <tr>
+                  <td>BUY</td>
+                </tr>
+              </table>
+            </td>
+            <td class="text-center">
+              <table>
+                <tr>
+                  <td>1</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table>
+                <tr>
+                  <td>$150</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table>
+                <tr>
+                  <td>
+                    <span class="textHighlight">Submited</span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table>
+                <tr>
+                  <td>call</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table>
+                <tr>
+                  <td>31-Dec-22</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table>
+                <tr>
+                  <td>156</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table>
+                <tr>
+                  <td>100</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table class="white-break">
+                <tr>
+                  <td>2 Aug 2022, 21:56:00 PM</td>
+                </tr>
+              </table>
+            </td>
+            <td></td>
+          </tr>
+          <tr class="OnClickAdd">
+            <td class="AddPlus">
+              <span class="Plus"></span>
+            </td>
+            <td>
+              <h4>AAPL Portfolio #2 - Entry</h4>
+            </td>
+            <td class="OnClickDiplay"></td>
+            <td class="OnClickDiplay"></td>
+            <td class="OnClickDiplay"></td>
+            <td>
+              <span class="textHighlight-Default">Pending</span>
+            </td>
+            <td class="OnClickDiplay"></td>
+            <td class="OnClickDiplay"></td>
+            <td class="OnClickDiplay"></td>
+            <td class="OnClickDiplay"></td>
+            <td class="OnClickDiplay"></td>
+            <td></td>
+          </tr>
+          <tr class="showhide">
+            <td class="text-center">
+              <table>
+                <tr>
+                  <td>1</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table>
+                <tr>
+                  <td>AAPL311222C00156000</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table>
+                <tr>
+                  <td>BUY</td>
+                </tr>
+              </table>
+            </td>
+            <td class="text-center">
+              <table>
+                <tr>
+                  <td>1</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table>
+                <tr>
+                  <td>$1.20</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table>
+                <tr>
+                  <td>Queued</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table>
+                <tr>
+                  <td>call</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table>
+                <tr>
+                  <td>31-Dec-22</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table>
+                <tr>
+                  <td>156</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table>
+                <tr>
+                  <td>100</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table class="white-break">
+                <tr>
+                  <td>2 Aug 2022, 21:56:00 PM</td>
+                </tr>
+              </table>
+            </td>
+            <td></td>
+          </tr>
+          <tr class="OnClickAdd">
+            <td class="AddPlus">
+              <span class="Plus"></span>
+            </td>
+            <td>
+              <h4>AAPL Portfolio #3 Iron Condor - Entry</h4>
+            </td>
+            <td class="OnClickDiplay"></td>
+            <td class="OnClickDiplay"></td>
+            <td class="OnClickDiplay"></td>
+            <td>
+              <span class="textHighlight-Default">Pending</span>
+            </td>
+            <td class="OnClickDiplay"></td>
+            <td class="OnClickDiplay"></td>
+            <td class="OnClickDiplay"></td>
+            <td class="OnClickDiplay"></td>
+            <td class="OnClickDiplay"></td>
+            <td>
+              <div>
+                <a class="BtnSecondary w-auto">Recompute</a>
+                <a class="BtnDefault w-auto">Submit</a>
+              </div>
+            </td>
+          </tr>
+          <tr class="showhide">
+            <td class="text-center">
+              <table>
+                <tr>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table>
+                <tr>
+                  <td>AAPL311222C00154000</td>
+                </tr>
+                <tr>
+                  <td>AAPL311222C00153000</td>
+                </tr>
+                <tr>
+                  <td>AAPL311222C00149000</td>
+                </tr>
+                <tr>
+                  <td>AAPL311222C00150000</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table>
+                <tr>
+                  <td>BUY</td>
+                </tr>
+                <tr>
+                  <td>SELL</td>
+                </tr>
+                <tr>
+                  <td>BUY</td>
+                </tr>
+                <tr>
+                  <td>SELL</td>
+                </tr>
+              </table>
+            </td>
+            <td class="text-center">
+              <table>
+                <tr>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table>
+                <tr>
+                  <td>$1.20</td>
+                </tr>
+                <tr>
+                  <td>$1.10</td>
+                </tr>
+                <tr>
+                  <td>$0.50</td>
+                </tr>
+                <tr>
+                  <td>$0.60</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table>
+                <tr>
+                  <td>
+                    <span class="textHighlight-orange">Filled</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="text-inactive">Inactive</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="textHighlight-purple">PreSub</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="textHighlight-purple">PreSub</span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table>
+                <tr>
+                  <td>call</td>
+                </tr>
+                <tr>
+                  <td>call</td>
+                </tr>
+                <tr>
+                  <td>Put</td>
+                </tr>
+                <tr>
+                  <td>Put</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table>
+                <tr>
+                  <td>31-Dec-22</td>
+                </tr>
+                <tr>
+                  <td>31-Dec-22</td>
+                </tr>
+                <tr>
+                  <td>31-Dec-22</td>
+                </tr>
+                <tr>
+                  <td>31-Dec-22</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table>
+                <tr>
+                  <td>154</td>
+                </tr>
+                <tr>
+                  <td>153</td>
+                </tr>
+                <tr>
+                  <td>149</td>
+                </tr>
+                <tr>
+                  <td>150</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table>
+                <tr>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>100</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table class="white-break">
+                <tr>
+                  <td>2 Aug 2022, 21:56:00 PM</td>
+                </tr>
+                <tr>
+                  <td>2 Aug 2022, 21:56:00 PM</td>
+                </tr>
+                <tr>
+                  <td>2 Aug 2022, 21:56:00 PM</td>
+                </tr>
+                <tr>
+                  <td>2 Aug 2022, 21:56:00 PM</td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table>
+                <tr>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                </tr>
+              </table>
+            </td>
+          </tr> -->
+          <ng-container *ngFor="let activeOrder of ActiveOrderList | keyvalue">
+            <tr class="OnClickAdd">
+              <td class="AddPlus">
+                <a (click)="toggleCollapsedActiveOrder(activeOrder)"><span class="Plus" [ngClass]="{'added' : !activeOrder.value.isCollapsed}"></span></a>
+              </td>
+              <td>
+                <h4>{{activeOrder.value.product}} Portfolio #{{activeOrder.key}} {{activeOrder.value.strategy}} - {{activeOrder.value.intention}}</h4>
+              </td>
+              <td class="OnClickDiplay"></td>
+              <td class="OnClickDiplay"></td>
+              <td class="OnClickDiplay"></td>
+              <td>
+                <span class="textHighlight-Default">Pending</span>
+              </td>
+              <td class="OnClickDiplay"></td>
+              <td class="OnClickDiplay"></td>
+              <td class="OnClickDiplay"></td>
+              <td class="OnClickDiplay"></td>
+              <td class="OnClickDiplay"></td>
+              <td>
+                <div>
+                  <a class="BtnSecondary w-auto" (click)="submitRecompute(activeOrder.value)" data-bs-toggle="modal" href="#RecomputeModal" role="button">Recompute</a>
+                  <a class="BtnDefault w-auto" (click)="submitResubmit(activeOrder.value)" data-bs-toggle="modal" href="#ResubmitModal" role="button">Submit</a>
+                  <a class="BtnSecondary w-auto" (click)="submitCancel(activeOrder.value)" data-bs-toggle="modal" href="#CancelOrderModal" role="button">Cancel</a>
+                </div>
+              </td>
+            </tr>
+            <tr class="sub-data" [ngClass]="{'showhide' : activeOrder.value.isCollapsed}" *ngFor="let leg of activeOrder.value.legs | keyvalue; let i = index">
+              <td class="text-center">
+                <table>
+                   <tr>
+                      <td>{{i + 1}}</td>
+                   </tr>
+                </table>
+              </td>
+              <td>
+                <table>
+                   <tr>
+                    <td>{{leg.value?.product}}</td>
+                   </tr>
+                </table>
+              </td>
+              <td>
+                <table>
+                   <tr>
+                    <td>{{leg.value?.direction}}</td>
+                   </tr>
+                </table>
+              </td>
+              <td class="text-center">
+                <table>
+                   <tr>
+                    <td>{{leg.value?.dealSize}}</td>
+                   </tr>
+                </table>
+              </td>
+              <td>
+                <table>
+                   <tr>
+                    <td>{{leg.value?.limitPrice | currency:leg.value?.currency}}</td>
+                   </tr>
+                </table>
+              </td>
+              <td>
+                <table>
+                   <tr>
+                    <td>{{leg.value?.orderStatus}}</td>
+                   </tr>
+                </table>
+              </td>
+              <td>
+                <table>
+                   <tr>
+                    <td>{{leg.value?.right}}</td>
+                   </tr>
+                </table>
+              </td>
+              <td>
+                <table>
+                   <tr>
+                    <td>{{leg.value?.expiry | optionExpiryDate}}</td>
+                   </tr>
+                </table>
+              </td>
+              <td>
+                <table>
+                   <tr>
+                    <td>{{leg.value?.strike | currency:leg.value?.currency}}</td>
+                   </tr>
+                </table>
+              </td>
+              <td>
+                <table>
+                   <tr>
+                    <td>{{leg.value?.multiplier}}</td>
+                   </tr>
+                </table>
+              </td>
+              <td>
+                <table>
+                   <tr>
+                    <td>{{leg.value?.orderTime | date: 'dd MMM yyyy, hh:mm:ss a' }}</td>
+                   </tr>
+                </table>
+              </td>
+              <td>
+                <table>
+                   <tr>
+                    <td>&nbsp;</td>
+                   </tr>
+                </table>
+              </td>
+
+            </tr>
+
+            <!-- <tr>
+              <td class="text-center">
+                <table>
+                  <tr *ngFor="let leg of activeOrder.value.legs | keyvalue; let i = index">
+                    <td>{{leg.key}}</td>
+                  </tr>
+                </table>
+              </td>
+              <td>
+                <table>
+                  <tr *ngFor="let leg of activeOrder.value.legs | keyvalue">
+                    <td>{{leg.value?.product}}</td>
+                  </tr>
+                </table>
+              </td>
+              <td>
+                <table>
+                  <tr *ngFor="let leg of activeOrder.value.legs | keyvalue">
+                    <td>{{leg.value?.direction}}</td>
+                  </tr>
+                </table>
+              </td>
+              <td class="text-center">
+                <table>
+                  <tr *ngFor="let leg of activeOrder.value.legs | keyvalue">
+                    <td>{{leg.value?.dealSize}}</td>
+                  </tr>
+                </table>
+              </td>
+              <td>
+                <table>
+                  <tr *ngFor="let leg of activeOrder.value.legs | keyvalue">
+                    <td>{{leg.value?.limitPrice | currency:leg.value?.currency}}</td>
+                  </tr>
+                </table>
+              </td>
+              <td>
+                <table>
+                  <tr *ngFor="let leg of activeOrder.value.legs | keyvalue">
+                    <td>{{leg.value?.orderStatus}}</td>
+                  </tr>
+                </table>
+              </td>
+              <td>
+                <table>
+                  <tr *ngFor="let leg of activeOrder.value.legs | keyvalue">
+                    <td>{{leg.value?.right}}</td>
+                  </tr>
+                </table>
+              </td>
+              <td>
+                <table>
+                  <tr *ngFor="let leg of activeOrder.value.legs | keyvalue">
+                    <td>{{leg.value?.expiry | optionExpiryDate}}</td>
+                  </tr>
+                </table>
+              </td>
+              <td>
+                <table>
+                  <tr *ngFor="let leg of activeOrder.value.legs | keyvalue">
+                    <td>{{leg.value?.strike | currency:leg.value?.currency}}</td>
+                  </tr>
+                </table>
+              </td>
+              <td>
+                <table>
+                  <tr *ngFor="let leg of activeOrder.value.legs | keyvalue">
+                    <td>{{leg.value?.multiplier}}</td>
+                  </tr>
+                </table>
+              </td>
+              <td>
+                <table class="white-break">
+                  <tr *ngFor="let leg of activeOrder.value.legs | keyvalue">
+                    <td>{{leg.value?.orderTime | date: 'dd MMM yyyy, hh:mm:ss a' }}</td>
+                  </tr>
+                </table>
+              </td>
+              <td>
+                <table>
+                  <tr>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                  </tr>
+                </table>
+              </td>
+            </tr> -->
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+    <nav aria-label="..." class="ScreenerPagination">
+      <ul class="pagination" *ngIf="!isLoadingActiveOrders && !checkIsEmptyObject(ActiveOrderList)">
+        <li class="page-item" [ngClass]="{disabled: IsFirstPage}">
+          <a class="page-link" (click)="previousPage()">
+            <i class="fa fa-arrow-left"></i>
+            <span>Previous</span>
+          </a>
+        </li>
+        <li>
+          <ul>
+            <li *ngFor="let pageNum of Pages" class="page-item" [ngClass]="{active: CurrentPage===pageNum}">
+              <span class="page-link" (click)="goToPage(pageNum)">{{pageNum}}</span>
+            </li>
+          </ul>
+          <span class="mobPagination">Page {{CurrentPage}} of {{TotalPage}}</span>
+        </li>
+        <li class="page-item" [ngClass]="{disabled: IsLastPage}">
+          <a class="page-link" (click)="nextPage()">
+            <span>Next</span>
+            <i class="fa fa-arrow-right"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <!-- Cancel Confirmation -->
+  <div class="modal fade AccountModal ConfirmOrderModal" id="CancelOrderModal" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-body">
+          <h4>Cancel Order</h4>
+          <div>
+            Are you sure you want to cancel all orders under <span class="textHighlight">{{OrderToCancel.product}} Portfolio # {{OrderToCancel.groupId}} {{OrderToCancel.strategy}}</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="BtnDefault" (click)="confirmCancelStrategyOrder()" data-bs-toggle="modal"
+            data-bs-dismiss="modal">Yes</button>
+          <button class="BtnSecondary" data-bs-toggle="modal"
+            data-bs-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Recompute Confirmation -->
+  <div class="modal fade AccountModal ConfirmOrderModal" id="RecomputeModal" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-body">
+          <h4>Recompute Orders</h4>
+          <div>
+            Do you wish to recompute all orders under <span class="textHighlight">{{OrderToRecompute.product}} Portfolio # {{OrderToRecompute.groupId}} {{OrderToRecompute.strategy}}</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="BtnDefault" (click)="confirmRecomputeOrder()" data-bs-toggle="modal"
+            data-bs-dismiss="modal">Yes</button>
+          <button class="BtnSecondary" data-bs-toggle="modal"
+            data-bs-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Submit Confirmation -->
+  <div class="modal fade AccountModal ConfirmOrderModal" id="ResubmitModal" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-body">
+          <h4>Submit Orders</h4>
+          <div>
+            Do you wish to submit all orders under <span class="textHighlight">{{OrderToResubmit.product}} Portfolio # {{OrderToResubmit.groupId}} {{OrderToResubmit.strategy}}</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="BtnDefault" (click)="confirmResubmitOrder()" data-bs-toggle="modal"
+            data-bs-dismiss="modal">Yes</button>
+          <button class="BtnSecondary" data-bs-toggle="modal"
+            data-bs-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

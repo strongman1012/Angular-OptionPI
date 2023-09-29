@@ -1,0 +1,41 @@
+<button mat-button [matMenuTriggerFor]="beforeMenu">
+  <i style="font-size: 15px; width:10px; height:24px; line-height: 24px;" class="fa fa-light fa-ellipsis-vertical"></i>
+</button>
+<mat-menu #beforeMenu="matMenu" xPosition="before">
+  <button mat-menu-item>
+    <span style="font-size: 15px; padding-right: 10px; font-weight: 500;">
+      <img src="//am708403.blob.core.windows.net/images/optionpi/img/CalculatorPayoff.png" style="width: 24px; height: 25px;">
+      Calculate Payoff
+    </span>
+  </button>
+  <button mat-menu-item>
+    <span style="font-size: 15px; padding-right: 10px; font-weight: 500;">
+      <img src="//am708403.blob.core.windows.net/images/optionpi/img/Probability Simulation.png" style="width: 24px; height: 25px;">
+      Probability Simulation
+    </span>
+  </button>
+  <button mat-menu-item>
+    <span style="font-size: 15px; padding-right: 10px; font-weight: 500;">
+      <img src="//am708403.blob.core.windows.net/images/optionpi/img/KebabChart.png" style="width: 24px; height: 25px;">
+      Chart
+    </span>
+  </button>
+  <button mat-menu-item (click)="visualize()">
+    <span style="font-size: 15px; padding-right: 10px; font-weight: 500;" >
+      <img src="//am708403.blob.core.windows.net/images/optionpi/img/Visualize.png" style="width: 24px; height: 25px;">
+      Visualize
+    </span>
+  </button>
+  <button mat-menu-item>
+    <span style="font-size: 15px; padding-right: 10px; font-weight: 500;">
+      <img src="//am708403.blob.core.windows.net/images/optionpi/img/StockInfoIcon.png" style="width: 24px; height: 25px;">
+      Stock Info
+    </span>
+  </button>
+  <button mat-menu-item *ngIf="item === 'watchList'">
+    <span style="font-size: 15px; padding-right: 10px; font-weight: 500;">
+      <img src="//am708403.blob.core.windows.net/images/optionpi/img/StockInfoIcon.png" style="width: 24px; height: 25px;">
+      WatchList
+    </span>
+  </button>
+</mat-menu>

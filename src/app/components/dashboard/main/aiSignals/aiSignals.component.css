@@ -1,0 +1,171 @@
+.SelectSymbol .OptionSelect{
+    width: 200px;
+}
+.fixedTable .table thead {
+    position: sticky;
+    top: 0;
+    display: inherit;
+}
+.PredefinedScreeningBtm .ScreenerTable{
+    min-height: 200px;
+}
+
+.StrategyForm > div {width: auto;}
+.ReloadBtn {display: inline-flex;width: auto;margin-left: 16px;gap: 8px;}
+.StrategyForm input, .StrategyForm select {width: 135px !important;max-width: unset;}
+.StrategyForm{display: inline-flex;align-items: end;justify-content: space-between; }
+.ReloadBtn a {display: inline-flex;align-items: center;height: auto;width: 131px;}
+.ReloadBtn a {display: inline-flex;align-items: center;height: auto;width: 131px;padding: 10px 16px;margin: 0px !important;}
+.CalculatorTop, .CalculatorBtm {width: 100%;}
+.CalculatorTop > div {width: calc(100% / 2);}
+.CalculatorTop {display: inline-flex;padding: 12px 24px;gap: 24px;}
+.CalculatorTop > div ul li {display: inline-flex;width: 100%;}
+.CalculatorTop > div ul li:not(:last-child) {margin-bottom: 12px;}
+.CalculatorTop > div ul li span {font-size: 14px;line-height: 20px;color: #5F6C85;width: 100%;}
+.CalculatorTop > div ul li p {font-size: 14px;line-height: 20px;color: #3F444D;line-height: 20px;text-align: right;font-family: 'Inter-Bold', sans-serif;width: 100%;margin: 0px;}
+.CalculatorBtm {display: inline-flex;width: 100%;border-top: 1px solid #E1E6EF;}
+.CalculatorBtm > div {width: calc(100% / 2);}
+.CalculatorBtm > div:first-child {border-right: 1px solid #E1E6EF;background: #F8F9FC;border-bottom-left-radius: 12px;}
+.CalculatorBtm > div h3 {font-size: 16px;line-height: 16px;text-align: center;align-items: center;justify-content: center;font-family: 'Inter-Bold', sans-serif;padding: 12px 16px;}
+.CalculatorBtm > div.CalculatorLft h3 {background: #F1F3F9;}
+.CalculatorLft ul {padding: 16px 24px 24px;}
+.CalculatorLft ul li {width: 100%;display: inline-flex;justify-content: space-between;margin-bottom: 16px;padding: 8px 0;}
+.CalculatorLft ul li span {font-size: 14px;line-height: 20px;color: #5F6C85;}
+.CalculatorLft ul li p {font-size: 14px;line-height: 20px;color: #3F444D;font-family: 'Inter-Bold', sans-serif;text-align: right;margin: 0px;}
+.CalculatorModal .modal-dialog{width: 728px;}
+.CalculatorMidl {padding: 0px 24px 8px;}
+.CalculatorMidl table {border-collapse: separate;border-spacing: 0 16px;width: 100%;}
+.CalculatorMidl table td:first-child {font-size: 14px;line-height: 20px;color: #5F6C85;font-family: 'Inter-Regular', sans-serif;vertical-align: middle;}
+.CalculatorMidl table td:last-child {white-space: nowrap;font-size: 14px;line-height: 20px;color: #3F444D;vertical-align: middle;}
+.CalculatorMidl table td:first-child > span {display: block;font-size: 10px;line-height: 14px;color: #94A0B8;font-weight: 600;
+}
+.CalculatorMidl table td:last-child span.input {display: inline-block;padding: 10px 14px;background: #FFFFFF;border: 1px solid #D0D5DD;box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);border-radius: 8px;min-width: 56px;text-align: center;font-size: 14px;line-height: 16px;text-align: center;letter-spacing: 0.02em;text-transform: capitalize;color: rgba(29, 36, 51, 0.65);font-family: 'Inter-Medium', sans-serif;margin-right: 6px;max-width: max-content;}
+.ComputeBtn {padding: 12px 24px;border-bottom: 1px solid #EAECF0;border-top: 1px solid #EAECF0;}
+.BackBtn {padding: 12px 24px;border-bottom: 1px solid #EAECF0;border-top: 1px solid #EAECF0;}
+.CalculatorRgt ul {background: #FAF3E9;padding: 24px;display: inline-flex;width: 100%;justify-content: space-between;border-bottom-right-radius: 12px;}
+.CalculatorRgt ul li span {font-size: 16px;line-height: 16px;letter-spacing: 0.02em;text-transform: capitalize;color: rgba(29, 36, 51, 0.8);font-family: 'Inter-Medium', sans-serif;}
+.CalculatorRgt ul li p {margin: 0px;font-family: 'Inter-Bold', sans-serif;font-size: 16px;letter-spacing: 0.02em;text-transform: capitalize;text-align: right;}
+.CalculatorRgt ul li p.SuccessTxt{color: #0EA472;}
+.CalculatorRgt ul li p.DangerTxt{color: #E02D3C;}
+
+.PredefinedScreeningTop{padding: 0px;}
+.PredefinedFormRgt {padding: 6px 16px;border-left: 1px solid #E1E6EF;}
+.radioDefault{display: inline-flex;align-items: center;gap: 12px;margin: 8px 0;}
+.radioDefault label{display: inline-flex;align-items: center;margin: 0px;gap: 8px;color: #344054;cursor: pointer;}
+.PredefinedScreeningTop form {gap: unset;align-items: initial;}
+.PredefinedFormLft {width: calc(100% - 159px);display: inline-flex !important;flex-wrap: wrap;}
+.PredefinedFormTop {padding: 16px;width: 100%;}
+/* .PredefinedScreeningTop form div {gap: unset;} */
+.PredefinedFormTop .radioDefault {gap: 16px;color: #5F6C85;font-family: 'Inter-Medium', sans-serif;margin: 0px;}
+.PredefinedFormTop .radioDefault label {color: #5F6C85;font-size: 14px;line-height: 20px;}
+.StrategyTable table {margin: 0px;}
+.PredefinedFormBtm {border-top: 1px solid #E1E6EF;padding: 10px 16px;width: 100%;}
+.PredefinedFormRgt {width: 160px;display: inline-flex;align-items: center;justify-content: center;}
+.PredefinedFormBtm > div{gap: 8px !important;}
+.PredefinedFormBtm > div label {font-size: 14px;line-height: 20px;color: #5F6C85;font-family: 'Inter-Medium', sans-serif;white-space: nowrap;}
+.select-hidden {display: none;visibility: hidden;padding-right: 10px;}
+.select {cursor: pointer;display: inline-block;position: relative;font-size: 16px;color: #fff;/*width: 220px;*//*height: 40px;*/}
+.PredefinedFormBtm .selectDefault2Main .select {width: 171px;height: 32px;}
+.PredefinedFormBtm .selectDefault2Main .select-options {min-width: 256px;left: auto;}
+.select-styled {position: absolute;top: 0;right: 0;bottom: 0;left: 0;background-color: #ffffff;padding: 8px 15px;-moz-transition: all 0.2s ease-in;-o-transition: all 0.2s ease-in;-webkit-transition: all 0.2s ease-in;transition: all 0.2s ease-in;box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);border-radius: 8px;border: 1px solid #D0D5DD;padding: 6px 12px;font-size: 14px;line-height: 20px;color: #94A0B8;height: auto;}
+.select-styled:after {content: '\F282';width: 0;height: 0;/* border: 7px solid transparent; *//* border-color: #94A0B8 transparent transparent transparent; */position: absolute;top: 50%;right: 30px;font-family: 'bootstrap-icons';transform: translateY(-9px);font-size: 16px;}
+.select-styled:hover {/*background-color: #b83729;*/}
+.select-styled:active, .select-styled.active {background-color: #fff;}
+/*.select-styled:active:after, .select-styled.active:after {top: 9px;border-color: transparent transparent #fff transparent;
+}*/
+.select-options {display: none;position: absolute;top: 111%;right: 0;left: 0;z-index: 999;margin: 0;padding: 0;list-style: none;background-color: #fff;box-shadow: 0px 20px 24px -4px rgba(16, 24, 40, 0.08), 0px 8px 8px -4px rgba(16, 24, 40, 0.03);border-radius: 12px;border: 1px solid #E1E6EF;padding: 8px 6px;}
+.select-options li {margin: 0;text-indent: 0;-moz-transition: all 0.15s ease-in;-o-transition: all 0.15s ease-in;-webkit-transition: all 0.15s ease-in;transition: all 0.15s ease-in;padding: 10px 16px;font-size: 14px;line-height: 16px;letter-spacing: 0.02em;color: rgba(29, 36, 51, 0.8);text-align: left;margin: 0;}
+.select-options li:hover, .select-options li.is-selected {/*color: #c0392b;*//*background: #fff;*/}
+.select-options li[rel="hide"] {display: none;}
+.select-options li:not(:last-child) {  border-bottom: 1px solid #E1E6EF;}
+.PredefinedFormBtm .select-styled {  /*width: 171px !important;*/}
+.PredefinedFormBtm {  display: inline-flex !important;  gap: 16px !important;}
+.PredefinedFormBtm > div {  width: auto;}
+.selectDefault2Main{position: relative;}
+.PredefinedFormTop .radioDefault::-webkit-scrollbar{width: 0;height: 0;}
+.PredefinedFormTop .radioDefault { width: 100%; overflow-x: auto;white-space: nowrap; flex-wrap: nowrap;}
+
+.SideBarForm .ComputeButton{
+    margin-top: 0 !important;
+}
+
+.OptionContentFilter2 .BtnDefault2{
+    width: auto !important;
+    min-width: auto !important;
+}
+
+.OptionContentFilter2 .ReloadButton{
+    height: 34px;
+}
+.OptionContentFilter2 .ComputeButton{
+    height: 34px;
+}
+.callBG{
+    background-color: #EFFDF6;
+}
+.putBG {
+    background-color: #fef7f1;
+}
+.pagination li{
+    cursor: pointer;
+}
+
+.ScreenerTable th{
+    cursor: pointer;
+}
+
+.fixedTable th{
+    cursor: pointer;
+}
+.ng-arrow-wrapper{
+    display: none;
+}
+.red_number{
+    color: red;
+    font-weight: bold;
+}
+.green_number{
+    color: green;
+    font-weight: bold;
+}
+
+.customFilterTop form div {
+    display: inherit !important;
+}
+
+.customFilterTop .PredefinedFormLft{
+    width: 100% !important;
+}
+.border-top-none{
+    border-top: none !important;
+}
+
+@font-face {
+font-family: 'Inter-SemiBold';src: url('//am708403.blob.core.windows.net/images/optionpi/fonts/Inter-SemiBold.eot?#iefix') format('embedded-opentype'), url('//am708403.blob.core.windows.net/images/optionpi/fonts/Inter-SemiBold.woff') format('woff'), url('//am708403.blob.core.windows.net/images/optionpi/fonts/Inter-SemiBold.ttf') format('truetype'), url('//am708403.blob.core.windows.net/images/optionpi/fonts/Inter-SemiBold.svg#Inter-SemiBold') format('svg');font-weight: normal;font-style: normal;font-display: swap;}
+:root {--font-semibold: 'Inter-SemiBold', sans-serif;}
+.my-container .selectPrimaryMain .select2-container--default .select2-selection--single {box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);border-radius: 8px;border: 1px solid #D0D5DD;height: 40px;}
+.selectPrimaryMain .select2-container--default .select2-selection--single .select2-selection__rendered {padding: 10px 14px;line-height: 16px;font-size: 14px;letter-spacing: 0.02em;text-transform: capitalize;color: #94A0B8;}
+.selectPrimaryMain .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b,
+.selectPrimaryMain .select2-container--default .select2-selection--single .select2-selection__arrow {width: 20px;height: 20px;border: unset;z-index: 99;top: 50%;font-size: 13px;font-family: 'bootstrap-icons';color: #94A0B8;right: 0 !important;transform: translate(-16px, -50%);position: absolute;display: inline-flex;align-items: center;justify-content: center;}
+.selectPrimaryMain .select2-container--default .select2-selection--single .select2-selection__arrow:after {content: '\F282';position: absolute;font-family: 'bootstrap-icons';}
+.selectPrimaryMain .select2-container--default .select2-selection--single .select2-selection__arrow b {border: 0px;margin: 0px;top: 0;}
+.my-container.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {background: #ffffff !important;padding: 12px 16px;border-bottom: 1px solid #E1E6EF;font-size: 14px;line-height: 16px;color: rgba(29, 36, 51, 0.8);letter-spacing: 0.02em;font-family: 'Inter-Medium';white-space: nowrap;}
+.my-container .select2-results {padding: 8px 12px;}
+.my-container .select2-results__option {padding: 12px 16px;font-size: 14px;line-height: 16px;color: rgba(29, 36, 51, 0.8);letter-spacing: 0.02em;font-family: 'Inter-Medium';}
+.my-container.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable:before {content: '';}
+.my-container .select2-dropdown {top: 2px;width: auto !important;min-width: 154px;}
+.selectPrimaryMain .select2-container--default .select2-selection--single {box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);border-radius: 8px !important;border: 1px solid #D0D5DD;height: 40px;}
+.my-container .select2-search--dropdown {display: none;}
+.card-custom {background: #FFFFFF;border: 1px solid #E1E6EF;box-shadow: 0px 2px 4px -2px rgba(16, 24, 40, 0.06);border-radius: 8px;}
+.card-custom .card-header {padding: 14px 16px;border-bottom: 1px solid #EAECF0;background: transparent;}
+.card-custom .card-header h3 {padding: 0px;margin: 0;border: 0px;font-size: 16px;line-height: 16px;letter-spacing: 0.02em;text-transform: capitalize;color: #101828;font-family: 'Inter-Medium', sans-serif;}
+.card-custom .card-header .CloseCard {color: #94A0B8;font-size: 30px;display: inline-flex;width: 20px;height: 20px;align-items: center;justify-content: center; background: transparent;}
+.card-custom .card-body {padding: 12px 16px 20px;}
+.datepickerMain {position: relative;width: auto;}
+input.DatePiker {box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);border-radius: 8px;width: 100%;border: 1px solid #D0D5DD;background: #ffff;padding: 8px 34px 8px 14px;line-height: 16px;font-size: 14px;}
+.datepickerMain i {position: absolute;right: 14px;top: 50%;transform: translateY(-50%);color: #94A0B8;}
+.card-body .SideBarForm {grid-row-gap: 20px;}
+.gap-4 {grid-column-gap: 4px !important;}
+.datepicker.datepicker-dropdown.dropdown-menu.datepicker-orient-left.datepicker-orient-top {padding: 10px;border-radius: 11px;color: #373c46;font-family: 'Inter-Regular';font-size: 15px;}
+.CheckSelect select {width: 100%}
+.CheckSelect .ms-choice {border: 1px solid #D0D5DD;box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);border-radius: 8px;padding: 10px 14px;font-size: 14px;line-height: 16px;}

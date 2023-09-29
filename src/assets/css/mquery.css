@@ -1,0 +1,287 @@
+@media (max-width: 1024px) {
+    .PredefinedScreeningTop form div, .PredefinedScreeningTop form a.GenerateBtn {
+        width: 100%;    
+    }
+    .menu-icon {display: inline-flex;}
+    .LftMain {display: none !important;}
+    .LftMain.display_custom {
+        display: flex !important;
+        /* position: absolute; */
+        /* z-index: 20; */
+    }
+
+    .RgtMain {
+    width: 100% !important;
+}
+.RgtMain.display_width{
+    width: calc(100% - 84px) !important;
+    .LftMain {
+        display: none !important;
+    }
+    .RgtMain {
+    width: 100% !important;
+    }
+}
+.TopMenuLft h1, .TopMenuLft p{
+    display: none;
+}
+.mobLogo{
+    display: block !important;
+}
+.togglesearch {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 87px;
+    display: none;
+}
+
+.TopMenuRgt ul li .Search form div.input-group input {
+    padding: 18px;
+    border: 1px solid #E1E6EF;
+    font-size: 15px;
+}
+
+.togglesearch a.mobSearchIcon {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: inline-block;
+    padding: 15px 18px;
+    cursor: pointer;
+}
+.TopMenuRgt ul li:nth-last-child(2) {
+    display: none;
+}
+.TopMenuRgt ul li:last-child {
+    width: 44px;
+    height: 44px;
+    border: 1px solid #E1E6EF;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.ScreenerTable th, .ScreenerTable td {
+    width: auto;
+    float: unset;
+        white-space: nowrap;
+}
+.ScreenerPagination > .pagination li.page-item.disabled .page-link > span, .ScreenerPagination > .pagination li.page-item .page-link > span {
+    display: none;
+}
+.ScreenerPagination > .pagination li.page-item .page-link {
+    padding: 8px;
+    width: 36px;
+    height: 36px;
+}
+
+.ScreenerPagination > .pagination li.page-item.disabled .page-link {
+    background: transparent;
+    border: 1px solid #D0D5DD;
+    color: #B39256;
+}
+
+.ScreenerPagination > .pagination > li ul li.page-item.active .page-link, .ScreenerPagination > .pagination > li ul li.page-item:hover .page-link {
+    background: transparent;
+}
+.ScreenerPagination ul > li > ul{display: none;}    
+.ScreenerPagination ul > li > span.mobPagination {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 40px;
+    color: #344054;
+}
+.ScreenerTable td ul {
+    display: flex;
+    flex-wrap: inherit;
+    width: 100%;
+    width: 230px;
+}
+.DashboardTab li {
+    white-space: nowrap;
+}
+.DashboardTab, .ScreenerTabs {
+    overflow-x: auto;
+    width: 100%;
+    flex-wrap: unset;
+}
+.InnerBradcrumb ul{display: none;}
+.LinkAccountStep img {
+    position: absolute;
+    height: 100%;
+    width: auto;
+    max-width: unset;
+    right: 0;
+    bottom: 0;
+}
+.LinkAccountStep {
+    height: 405px;
+}
+
+.AccountModal .BtnDefault,
+.AccountModal .BtnSecondary{    padding: 14px 18px;}
+.OptionContentLft, .OptionContentRgt{
+    width: 100%;
+}
+.OptionContentMain {
+    flex-wrap: wrap;
+}
+.OptionContentLftTop, .OptionContentFilter1 form {
+    flex-wrap: wrap;
+}
+.OptionContentFilter2 .FilterDrop {
+    padding: 28px 4px 16px;
+}
+.FilterDrop li form table tr td:first-child {
+    vertical-align: bottom;
+    padding: 0px 0px 12px 0px;
+}
+.FilterDrop li form table tr:not(:last-child) {
+    display: block;
+    margin-bottom: 40px;
+}
+.OptionContentFilter2 .FilterDrop li:last-child a {
+    margin: 0 12px;
+    width: 100%;
+}
+.FilterDrop li form table tr td {
+    display: block;
+}
+
+.PredefinedScreeningTop form div .form-select{
+    width: 100% !important;
+}
+.mobileFilterIcon{
+    display: flex !important;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    right: 0px;
+}
+.filterIcon{
+    display: none !important;
+}
+.mobileGenerateBtn {
+    display: block !important;
+    width: 70%;
+}
+.screenerColumnList {
+    display: flex;
+    justify-content: space-around !important;
+}
+.mobileScreenerTable {
+    display: block !important;
+}
+.ScreenerTable .table {
+    display: none;
+}
+.mobileScreenerPagination{
+    display: block !important;
+}
+}
+
+@media (max-width: 1024px) {
+
+    .PredefinedScreeningTop form, .PredefinedScreeningTop form div {
+        display: inline-flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .PredefinedScreeningTop form div , .PredefinedScreeningTop form{
+        gap: 18px;
+    }
+    .AccountModal .modal-sm {
+        max-width: unset;
+    }
+    .AccountListBlock {
+        flex-wrap: wrap;
+    }
+    .AccountListLft {
+        width: 100%;
+    }
+    .AccountListLft {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .AccountListRft {
+        width: 100%;
+        border-top: 1px solid #D0D5DD;
+    }
+    .AccountListRft.text-center > div {
+        width: calc(100% / 2);
+        padding: 16px;
+        border: 0px;
+    }
+    .AccountListRft.text-center > div:not(:last-child){
+        border-right: 1px solid #D0D5DD;
+    }
+    .AccountListRft.text-center > div a {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+    }
+    .AccountListRft.text-center > div a i{
+        margin-bottom: 0;
+    }
+    .AccountListLft > div:last-child {
+        width: 100%;
+        text-align: left !important;
+    }
+    .AccountListLft > div:not(:last-child) {
+        width: calc(100% / 2 - 12px);
+    }
+    .BrokerLogo {
+        width: 56px;
+        height: 56px;
+        padding: 4px;
+    }
+    .AccountListRft.text-center > div a {
+        gap: 8px;
+    }
+    .PlaceOrderModal .modal-dialog{min-width: 90%;max-width: auto;}
+    .optionStockMain {
+        flex-wrap: wrap;
+    }
+}
+@media (max-width: 600px) {
+.EmptyAccount p {width: 311px;}
+.AccountModal.LinkedDone .modal-footer button {
+    width: 100%;
+    padding: 14px 17px;
+}
+.OptionSelect .select2-container--default .select2-selection--single {
+    width: 100%;
+}
+.OptionSelect {
+    width: calc(100vw - 111px);
+}
+form.OptForm .form-control {
+    border: 0px;
+    padding: 0px;
+    width: 100%;
+}
+.ConfirmOrderModal .modal-dialog {
+    width: auto;
+}
+}
+
+@media (min-width: 992px) {
+    .ScreenerPagination ul > li > span.mobPagination {
+        display: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .screenerColumn {
+        width: 20% !important;
+    }
+    /* .drop-show {
+        width: 20% !important;
+    } */
+    .mobileGenerateBtn {
+        display: block !important;
+        width: 70%;
+    }
+}

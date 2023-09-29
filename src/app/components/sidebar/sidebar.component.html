@@ -1,0 +1,50 @@
+<div class="sticky-top LftMain">
+  <div class="OptionLogo">
+    <a [routerLink]="['/dashboard']">
+      <img src="//am708403.blob.core.windows.net/images/optionpi/img/logo.png">
+    </a>
+  </div>
+  <div class="LftMenuContent">
+    <ul>
+      <li [ngClass]="{'active' : currentRoute === '/dashboard'}">
+        <a [routerLink]="['/dashboard']">
+          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Icon.png" class="menuIcon">
+          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Icon-active.png" class="menuIconActive">
+        </a>
+      </li>
+      <li [ngClass]="{'active' : currentRoute === '/account'}">
+        <a [routerLink]="['/account']">
+          <img src="//am708403.blob.core.windows.net/images/optionpi/img/user.png" class="menuIcon">
+          <img src="//am708403.blob.core.windows.net/images/optionpi/img/user-active.png" class="menuIconActive">
+        </a>
+      </li>
+      <!-- <li [ngClass]="{'active' : currentRoute === '/analytics'}">
+        <a [routerLink]="['/analytics']">
+          <img src="//am708403.blob.core.windows.net/images/optionpi/img/chart-square-bar.png" class="menuIcon">
+          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Icon-active.png" class="menuIconActive">
+        </a>
+      </li> -->
+      <li [ngClass]="{'active' : currentRoute === '/chart'}">
+        <a (click)="setTab('chart')">
+          <img src="//am708403.blob.core.windows.net/images/optionpi/img/presentation-chart-line.png" class="menuIcon">
+          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Icon-active.png" class="menuIconActive">
+        </a>
+      </li>
+      <li [ngClass]="{'active' : currentRoute === '/learn'}">
+        <a (click)="setTab('learn')">
+          <img src="//am708403.blob.core.windows.net/images/optionpi/img/academic-cap.png" class="menuIcon">
+          <img src="//am708403.blob.core.windows.net/images/optionpi/img/Icon-active.png" class="menuIconActive">
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="BottomMenu">
+    <ul>
+      <li>
+        <a (click)="logoutUser()">
+          <img src="//am708403.blob.core.windows.net/images/optionpi/img/logout.png">
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

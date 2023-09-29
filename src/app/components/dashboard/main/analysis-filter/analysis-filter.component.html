@@ -1,0 +1,2489 @@
+<!-- Fundamental Filter Start-->
+<!-- Price to Earning -->
+<div *ngIf="item === 'PriceToEarning'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">PE Rank</h3>
+        <button (click)="hideFundamentalPriceToEarningOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <label>Rank</label>
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setFundamentalPriceToEarningOperator()"
+            [(ngModel)]="analysisFilterFundamental.priceToEarning.operator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="between">between</option>
+                <option value="higher">higher</option>
+                <option value="lower">lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <div *ngIf="analysisFilterFundamental.priceToEarning.operator === 'between'" class="d-flex">
+                <select class="form-select selectPrimary"
+                (change)="setFundamentalPriceToEarningPeriod()"
+                [(ngModel)]="analysisFilterFundamental.priceToEarning.startDate"
+                [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let startDate of StartDateList" [ngValue]="startDate">
+                    {{ startDate }}
+                </option>
+                </select>
+                <span style="font-size: 13px; margin-top: 20px; margin-left: 4px;">th</span>
+                <span style="line-height: 38px;">-  </span>
+            </div>
+
+            <select class="form-select selectPrimary"
+            (change)="setFundamentalPriceToEarningPeriod()"
+            [(ngModel)]="analysisFilterFundamental.priceToEarning.endDate"
+            [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let endDate of EndDateList" [ngValue]="endDate">
+                {{ endDate }}
+                </option>
+            </select>
+            <span style="font-size: 13px; margin-top: 20px;">th</span>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <label>Index</label>
+            <div class="d-flex gap-4">
+            <select class="form-select selectPrimary"
+            (change)="setFundamentalPriceToEarningIndex()"
+            [(ngModel)]="analysisFilterFundamental.priceToEarning.indexValue"
+            [ngModelOptions]="{standalone: true}">
+                <option *ngFor="let indexValue of IndexList" [ngValue]="indexValue.value">
+                {{ indexValue.name }}
+                </option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <label>Value</label>
+            <div class="d-flex gap-4">
+            <select class="form-select selectPrimary"
+            (change)="setFundamentalPriceToEarningValue()"
+            [(ngModel)]="analysisFilterFundamental.priceToEarning.value"
+            [ngModelOptions]="{standalone: true}">
+                <option value="positive">positive</option>
+                <option value="negative">negative</option>
+            </select>
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: PE rank that 
+        <span *ngIf="analysisFilterFundamental.priceToEarning.operator === 'between'">
+        ranges <span class="blue-text">{{analysisFilterFundamental.priceToEarning.operator}} {{analysisFilterFundamental.priceToEarning.startDate}}</span>th 
+        to <span class="blue-text">{{analysisFilterFundamental.priceToEarning.endDate}}</span>th
+        </span>
+        <span *ngIf="analysisFilterFundamental.priceToEarning.operator !== 'between'">
+        is <span class="blue-text">{{analysisFilterFundamental.priceToEarning.operator}} than {{analysisFilterFundamental.priceToEarning.endDate}}</span>th
+        </span>
+        percentile among
+        <span class="blue-text">{{analysisFilterFundamental.priceToEarning.indexValue}}</span>
+        stocks with 
+        <span class="blue-text">{{analysisFilterFundamental.priceToEarning.value}}</span> earning.
+    </div>
+</div>
+<!-- Price to Book -->
+<div *ngIf="item === 'PriceToBook'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">PB Rank</h3>
+        <button (click)="hideFundamentalPriceToBookOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <label>Rank</label>
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setFundamentalPriceToBookOperator()"
+            [(ngModel)]="analysisFilterFundamental.priceToBook.operator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="between">between</option>
+                <option value="higher">higher</option>
+                <option value="lower">lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <div *ngIf="analysisFilterFundamental.priceToBook.operator === 'between'" class="d-flex">
+                <select class="form-select selectPrimary"
+                (change)="setFundamentalPriceToBookPeriod()"
+                [(ngModel)]="analysisFilterFundamental.priceToBook.startDate"
+                [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let startDate of StartDateList" [ngValue]="startDate">
+                    {{ startDate }}
+                </option>
+                </select>
+                <span style="font-size: 13px; margin-top: 20px; margin-left: 4px;">th</span>
+                <span style="line-height: 38px;">-  </span>
+            </div>
+
+            <select class="form-select selectPrimary"
+            (change)="setFundamentalPriceToBookPeriod()"
+            [(ngModel)]="analysisFilterFundamental.priceToBook.endDate"
+            [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let endDate of EndDateList" [ngValue]="endDate">
+                {{ endDate }}
+                </option>
+            </select>
+            <span style="font-size: 13px; margin-top: 20px;">th</span>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <label>Index</label>
+            <div class="d-flex gap-4">
+            <select class="form-select selectPrimary"
+            (change)="setFundamentalPriceToBookIndex()"
+            [(ngModel)]="analysisFilterFundamental.priceToBook.indexValue"
+            [ngModelOptions]="{standalone: true}">
+                <option *ngFor="let indexValue of IndexList" [ngValue]="indexValue.value">
+                {{ indexValue.name }}
+                </option>
+            </select>
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: PE rank that 
+        <span *ngIf="analysisFilterFundamental.priceToBook.operator === 'between'">
+        ranges <span class="blue-text">{{analysisFilterFundamental.priceToBook.operator}} {{analysisFilterFundamental.priceToBook.startDate}}</span>th 
+        to <span class="blue-text">{{analysisFilterFundamental.priceToBook.endDate}}</span>th
+        </span>
+        <span *ngIf="analysisFilterFundamental.priceToBook.operator !== 'between'">
+        is <span class="blue-text">{{analysisFilterFundamental.priceToBook.operator}} than {{analysisFilterFundamental.priceToBook.endDate}}</span>th
+        </span>
+        percentile among
+        <span class="blue-text">{{analysisFilterFundamental.priceToBook.indexValue}}</span>
+        stocks.
+    </div>
+</div>
+<!-- Price to Sales -->
+<div *ngIf="item === 'PriceToSales'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">PS Rank</h3>
+        <button (click)="hideFundamentalPriceToSalesOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <label>Rank</label>
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setFundamentalPriceToSalesOperator()"
+            [(ngModel)]="analysisFilterFundamental.priceToSales.operator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="between">between</option>
+                <option value="higher">higher</option>
+                <option value="lower">lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <div *ngIf="analysisFilterFundamental.priceToSales.operator === 'between'" class="d-flex">
+                <select class="form-select selectPrimary"
+                (change)="setFundamentalPriceToSalesPeriod()"
+                [(ngModel)]="analysisFilterFundamental.priceToSales.startDate"
+                [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let startDate of StockMinDataList" [ngValue]="startDate">
+                    {{ startDate }}
+                </option>
+                </select>
+                <span style="font-size: 13px; margin-top: 20px; margin-left: 4px;">th</span>
+                <span style="line-height: 38px;">-  </span>
+            </div>
+
+            <select class="form-select selectPrimary"
+            (change)="setFundamentalPriceToSalesPeriod()"
+            [(ngModel)]="analysisFilterFundamental.priceToSales.endDate"
+            [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let endDate of StockMaxDataList" [ngValue]="endDate">
+                {{ endDate }}
+                </option>
+            </select>
+            <span style="font-size: 13px; margin-top: 20px;">th</span>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <label>Index</label>
+            <div class="d-flex gap-4">
+            <select class="form-select selectPrimary"
+            (change)="setFundamentalPriceToSalesIndex()"
+            [(ngModel)]="analysisFilterFundamental.priceToSales.indexValue"
+            [ngModelOptions]="{standalone: true}">
+                <option *ngFor="let indexValue of IndexList" [ngValue]="indexValue.value">
+                {{ indexValue.name }}
+                </option>
+            </select>
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: PE rank that 
+        <span *ngIf="analysisFilterFundamental.priceToSales.operator === 'between'">
+        ranges <span class="blue-text">{{analysisFilterFundamental.priceToSales.operator}} {{analysisFilterFundamental.priceToSales.startDate}}</span>th 
+        to <span class="blue-text">{{analysisFilterFundamental.priceToSales.endDate}}</span>th
+        </span>
+        <span *ngIf="analysisFilterFundamental.priceToSales.operator !== 'between'">
+        is <span class="blue-text">{{analysisFilterFundamental.priceToSales.operator}} than {{analysisFilterFundamental.priceToSales.endDate}}</span>th
+        </span>
+        percentile among
+        <span class="blue-text">{{analysisFilterFundamental.priceToSales.indexValue}}</span>
+        stocks.
+    </div>
+</div>
+<!-- Price to Earning Growth -->
+<div *ngIf="item === 'PriceToEarningGrowth'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">PEG Rank</h3>
+        <button (click)="hideFundamentalPriceToEarningGrowthOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <label>Rank</label>
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setFundamentalPriceToEarningGrowthOperator()"
+            [(ngModel)]="analysisFilterFundamental.priceToEarningGrowth.operator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="between">between</option>
+                <option value="higher">higher</option>
+                <option value="lower">lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <div *ngIf="analysisFilterFundamental.priceToEarningGrowth.operator === 'between'" class="d-flex">
+                <select class="form-select selectPrimary"
+                (change)="setFundamentalPriceToEarningGrowthPeriod()"
+                [(ngModel)]="analysisFilterFundamental.priceToEarningGrowth.startDate"
+                [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let startDate of StartDateList" [ngValue]="startDate">
+                    {{ startDate }}
+                </option>
+                </select>
+                <span style="font-size: 13px; margin-top: 20px;">th</span>
+                <span style="line-height: 38px;">-  </span>
+            </div>
+
+            <select class="form-select selectPrimary"
+            (change)="setFundamentalPriceToEarningGrowthPeriod()"
+            [(ngModel)]="analysisFilterFundamental.priceToEarningGrowth.endDate"
+            [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let endDate of EndDateList" [ngValue]="endDate">
+                {{ endDate }}
+                </option>
+            </select>
+            <span style="font-size: 13px; margin-top: 20px; margin-left: 4px;">th</span>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <label>Index</label>
+            <div class="d-flex gap-4">
+            <select class="form-select selectPrimary"
+            (change)="setFundamentalPriceToEarningGrowthIndex()"
+            [(ngModel)]="analysisFilterFundamental.priceToEarningGrowth.indexValue"
+            [ngModelOptions]="{standalone: true}">
+                <option *ngFor="let indexValue of IndexList" [ngValue]="indexValue.value">
+                {{ indexValue.name }}
+                </option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <label>Value</label>
+            <div class="d-flex gap-4">
+            <select class="form-select selectPrimary"
+            (change)="setFundamentalPriceToEarningGrowthValue()"
+            [(ngModel)]="analysisFilterFundamental.priceToEarningGrowth.value"
+            [ngModelOptions]="{standalone: true}">
+                <option value="positive">Positive</option>
+                <option value="negative">Negative</option>
+            </select>
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: PEG rank that 
+        <span *ngIf="analysisFilterFundamental.priceToEarningGrowth.operator === 'between'">
+        ranges <span class="blue-text">{{analysisFilterFundamental.priceToEarningGrowth.operator}} {{analysisFilterFundamental.priceToEarningGrowth.startDate}}</span>th 
+        to <span class="blue-text">{{analysisFilterFundamental.priceToEarningGrowth.endDate}}</span>th
+        </span>
+        <span *ngIf="analysisFilterFundamental.priceToEarningGrowth.operator !== 'between'">
+        is <span class="blue-text">{{analysisFilterFundamental.priceToEarningGrowth.operator}} than {{analysisFilterFundamental.priceToEarningGrowth.endDate}}</span>th
+        </span>
+        percentile among
+        <span class="blue-text">{{analysisFilterFundamental.priceToEarningGrowth.indexValue}}</span>
+        stocks with
+        <span class="blue-text">{{analysisFilterFundamental.priceToEarningGrowth.value}}</span>
+        earning.
+    </div>
+</div>
+<!-- Price to Sales Growth -->
+<div *ngIf="item === 'PriceToSalesGrowth'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">PSG Rank</h3>
+        <button (click)="hideFundamentalPriceToSalesGrowthOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <label>Rank</label>
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setFundamentalPriceToSalesGrowthOperator()"
+            [(ngModel)]="analysisFilterFundamental.priceToSalesGrowth.operator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="between">between</option>
+                <option value="higher">higher</option>
+                <option value="lower">lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <div *ngIf="analysisFilterFundamental.priceToSalesGrowth.operator === 'between'" class="d-flex">
+                <select class="form-select selectPrimary"
+                (change)="setFundamentalPriceToSalesGrowthPeriod()"
+                [(ngModel)]="analysisFilterFundamental.priceToSalesGrowth.startDate"
+                [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let startDate of StartDateList" [ngValue]="startDate">
+                    {{ startDate }}
+                </option>
+                </select>
+                <span style="font-size: 13px; margin-top: 20px; margin-left: 4px;">th</span>
+                <span style="line-height: 38px;">-  </span>
+            </div>
+
+            <select class="form-select selectPrimary"
+            (change)="setFundamentalPriceToSalesGrowthPeriod()"
+            [(ngModel)]="analysisFilterFundamental.priceToSalesGrowth.endDate"
+            [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let endDate of EndDateList" [ngValue]="endDate">
+                {{ endDate }}
+                </option>
+            </select>
+            <span style="font-size: 13px; margin-top: 20px;">th</span>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <label>Index</label>
+            <div class="d-flex gap-4">
+            <select class="form-select selectPrimary"
+            (change)="setFundamentalPriceToSalesGrowthIndex()"
+            [(ngModel)]="analysisFilterFundamental.priceToSalesGrowth.indexValue"
+            [ngModelOptions]="{standalone: true}">
+                <option *ngFor="let indexValue of IndexList" [ngValue]="indexValue.value">
+                {{ indexValue.name }}
+                </option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <label>Value</label>
+            <div class="d-flex gap-4">
+            <select class="form-select selectPrimary"
+            (change)="setFundamentalPriceToSalesGrowthValue()"
+            [(ngModel)]="analysisFilterFundamental.priceToSalesGrowth.value"
+            [ngModelOptions]="{standalone: true}">
+                <option value="positive">positive</option>
+                <option value="negative">negative</option>
+            </select>
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: PSG rank that 
+        <span *ngIf="analysisFilterFundamental.priceToSalesGrowth.operator === 'between'">
+        ranges <span class="blue-text">{{analysisFilterFundamental.priceToSalesGrowth.operator}} {{analysisFilterFundamental.priceToSalesGrowth.startDate}}</span>th 
+        to <span class="blue-text">{{analysisFilterFundamental.priceToSalesGrowth.endDate}}</span>th
+        </span>
+        <span *ngIf="analysisFilterFundamental.priceToSalesGrowth.operator !== 'between'">
+        is <span class="blue-text">{{analysisFilterFundamental.priceToSalesGrowth.operator}} than {{analysisFilterFundamental.priceToSalesGrowth.endDate}}</span>th
+        </span>
+        percentile among
+        <span class="blue-text">{{analysisFilterFundamental.priceToSalesGrowth.indexValue}}</span>
+        stocks with
+        <span class="blue-text">{{analysisFilterFundamental.priceToSalesGrowth.value}}</span>
+        earning.
+    </div>
+</div>
+<!-- ZScore Rank -->
+<div *ngIf="item === 'ZScore'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">ZScore Rank</h3>
+        <button (click)="hideFundamentalZScoreOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <label>Rank</label>
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setFundamentalZScoreOperator()"
+            [(ngModel)]="analysisFilterFundamental.zScore.operator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="between">between</option>
+                <option value="higher">higher</option>
+                <option value="lower">lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <div *ngIf="analysisFilterFundamental.zScore.operator === 'between'" class="d-flex">
+                <select class="form-select selectPrimary"
+                (change)="setFundamentalZScoreStartDate()"
+                [(ngModel)]="analysisFilterFundamental.zScore.startDate"
+                [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let startDate of StartDateList" [ngValue]="startDate">
+                    {{ startDate }}
+                </option>
+                </select>
+                <span style="font-size: 13px; margin-top: 20px; margin-left: 4px;">th</span>
+                <span style="line-height: 38px;">-  </span>
+            </div>
+
+            <select class="form-select selectPrimary"
+            (change)="setFundamentalZScoreEndDate()"
+            [(ngModel)]="analysisFilterFundamental.zScore.endDate"
+            [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let endDate of EndDateList" [ngValue]="endDate">
+                {{ endDate }}
+                </option>
+            </select>
+            <span style="font-size: 13px; margin-top: 20px; margin-left: 4px;">th</span>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <label>Index</label>
+            <div class="d-flex gap-4">
+            <select class="form-select selectPrimary"
+            (change)="setFundamentalZScoreIndex()"
+            [(ngModel)]="analysisFilterFundamental.zScore.indexValue"
+            [ngModelOptions]="{standalone: true}">
+                <option *ngFor="let indexValue of IndexList" [ngValue]="indexValue.value">
+                {{ indexValue.name }}
+                </option>
+            </select>
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: ZScore rank that 
+        <span *ngIf="analysisFilterFundamental.zScore.operator === 'between'">
+        ranges <span class="blue-text">{{analysisFilterFundamental.zScore.operator}} {{analysisFilterFundamental.zScore.startDate}}</span>th 
+        to <span class="blue-text">{{analysisFilterFundamental.zScore.endDate}}</span>th
+        </span>
+        <span *ngIf="analysisFilterFundamental.zScore.operator !== 'between'">
+        is <span class="blue-text">{{analysisFilterFundamental.zScore.operator}} than {{analysisFilterFundamental.zScore.endDate}}</span>th
+        </span>
+        percentile among
+        <span class="blue-text">{{analysisFilterFundamental.zScore.indexValue}}</span>
+        stocks.
+    </div>
+</div>
+<!-- Analyst Rating -->
+<div *ngIf="item === 'AnalystRating'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">Analyst Rating</h3>
+        <button (click)="hideFundamentalAnalystRatingOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <label>Analyst Rating</label>
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setFundamentalAnalystRatingOperator()"
+            [(ngModel)]="analysisFilterFundamental.analystRating.operator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="between">between</option>
+                <option value="higher">higher</option>
+                <option value="lower">lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <div *ngIf="analysisFilterFundamental.analystRating.operator === 'between'" class="d-flex">
+                <select class="form-select selectPrimary"
+                (change)="setFundamentalAnalystRatingPeriod()"
+                [(ngModel)]="analysisFilterFundamental.analystRating.startDate"
+                [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option value="1">1</option>
+                </select>
+                <span style="font-size: 13px; margin-top: 20px; margin-left: 4px;">th</span>
+                <span style="line-height: 38px;">-  </span>
+            </div>
+
+            <select class="form-select selectPrimary"
+            (change)="setFundamentalAnalystRatingPeriod()"
+            [(ngModel)]="analysisFilterFundamental.analystRating.endDate"
+            [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <span style="font-size: 13px; margin-top: 20px;">th</span>
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: Analyst Rating that 
+        <span *ngIf="analysisFilterFundamental.analystRating.operator === 'between'">
+        ranges <span class="blue-text">{{analysisFilterFundamental.analystRating.operator}} {{analysisFilterFundamental.analystRating.startDate}}</span> 
+        to <span class="blue-text">{{analysisFilterFundamental.analystRating.endDate}}</span>
+        </span>
+        <span *ngIf="analysisFilterFundamental.analystRating.operator !== 'between'">
+        is <span class="blue-text">{{analysisFilterFundamental.analystRating.operator}} than {{analysisFilterFundamental.analystRating.endDate}}</span>
+        </span>.
+    </div>
+</div>
+<!-- Fundamental Filter End-->
+
+<!-- Event Filter Start-->
+<!-- Analyst Update -->
+<div *ngIf="item === 'AnalystUpdate'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">Analyst Update</h3>
+        <button (click)="hideEventAnalystUpdateOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <label>Analyst Rating</label>
+            <select class="form-select selectPrimary"
+            (change)="setEventAnalystUpdateStockRating()"
+            [(ngModel)]="analysisFilterEvent.analystUpdate.stockRating"
+            [ngModelOptions]="{standalone: true}">
+                <option value="Upgrade">Upgrade</option>
+                <option value="Downgrade">Downgrade</option>
+            </select>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: Stock rating <span class="blue-text">{{analysisFilterEvent.analystUpdate.stockRating}}</span> by Analysts.
+    </div>
+</div>
+    <!-- Earning Event -->
+<div *ngIf="item === 'EarningEvent'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">Earning Event</h3>
+        <button (click)="hideEventEarningEventOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control selectPrimaryMain">
+            <label>Earning Release</label>
+            <div class="d-flex gap-4">
+            <select class="form-select selectPrimary"
+            (change)="setEventEarningEventEarningRelease()"
+            [(ngModel)]="analysisFilterEvent.earningEvent.earningRelease"
+            [ngModelOptions]="{standalone: true}">
+                <option value="Longer">Longer</option>
+                <option value="Shorter">Shorter</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <span style="line-height: 38px; font-size: 14px;">Period</span>
+            <input type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterEvent.earningEvent.period"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setEventEarningPeriod()"
+            >  
+            <span style="line-height: 38px; font-size: 14px;">Days</span>  
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: <span class="blue-text">{{analysisFilterEvent.earningEvent.earningRelease}}</span> than <span class="blue-text">{{analysisFilterEvent.earningEvent.period}}</span> days from earning release.
+    </div>
+</div>
+<!-- News -->
+<div *ngIf="item === 'News'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">News</h3>
+        <button (click)="hideEventNewsOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <label>Sentiment</label>
+            <select class="form-select selectPrimary"
+            (change)="setEventNewsSentiment()"
+            [(ngModel)]="analysisFilterEvent.news.sentiment"
+            [ngModelOptions]="{standalone: true}">
+                <option value="positive">Positive</option>
+                <option value="negative">Negative</option>
+                <option value="neutral">Neutral</option>
+            </select>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: Stocks with <span class="blue-text">{{analysisFilterEvent.news.sentiment}}</span> headlines.
+    </div>
+</div>
+<!-- Volume Breakout -->
+<div *ngIf="item === 'VolumeBreakout'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">Volume Breakout</h3>
+        <button (click)="hideEventVolumeBreakoutOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4" style="justify-content: space-between;">
+            <div>
+                <span style="line-height: 38px; font-size: 14px;">Multiplier</span>
+                <div class="tooltip">
+                <img src="//am708403.blob.core.windows.net/images/optionpi/img/Info.png" style="width: 20px; height: 20px; margin-left: 10px; cursor: pointer;">
+                <span class="tooltip-text">Minimum value is 1.0</span>
+                </div>
+            </div>
+            <input type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterEvent.volumeBreakout.multiplier"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setEventVolumeBreakoutMultiplier()"
+            > 
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4" style="justify-content: space-between;">
+            <span style="line-height: 38px; font-size: 14px;">Period(Days)</span>
+            <input type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterEvent.volumeBreakout.period"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setEventVolumeBreakoutPeriod()"
+            >    
+            </div>
+        </div>
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: A surge of more than <span class="blue-text">{{analysisFilterEvent.volumeBreakout.multiplier}}</span> times higher than the highest of <span class="blue-text">{{analysisFilterEvent.volumeBreakout.period}}</span> days Volume.
+    </div>
+</div>
+<!-- PutCall Ratio Breakout -->
+<div *ngIf="item === 'PutCallRatioBreakout'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">PutCall Ratio Breakout</h3>
+        <button (click)="hideEventPutCallRatioBreakoutOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4" style="justify-content: space-between;">
+            <div>
+                <span style="line-height: 38px; font-size: 14px;">Multiplier</span>
+                <div class="tooltip">
+                <img src="//am708403.blob.core.windows.net/images/optionpi/img/Info.png" style="width: 20px; height: 20px; margin-left: 10px; cursor: pointer;">
+                <span class="tooltip-text">Minimum value is 1.0</span>
+                </div>
+            </div>
+            <input type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterEvent.putCallRatioBreakout.multiplier"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setEventPutCallRatioBreakoutMultiplier()"
+            > 
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4" style="justify-content: space-between;">
+            <span style="line-height: 38px; font-size: 14px;">Period(Days)</span>
+            <input type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterEvent.putCallRatioBreakout.period"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setEventPutCallRatioBreakoutPeriod()"
+            >    
+            </div>
+        </div>
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: A surge of more than <span class="blue-text">{{analysisFilterEvent.putCallRatioBreakout.multiplier}}</span> times higher than the highest of <span class="blue-text">{{analysisFilterEvent.putCallRatioBreakout.period}}</span> days PutCall Ratio.
+    </div>
+</div>
+<!-- Event Filter End-->
+
+<!-- Technical Filter Start-->
+<!-- MA Analysis -->
+<div *ngIf="item ==='MaAnalysis'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">MA Analysis</h3>
+        <button (click)="hideTechnicalMaAnalysisOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control selectPrimaryMain">
+            <label>Analyse</label>
+            <div class="d-flex gap-4">
+            <select class="form-select selectPrimary"
+            (change)="setTechnicalMaAnalysisAnalyse()"
+            [(ngModel)]="analysisFilterTechnical.maAnalysis.analyse"
+            [ngModelOptions]="{standalone: true}">
+                <option value="price">Price</option>
+                <option value="volume">Volume</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4" style="justify-content: space-between;">
+            <span style="line-height: 38px; font-size: 14px;">Moving Average 1</span>
+            <input type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterTechnical.maAnalysis.shorterPeriod"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setTechnicalMaAnalysisShorterPeriod()"
+            > 
+            </div>
+        </div>
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setTechnicalMaAnalysisOperator()"
+            [(ngModel)]="analysisFilterTechnical.maAnalysis.stockPriceOperator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="higher">Higher</option>
+                <option value="lower">Lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4" style="justify-content: space-between;">
+            <span style="line-height: 38px; font-size: 14px;">Moving Average 2</span>
+            <input type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterTechnical.maAnalysis.longerPeriod"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setTechnicalMaAnalysisLongerPeriod()"
+            >    
+            </div>
+        </div>
+
+        <div class="d-flex" style="border: 1px solid black;">
+            <div style="background-color: #f0c74d; width: 30px;" >
+            </div>
+            <div style="padding: 10px 14px;">
+            <div class="form-control w-100 selectPrimaryMain">
+                <div class="d-flex gap-4" style="margin-bottom: 15px;">
+                <span style="font-size: 14px; line-height: 38px;">By</span> 
+                <select class="form-select-main selectPrimary"
+                (change)="setTechnicalMaAnalysisRangeOperator()"
+                [(ngModel)]="analysisFilterTechnical.maAnalysis.rangeOperator"
+                [ngModelOptions]="{standalone: true}" style="width: 150px;">
+                    <option value="between">between</option>
+                    <option value="less than">less than</option>
+                    <option value="more than">more than</option>
+                </select>
+                </div>
+            </div>
+            <div class="form-control selectPrimaryMain">
+                <div class="d-flex gap-4">
+                <div *ngIf="analysisFilterTechnical.maAnalysis.rangeOperator === 'between'" class="d-flex" style="justify-content: center;">
+                    <select class="form-select selectPrimary"
+                    (change)="setTechnicalMaAnalysisStartRange()"
+                    [(ngModel)]="analysisFilterTechnical.maAnalysis.startRange"
+                    [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                    <option *ngFor="let startRange of StartDateList" [ngValue]="startRange">
+                        {{ startRange }}
+                    </option>
+                    </select>
+                    <span style="font-size: 13px; margin-top: 20px; margin-left: 4px;">%</span>
+                    <span style="line-height: 38px;">-  </span>
+                </div>
+
+                <select class="form-select selectPrimary"
+                (change)="setTechnicalMaAnalysisEndRange()"
+                [(ngModel)]="analysisFilterTechnical.maAnalysis.endRange"
+                [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                    <option *ngFor="let endRange of EndDateList" [ngValue]="endRange">
+                    {{ endRange }}
+                    </option>
+                </select>
+                <span style="font-size: 13px; margin-top: 20px;">%</span>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <span style="line-height: 38px; font-size: 14px;">As of</span>
+            <input type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterTechnical.maAnalysis.days"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setTechnicalMaAnalysisDays()"
+            > 
+            <span style="line-height: 38px; font-size: 14px;">Days ago</span>
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: Stock <span class="blue-text">{{analysisFilterTechnical.maAnalysis.analyse}}</span> with MA <span class="blue-text">{{analysisFilterTechnical.maAnalysis.shorterPeriod}}</span> days 
+        <span class="blue-text">{{analysisFilterTechnical.maAnalysis.stockPriceOperator}}</span> than MA <span class="blue-text">{{analysisFilterTechnical.maAnalysis.longerPeriod}}</span>
+        <span *ngIf="analysisFilterTechnical.maAnalysis.rangeOperator === 'between'">
+        , AND ranges <span class="blue-text">{{analysisFilterTechnical.maAnalysis.rangeOperator}} {{analysisFilterTechnical.maAnalysis.startRange}}</span>% and
+        </span>
+        <span *ngIf="analysisFilterTechnical.maAnalysis.rangeOperator !== 'between'">
+        , AND is <span class="blue-text">{{analysisFilterTechnical.maAnalysis.rangeOperator}}</span>
+        </span>
+        <span class="blue-text"> {{analysisFilterTechnical.maAnalysis.endRange}}</span>%, as of <span class="blue-text">{{analysisFilterTechnical.maAnalysis.days}}</span> days ago.
+    </div>
+</div>
+<!-- Momentum Rank -->
+<div *ngIf="item === 'Momentum'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">Momentum Rank</h3>
+        <button (click)="hideTechnicalMomentumOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <label>Rank</label>
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setTechnicalMomentumOperator()"
+            [(ngModel)]="analysisFilterTechnical.momentum.operator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="between">Between</option>
+                <option value="higher">Higher</option>
+                <option value="lower">Lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <div *ngIf="analysisFilterTechnical.momentum.operator === 'between'" class="d-flex">
+                <select class="form-select selectPrimary"
+                (change)="setTechnicalMomentumStartDate()"
+                [(ngModel)]="analysisFilterTechnical.momentum.startValue"
+                [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let startValue of StartDateList" [ngValue]="startValue">
+                    {{ startValue }}
+                </option>
+                </select>
+                <span style="font-size: 13px; margin-top: 20px; margin-left: 4px;">th</span>
+                <span style="line-height: 38px;">-  </span>
+            </div>
+
+            <select class="form-select selectPrimary"
+            (change)="setTechnicalMomentumEndDate()"
+            [(ngModel)]="analysisFilterTechnical.momentum.endValue"
+            [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let endValue of StartDateList" [ngValue]="endValue">
+                {{ endValue }}
+                </option>
+            </select>
+            <span style="font-size: 13px; margin-top: 20px;">th</span>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4" style="justify-content: space-between;">
+            <span style="line-height: 38px; font-size: 14px;">Period (Days)</span>
+            <input type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterTechnical.momentum.days"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setTechnicalMomentumDays()"
+            > 
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: <span class="blue-text">{{analysisFilterTechnical.momentum.days}}</span> day(s) Momentum rank that
+        <span *ngIf="analysisFilterTechnical.momentum.operator === 'between'">
+        range <span class="blue-text">{{analysisFilterTechnical.momentum.operator}} {{analysisFilterTechnical.momentum.startValue}}</span>th and 
+        </span>
+        <span *ngIf="analysisFilterTechnical.momentum.operator !== 'between'">
+        is/are <span class="blue-text">{{analysisFilterTechnical.momentum.operator}}</span> than 
+        </span>
+        <span class="blue-text">{{analysisFilterTechnical.momentum.endValue}}</span> percentile among S&P 500 stocks.
+    </div>
+</div>
+<!-- Relative Strength to Benchmark -->
+<div *ngIf="item === 'RelativeStrengthToBenchmark'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">Relative Strength to Benchmark</h3>
+        <button (click)="hideTechnicalRelativeStrengthToBenchmarkOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <label>Price Strength</label>
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setTechnicalRelativeStrengthToBenchmarkPriceStrengthOperator()"
+            [(ngModel)]="analysisFilterTechnical.relativeStrengthToBenchmark.priceStrengthOperator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="higher">Higher</option>
+                <option value="lower">Lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <label>Benchmark</label>
+            <div class="d-flex gap-4">
+            <select class="form-select selectPrimary"
+            (change)="setTechnicalRelativeStrengthToBenchmarkAnalyse()"
+            [(ngModel)]="analysisFilterTechnical.relativeStrengthToBenchmark.benchmark"
+            [ngModelOptions]="{standalone: true}">
+                <option value="S&P 500">S&P 500</option>
+                <option value="USO">USO</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4" style="justify-content: space-between;">
+            <span style="line-height: 38px; font-size: 14px;">Period (Days)</span>
+            <input type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterTechnical.relativeStrengthToBenchmark.period"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setTechnicalRelativeStrengthToBenchmarkPeriod()"
+            > 
+            </div>
+        </div>
+
+        <div class="d-flex" style="border: 1px solid black;">
+            <div style="background-color: #f0c74d; width: 30px;" >
+            </div>
+            <div style="padding: 10px 14px;">
+            <div class="form-control w-100 selectPrimaryMain">
+                <div class="d-flex gap-4" style="margin-bottom: 15px;">
+                <span style="font-size: 14px; line-height: 38px;">By</span> 
+                <select class="form-select-main selectPrimary"
+                (change)="setTechnicalRelativeStrengthToBenchmarkRangeOperator()"
+                [(ngModel)]="analysisFilterTechnical.relativeStrengthToBenchmark.rangeOperator"
+                [ngModelOptions]="{standalone: true}" style="width: 150px;">
+                    <option value="between">between</option>
+                    <option value="less than">less than</option>
+                    <option value="more than">more than</option>
+                </select>
+                </div>
+            </div>
+            <div class="form-control selectPrimaryMain">
+                <div class="d-flex gap-4">
+                <div *ngIf="analysisFilterTechnical.relativeStrengthToBenchmark.rangeOperator === 'between'" class="d-flex" style="justify-content: center;">
+                    <select class="form-select selectPrimary"
+                    (change)="setTechnicalRelativeStrengthToBenchmarkStartRange()"
+                    [(ngModel)]="analysisFilterTechnical.relativeStrengthToBenchmark.startRange"
+                    [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                    <option *ngFor="let startRange of StartDateList" [ngValue]="startRange">
+                        {{ startRange }}
+                    </option>
+                    </select>
+                    <span style="font-size: 13px; margin-top: 20px; margin-left: 4px;">%</span>
+                    <span style="line-height: 38px;">-  </span>
+                </div>
+
+                <select class="form-select selectPrimary"
+                (change)="setTechnicalRelativeStrengthToBenchmarkEndRange()"
+                [(ngModel)]="analysisFilterTechnical.relativeStrengthToBenchmark.endRange"
+                [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                    <option *ngFor="let endRange of EndDateList" [ngValue]="endRange">
+                    {{ endRange }}
+                    </option>
+                </select>
+                <span style="font-size: 13px; margin-top: 20px;">%</span>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <span style="line-height: 38px; font-size: 14px;">As of</span>
+            <input type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterTechnical.relativeStrengthToBenchmark.days"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setTechnicalRelativeStrengthToBenchmarkDays()"
+            > 
+            <span style="line-height: 38px; font-size: 14px;">Days ago</span>
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: <span class="blue-text">{{analysisFilterTechnical.relativeStrengthToBenchmark.period}}</span> day(s) of a
+        <span class="blue-text">{{analysisFilterTechnical.relativeStrengthToBenchmark.priceStrengthOperator}}</span> Price Strength than
+        <span class="blue-text">{{analysisFilterTechnical.relativeStrengthToBenchmark.benchmark}}</span> banchmark, AND it/they 
+        <span class="blue-text">{{analysisFilterTechnical.relativeStrengthToBenchmark.stockPriceOperator}}</span> than MA <span class="blue-text">{{analysisFilterTechnical.relativeStrengthToBenchmark.longerPeriod}}</span>
+        <span *ngIf="analysisFilterTechnical.relativeStrengthToBenchmark.rangeOperator === 'between'">
+        ranges <span class="blue-text">{{analysisFilterTechnical.relativeStrengthToBenchmark.rangeOperator}} {{analysisFilterTechnical.relativeStrengthToBenchmark.startRange}}</span> and <span class="blue-text">{{analysisFilterTechnical.relativeStrengthToBenchmark.endRange}},</span>
+        </span>
+        <span *ngIf="analysisFilterTechnical.relativeStrengthToBenchmark.rangeOperator !== 'between'">
+        is/are <span class="blue-text">{{analysisFilterTechnical.relativeStrengthToBenchmark.rangeOperator}} {{analysisFilterTechnical.relativeStrengthToBenchmark.endRange}}, </span>
+        </span>
+        as of <span class="blue-text">{{analysisFilterTechnical.relativeStrengthToBenchmark.days}}</span> day(s) ago.
+    </div>
+</div>
+<!-- RSI -->
+<div *ngIf="item === 'RSI'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">RSI</h3>
+        <button (click)="hideTechnicalRSIOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4" style="justify-content: space-between;">
+            <span style="line-height: 38px; font-size: 14px;">Period (Days)</span>
+            <input type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterTechnical.RSI.period"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setTechnicalRSIPeriod()"
+            > 
+            </div>
+        </div>
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <label>Value</label>
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setTechnicalRSIOperator()"
+            [(ngModel)]="analysisFilterTechnical.RSI.operator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="between">Between</option>
+                <option value="higher">Higher</option>
+                <option value="lower">Lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <div *ngIf="analysisFilterTechnical.RSI.operator === 'between'" class="d-flex">
+                <select class="form-select selectPrimary"
+                (change)="setTechnicalStartValue()"
+                [(ngModel)]="analysisFilterTechnical.RSI.startValue"
+                [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let startValue of StartDateList" [ngValue]="startValue">
+                {{ startValue }}
+                </option>
+                </select>
+                <span style="line-height: 38px; margin-left: 4px;"> - </span>
+            </div>
+
+            <select class="form-select selectPrimary"
+            (change)="setTechnicalEndValue()"
+            [(ngModel)]="analysisFilterTechnical.RSI.endValue"
+            [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let endValue of EndDateList" [ngValue]="endValue">
+                {{ endValue }}
+                </option>
+            </select>
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: A <span class="blue-text">{{analysisFilterTechnical.RSI.period}}</span> day(s) RSI that 
+        <span *ngIf="analysisFilterTechnical.RSI.operator === 'between'">
+            ranges <span class="blue-text">{{analysisFilterTechnical.RSI.operator}} {{analysisFilterTechnical.RSI.startValue}}</span> and <span class="blue-text">{{analysisFilterTechnical.RSI.endValue}}</span>
+        </span>
+        <span *ngIf="analysisFilterTechnical.RSI.operator !== 'between'">
+            is/are <span class="blue-text">{{analysisFilterTechnical.RSI.operator}}</span> than <span class="blue-text">{{analysisFilterTechnical.RSI.endValue}}</span>
+        </span>
+    </div>
+</div>
+<!-- Distance to Bottom -->
+<div *ngIf="item === 'DistanceToBottomStock'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">Distance to Bottom</h3>
+        <button (click)="hideTechnicalDistanceToBottomStockOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <label>Position</label>
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setTechnicalDistanceToBottomStockPositionOperator()"
+            [(ngModel)]="analysisFilterTechnical.distanceToBottomStock.positionOperator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="higher">Higher</option>
+                <option value="lower">Lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4" style="justify-content: space-between;">
+            <span style="line-height: 38px; font-size: 14px;">Period (Days)</span>
+            <input type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterTechnical.distanceToBottomStock.period"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setTechnicalDistanceToBottomStockPeriod()"
+            > 
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div>
+            <span style="line-height: 38px; font-size: 14px; font-family: 'Inter-Medium', sans-serif;color: #5F6C85; margin-bottom: 10px ;">Bottom</span>
+            <div class="tooltip">
+                <img src="//am708403.blob.core.windows.net/images/optionpi/img/Info.png" style="width: 20px; height: 20px; margin-left: 10px; cursor: pointer;">
+                <span class="tooltip-text">We can add new definition here.</span>
+            </div>
+            </div>
+            <div class="d-flex gap-4">
+            <select class="form-select selectPrimary"
+            (change)="setTechnicalDistanceToBottomStockAnalyse()"
+            [(ngModel)]="analysisFilterTechnical.distanceToBottomStock.bottom"
+            [ngModelOptions]="{standalone: true}">
+                <option value="lowest">lowest</option>
+                <option value="through">through</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="d-flex" style="border: 1px solid black;">
+            <div style="background-color: #f0c74d; width: 30px;" >
+            </div>
+            <div style="padding: 10px 14px;">
+            <div class="form-control w-100 selectPrimaryMain">
+                <div class="d-flex gap-4" style="margin-bottom: 15px;">
+                <span style="font-size: 14px; line-height: 38px;">By</span> 
+                <select class="form-select-main selectPrimary"
+                (change)="setTechnicalDistanceToBottomStockRangeOperator()"
+                [(ngModel)]="analysisFilterTechnical.distanceToBottomStock.rangeOperator"
+                [ngModelOptions]="{standalone: true}" style="width: 150px;">
+                    <option value="between">between</option>
+                    <option value="lower than">lower than</option>
+                    <option value="more than">more than</option>
+                </select>
+                </div>
+            </div>
+            <div class="form-control selectPrimaryMain">
+                <div class="d-flex gap-40">
+                <div *ngIf="analysisFilterTechnical.distanceToBottomStock.rangeOperator === 'between'" class="d-flex" style="justify-content: center;">
+                    <select class="form-select selectPrimary"
+                    (change)="setTechnicalDistanceToBottomStockStartRange()"
+                    [(ngModel)]="analysisFilterTechnical.distanceToBottomStock.startRange"
+                    [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                    <option *ngFor="let startRange of StartDateList" [ngValue]="startRange">
+                        {{ startRange }}
+                    </option>
+                    </select>
+                    <span style="font-size: 13px; margin-top: 20px; margin-left: 4px;">%</span>
+                    <span style="line-height: 38px; margin-right: 4px;">-  </span>
+                </div>
+
+                <select class="form-select selectPrimary"
+                (change)="setTechnicalDistanceToBottomStockEndRange()"
+                [(ngModel)]="analysisFilterTechnical.distanceToBottomStock.endRange"
+                [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                    <option *ngFor="let endRange of EndDateList" [ngValue]="endRange">
+                    {{ endRange }}
+                    </option>
+                </select>
+                <span style="font-size: 13px; margin-top: 20px; margin-left: 4px;">%</span>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: Stock(s) with a<span class="blue-text"> {{analysisFilterTechnical.distanceToBottomStock.positionOperator}}</span> price than the
+        <span class="blue-text">{{analysisFilterTechnical.distanceToBottomStock.bottom}}</span> of
+        <span class="blue-text">{{analysisFilterTechnical.distanceToBottomStock.period}}</span> day(s) bottom, and 
+        <span *ngIf="analysisFilterTechnical.distanceToBottomStock.rangeOperator === 'between'">
+        ranges <span class="blue-text">{{analysisFilterTechnical.distanceToBottomStock.rangeOperator}} {{analysisFilterTechnical.distanceToBottomStock.startRange}}</span> and <span class="blue-text">{{analysisFilterTechnical.distanceToBottomStock.endRange}}.</span>
+        </span>
+        <span *ngIf="analysisFilterTechnical.distanceToBottomStock.rangeOperator !== 'between'">
+        is/are <span class="blue-text">{{analysisFilterTechnical.distanceToBottomStock.rangeOperator}} {{analysisFilterTechnical.distanceToBottomStock.endRange}}.</span>
+        </span>
+    </div>
+</div>
+<!-- Distance to Peak -->
+<div *ngIf="item === 'DistanceToPeak'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">Distance to Peak</h3>
+        <button (click)="hideTechnicalDistanceToPeakOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <label>Position</label>
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setTechnicalDistanceToPeakPositionOperator()"
+            [(ngModel)]="analysisFilterTechnical.distanceToPeak.positionOperator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="higher">Higher</option>
+                <option value="lower">Lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4" style="justify-content: space-between;">
+            <span style="line-height: 38px; font-size: 14px;">Period (Days)</span>
+            <input type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterTechnical.distanceToPeak.period"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setTechnicalDistanceToPeakPeriod()"
+            > 
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div>
+            <span style="line-height: 38px; font-size: 14px; font-family: 'Inter-Medium', sans-serif;color: #5F6C85; margin-bottom: 10px ;">Top</span>
+            <div class="tooltip">
+                <img src="//am708403.blob.core.windows.net/images/optionpi/img/Info.png" style="width: 20px; height: 20px; margin-left: 10px; cursor: pointer;">
+                <span class="tooltip-text">We can add new definition here.</span>
+            </div>
+            </div>
+            <div class="d-flex gap-4">
+            <select class="form-select selectPrimary"
+            (change)="setTechnicalDistanceToPeakAnalyse()"
+            [(ngModel)]="analysisFilterTechnical.distanceToPeak.bottom"
+            [ngModelOptions]="{standalone: true}">
+                <option value="highest">highest</option>
+                <option value="peak">peak</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="d-flex" style="border: 1px solid black;">
+            <div style="background-color: #f0c74d; width: 30px;" >
+            </div>
+            <div style="padding: 10px 14px;">
+            <div class="form-control w-100 selectPrimaryMain">
+                <div class="d-flex gap-4" style="margin-bottom: 15px;">
+                <span style="font-size: 14px; line-height: 38px;">By</span> 
+                <select class="form-select-main selectPrimary"
+                (change)="setTechnicalDistanceToPeakRangeOperator()"
+                [(ngModel)]="analysisFilterTechnical.distanceToPeak.rangeOperator"
+                [ngModelOptions]="{standalone: true}" style="width: 150px;">
+                    <option value="between">between</option>
+                    <option value="lower than">lower than</option>
+                    <option value="more than">more than</option>
+                </select>
+                </div>
+            </div>
+            <div class="form-control selectPrimaryMain">
+                <div class="d-flex gap-40">
+                <div *ngIf="analysisFilterTechnical.distanceToPeak.rangeOperator === 'between'" class="d-flex" style="justify-content: center;">
+                    <select class="form-select selectPrimary"
+                    (change)="setTechnicalDistanceToPeakStartRange()"
+                    [(ngModel)]="analysisFilterTechnical.distanceToPeak.startRange"
+                    [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                    <option *ngFor="let startRange of StartDateList" [ngValue]="startRange">
+                        {{ startRange }}
+                    </option>
+                    </select>
+                    <span style="font-size: 13px; margin-top: 20px; margin-left: 4px;">%</span>
+                    <span style="line-height: 38px; margin-right: 4px;">-  </span>
+                </div>
+
+                <select class="form-select selectPrimary"
+                (change)="setTechnicalDistanceToPeakEndRange()"
+                [(ngModel)]="analysisFilterTechnical.distanceToPeak.endRange"
+                [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                    <option *ngFor="let endRange of StartDateList" [ngValue]="endRange">
+                    {{ endRange }}
+                    </option>
+                </select>
+                <span style="font-size: 13px; margin-top: 20px; margin-left: 4px;">%</span>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: Stock(s) with a<span class="blue-text"> {{analysisFilterTechnical.distanceToPeak.positionOperator}}</span> price than the
+        <span class="blue-text">{{analysisFilterTechnical.distanceToPeak.bottom}}</span> of
+        <span class="blue-text">{{analysisFilterTechnical.distanceToPeak.period}}</span> day(s) top, and 
+        <span *ngIf="analysisFilterTechnical.distanceToPeak.rangeOperator === 'between'">
+        ranges <span class="blue-text">{{analysisFilterTechnical.distanceToPeak.rangeOperator}} {{analysisFilterTechnical.distanceToPeak.startRange}}</span> and <span class="blue-text">{{analysisFilterTechnical.distanceToPeak.endRange}}.</span>
+        </span>
+        <span *ngIf="analysisFilterTechnical.distanceToPeak.rangeOperator !== 'between'">
+        is/are <span class="blue-text">{{analysisFilterTechnical.distanceToPeak.rangeOperator}} {{analysisFilterTechnical.distanceToPeak.endRange}}.</span>
+        </span>
+    </div>
+</div>
+<!-- Technical Filter End-->
+
+<!-- Statistical Filter Start-->
+<!-- Correlation to Benchmark -->
+<div *ngIf="item === 'CorrelationToBenchmark'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">Correlation to Benchmark</h3>
+        <button (click)="hideStatisticalCorrelationToBenchmarkOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4" style="justify-content: space-between;">
+            <span style="line-height: 38px; font-size: 14px;">Period (Days)</span>
+            <input type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterStatistical.correlationToBenchmark.period"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setStatisticalCorrelationToBenchmarkPeriod()"
+            > 
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <label>Benchmark</label>
+            <div class="d-flex gap-4">
+            <select class="form-select selectPrimary"
+            (change)="setStatisticalCorrelationToBenchmarkAnalyse()"
+            [(ngModel)]="analysisFilterStatistical.correlationToBenchmark.benchmark"
+            [ngModelOptions]="{standalone: true}">
+                <option value="S&P 500">S&P 500</option>
+                <option value="USO">USO</option>
+            </select>
+            </div>
+        </div>
+
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <label>Correlation</label>
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setStatisticalCorrelationToBenchmarkOperator()"
+            [(ngModel)]="analysisFilterStatistical.correlationToBenchmark.correlationOperator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="between">between</option>
+                <option value="higher">higher</option>
+                <option value="lower">lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <div *ngIf="analysisFilterStatistical.correlationToBenchmark.correlationOperator === 'between'" class="d-flex" style="justify-content: center;">
+                <select class="form-select selectPrimary"
+                (change)="setStatisticalCorrelationToBenchmarkStartRange()"
+                [(ngModel)]="analysisFilterStatistical.correlationToBenchmark.startValue"
+                [ngModelOptions]="{standalone: true}" style="width: 70px;">
+                <option *ngFor="let startValue of DecimalList" [ngValue]="startValue">
+                    {{ startValue }}
+                </option>
+                </select>
+                <span style="line-height: 38px; margin-left: 4px;">-  </span>
+            </div>
+
+            <select class="form-select selectPrimary"
+            (change)="setStatisticalCorrelationToBenchmarkEndRange()"
+            [(ngModel)]="analysisFilterStatistical.correlationToBenchmark.endValue"
+            [ngModelOptions]="{standalone: true}" style="width: 70px;">
+                <option *ngFor="let endValue of DecimalList" [ngValue]="endValue">
+                {{ endValue }}
+                </option>
+            </select>
+            </div>
+        </div>
+        
+        <div class="form-control selectPrimaryMain">
+            <label>Value</label>
+            <div class="d-flex gap-4">
+            <select class="form-select selectPrimary"
+            (change)="setStatisticalCorrelationToBenchmarkValue()"
+            [(ngModel)]="analysisFilterStatistical.correlationToBenchmark.value"
+            [ngModelOptions]="{standalone: true}">
+                <option value="positive">positive</option>
+                <option value="negative">negative</option>
+            </select>
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: Stock(s) with a <span class="blue-text">{{analysisFilterStatistical.correlationToBenchmark.period}}</span> day(s)
+        <span class="blue-text">{{analysisFilterStatistical.correlationToBenchmark.value}}</span> correlation with 
+        <span class="blue-text">{{analysisFilterStatistical.correlationToBenchmark.benchmark}}</span> that
+        <span *ngIf="analysisFilterStatistical.correlationToBenchmark.correlationOperator === 'between'">
+        ranges <span class="blue-text">{{analysisFilterStatistical.correlationToBenchmark.correlationOperator}} {{analysisFilterStatistical.correlationToBenchmark.startValue}}</span> and <span class="blue-text">{{analysisFilterStatistical.correlationToBenchmark.endValue}}</span>
+        </span>
+        <span *ngIf="analysisFilterStatistical.correlationToBenchmark.correlationOperator !== 'between'">
+        is <span class="blue-text">{{analysisFilterStatistical.correlationToBenchmark.correlationOperator}}</span> than <span class="blue-text">{{analysisFilterStatistical.correlationToBenchmark.endValue}}</span>
+        </span>.
+    </div>
+</div>
+<!-- Beta -->
+<div *ngIf="item === 'Beta'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">Beta</h3>
+        <button (click)="hideStatisticalBetaOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4" style="justify-content: space-between;">
+            <span style="line-height: 38px; font-size: 14px;">Period (Days)</span>
+            <input type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterStatistical.beta.days"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setStatisticalBetaDays()"
+            > 
+            </div>
+        </div>
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <label>Beta</label>
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setStatisticalBetaOperator()"
+            [(ngModel)]="analysisFilterStatistical.beta.betaOperator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="between">Between</option>
+                <option value="higher">Higher</option>
+                <option value="lower">Lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <div *ngIf="analysisFilterStatistical.beta.betaOperator === 'between'" class="d-flex">
+                <select class="form-select selectPrimary"
+                (change)="setStatisticalBetaStartValue()"
+                [(ngModel)]="analysisFilterStatistical.beta.startValue"
+                [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let startValue of StepNumberList" [ngValue]="startValue">
+                    {{ startValue }}
+                </option>
+                </select>
+                <span style="line-height: 38px; margin-left: 4px;"> -  </span>
+            </div>
+
+            <select class="form-select selectPrimary"
+            (change)="setStatisticalBetaEndValue()"
+            [(ngModel)]="analysisFilterStatistical.beta.endValue"
+            [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let endValue of StepNumberList" [ngValue]="endValue">
+                {{ endValue }}
+                </option>
+            </select>
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: A <span class="blue-text">{{analysisFilterStatistical.beta.days}}</span> day(s) Beta that
+        <span *ngIf="analysisFilterStatistical.beta.betaOperator === 'between'">
+            ranges <span class="blue-text">{{analysisFilterStatistical.beta.betaOperator}} {{analysisFilterStatistical.beta.startValue}}</span> and <span class="blue-text">{{analysisFilterStatistical.beta.endValue}}</span>
+        </span>
+        <span *ngIf="analysisFilterStatistical.beta.betaOperator !== 'between'">
+            is <span class="blue-text">{{analysisFilterStatistical.beta.betaOperator}}</span> than <span class="blue-text">{{analysisFilterStatistical.beta.endValue}}</span>
+        </span>.
+    </div>
+</div>
+<!-- Sharpe Ratio -->
+<div *ngIf="item === 'SharpeRatio'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">Sharpe Ratio</h3>
+        <button (click)="hideStatisticalSharpeRatioOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4" style="justify-content: space-between;">
+            <span style="line-height: 38px; font-size: 14px;">Period (Days)</span>
+            <input type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterStatistical.sharpeRatio.days"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setStatisticalSharpeRatioDays()"
+            > 
+            </div>
+        </div>
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <label>Sharpe Ratio</label>
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setStatisticalSharpeRatioOperator()"
+            [(ngModel)]="analysisFilterStatistical.sharpeRatio.sharpeRatioOperator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="between">Between</option>
+                <option value="higher">Higher</option>
+                <option value="lower">Lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <div *ngIf="analysisFilterStatistical.sharpeRatio.sharpeRatioOperator === 'between'" class="d-flex">
+                <select class="form-select selectPrimary"
+                (change)="setStatisticalSharpeRatioStartDate()"
+                [(ngModel)]="analysisFilterStatistical.sharpeRatio.startValue"
+                [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let startValue of StepNumberList" [ngValue]="startValue">
+                    {{ startValue }}
+                </option>
+                </select>
+                <span style="line-height: 38px; margin-left: 4px;">-  </span>
+            </div>
+
+            <select class="form-select selectPrimary"
+            (change)="setStatisticalSharpeRatioEndDate()"
+            [(ngModel)]="analysisFilterStatistical.sharpeRatio.endValue"
+            [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let endValue of StepNumberList" [ngValue]="endValue">
+                {{ endValue }}
+                </option>
+            </select>
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: A <span class="blue-text">{{analysisFilterStatistical.sharpeRatio.days}}</span> day(s) Sharpe Ratio that
+        <span *ngIf="analysisFilterStatistical.sharpeRatio.sharpeRatioOperator === 'between'">
+            ranges <span class="blue-text">{{analysisFilterStatistical.sharpeRatio.sharpeRatioOperator}} {{analysisFilterStatistical.sharpeRatio.startValue}}</span> and <span class="blue-text">{{analysisFilterStatistical.sharpeRatio.endValue}}</span>
+        </span>
+        <span *ngIf="analysisFilterStatistical.sharpeRatio.sharpeRatioOperator !== 'between'">
+            is <span class="blue-text">{{analysisFilterStatistical.sharpeRatio.sharpeRatioOperator}}</span> than <span class="blue-text">{{analysisFilterStatistical.sharpeRatio.endValue}}</span>
+        </span>.
+    </div>
+</div>
+<!-- Sortino Ratio -->
+<div *ngIf="item === 'SortinoRatio'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">Sortino Ratio</h3>
+        <button (click)="hideStatisticalSortinoRatioOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4" style="justify-content: space-between;">
+            <span style="line-height: 38px; font-size: 14px;">Period (Days)</span>
+            <input type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterStatistical.sortinoRatio.days"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setStatisticalSortinoRatioDays()"
+            > 
+            </div>
+        </div>
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <label>Sortino Ratio</label>
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setStatisticalSortinoRatioOperator()"
+            [(ngModel)]="analysisFilterStatistical.sortinoRatio.sortinoRatioOperator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="between">Between</option>
+                <option value="higher">Higher</option>
+                <option value="lower">Lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <div *ngIf="analysisFilterStatistical.sortinoRatio.sortinoRatioOperator === 'between'" class="d-flex">
+                <select class="form-select selectPrimary"
+                (change)="setStatisticalSortinoRatioStartDate()"
+                [(ngModel)]="analysisFilterStatistical.sortinoRatio.startValue"
+                [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let startValue of StepNumberList" [ngValue]="startValue">
+                    {{ startValue }}
+                </option>
+                </select>
+                <span style="line-height: 38px; margin-left: 4px;">-  </span>
+            </div>
+
+            <select class="form-select selectPrimary"
+            (change)="setStatisticalSortinoRatioEndDate()"
+            [(ngModel)]="analysisFilterStatistical.sortinoRatio.endValue"
+            [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let endValue of StepNumberList" [ngValue]="endValue">
+                {{ endValue }}
+                </option>
+            </select>
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: A <span class="blue-text">{{analysisFilterStatistical.sortinoRatio.days}}</span> day(s) Sortino Ratio that
+        <span *ngIf="analysisFilterStatistical.sortinoRatio.sortinoRatioOperator === 'between'">
+            ranges <span class="blue-text">{{analysisFilterStatistical.sortinoRatio.sortinoRatioOperator}} {{analysisFilterStatistical.sortinoRatio.startValue}}</span> and <span class="blue-text">{{analysisFilterStatistical.sortinoRatio.endValue}}</span>
+        </span>
+        <span *ngIf="analysisFilterStatistical.sortinoRatio.sortinoRatioOperator !== 'between'">
+            is <span class="blue-text">{{analysisFilterStatistical.sortinoRatio.sortinoRatioOperator}}</span> than <span class="blue-text">{{analysisFilterStatistical.sortinoRatio.endValue}}</span>
+        </span>.
+    </div>
+</div>
+<!-- Trend Analysis -->
+<div *ngIf="item === 'TrendAnalysis'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">Trend Analysis</h3>
+        <button (click)="hideStatisticalTrendAnalysisOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <label>Strength</label>
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setStatisticalTrendAnalysisStrengthOperator()"
+            [(ngModel)]="analysisFilterStatistical.trendAnalysis.strengthOperator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="between">Between</option>
+                <option value="higher">Higher</option>
+                <option value="lower">Lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <div *ngIf="analysisFilterStatistical.trendAnalysis.strengthOperator === 'between'" class="d-flex">
+                <select class="form-select selectPrimary"
+                (change)="setStatisticalTrendAnalysisStartStrength()"
+                [(ngModel)]="analysisFilterStatistical.trendAnalysis.startStrength"
+                [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let startValue of StepNumberList" [ngValue]="startValue">
+                    {{ startValue }}
+                </option>
+                </select>
+                <span style="line-height: 38px; margin-left: 4px;">-  </span>
+            </div>
+
+            <select class="form-select selectPrimary"
+            (change)="setStatisticalTrendAnalysisEndStrength()"
+            [(ngModel)]="analysisFilterStatistical.trendAnalysis.endStrength"
+            [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let endValue of StepNumberList" [ngValue]="endValue">
+                {{ endValue }}
+                </option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <label>Error</label>
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setStatisticalTrendAnalysisErrorOperator()"
+            [(ngModel)]="analysisFilterStatistical.trendAnalysis.errorOperator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="between">Between</option>
+                <option value="higher">Higher</option>
+                <option value="lower">Lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <div *ngIf="analysisFilterStatistical.trendAnalysis.errorOperator === 'between'" class="d-flex">
+                <select class="form-select selectPrimary"
+                (change)="setStatisticalTrendAnalysisStarterror()"
+                [(ngModel)]="analysisFilterStatistical.trendAnalysis.startError"
+                [ngModelOptions]="{standalone: true}" style="width: 80px;">
+                <option *ngFor="let startValue of ErrorRangeList" [ngValue]="startValue">
+                    {{ startValue }}
+                </option>
+                </select>
+                <span style="line-height: 38px; margin-left: 4px;">-  </span>
+            </div>
+
+            <select class="form-select selectPrimary"
+            (change)="setStatisticalTrendAnalysisEnderror()"
+            [(ngModel)]="analysisFilterStatistical.trendAnalysis.endError"
+            [ngModelOptions]="{standalone: true}" style="width: 80px;">
+                <option *ngFor="let endValue of ErrorRangeList" [ngValue]="endValue">
+                {{ endValue }}
+                </option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4" style="justify-content: space-between;">
+            <span style="line-height: 38px; font-size: 14px;">Period (Days)</span>
+            <input type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterStatistical.trendAnalysis.days"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setStatisticalTrendAnalysisDays()"
+            > 
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: A <span class="blue-text">{{analysisFilterStatistical.trendAnalysis.days}}</span> day(s) trend with a strenth that
+        <span *ngIf="analysisFilterStatistical.trendAnalysis.strengthOperator === 'between'">
+            ranges <span class="blue-text">{{analysisFilterStatistical.trendAnalysis.strengthOperator}} {{analysisFilterStatistical.trendAnalysis.startStrength}}</span> and <span class="blue-text">{{analysisFilterStatistical.trendAnalysis.endStrength}},</span>
+        </span>
+        <span *ngIf="analysisFilterStatistical.trendAnalysis.strengthOperator !== 'between'">
+            is/are <span class="blue-text">{{analysisFilterStatistical.trendAnalysis.strengthOperator}}</span> than <span class="blue-text">{{analysisFilterStatistical.trendAnalysis.endStrength}},</span>
+        </span> AND an error that
+        <span *ngIf="analysisFilterStatistical.trendAnalysis.errorOperator === 'between'">
+            ranges <span class="blue-text">{{analysisFilterStatistical.trendAnalysis.errorOperator}} {{analysisFilterStatistical.trendAnalysis.startError}}</span> and <span class="blue-text">{{analysisFilterStatistical.trendAnalysis.endError}}.</span>
+        </span>
+        <span *ngIf="analysisFilterStatistical.trendAnalysis.errorOperator !== 'between'">
+            is <span class="blue-text">{{analysisFilterStatistical.trendAnalysis.errorOperator}}</span> than <span class="blue-text">{{analysisFilterStatistical.trendAnalysis.endError}}.</span>
+        </span>
+    </div>
+</div>
+<!-- Statistical Filter End-->
+
+<!-- Volatility Start-->
+<!-- Implied Volatility -->
+<div *ngIf="item === 'ImpliedVolatility'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">Implied Volatility</h3>
+        <button (click)="hideVolatilityImpliedOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <label>Volatility</label>
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setVolatilityImpliedOperator()"
+            [(ngModel)]="analysisFilterVolatility.implied.impliedOperator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="between">Between</option>
+                <option value="higher">Higher</option>
+                <option value="lower">Lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <div *ngIf="analysisFilterVolatility.implied.impliedOperator === 'between'" class="d-flex">
+                <select class="form-select selectPrimary"
+                (change)="setVolatilityImpliedStartValue()"
+                [(ngModel)]="analysisFilterVolatility.implied.startValue"
+                [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let startValue of VolatilityList" [ngValue]="startValue">
+                    {{ startValue }}
+                </option>
+                </select>
+                <span style="font-size: 13px; margin-top: 20px; margin-left: 4px;">%</span>
+                <span style="line-height: 38px;">-  </span>
+            </div>
+
+            <select class="form-select selectPrimary"
+            (change)="setVolatilityImpliedEndValue()"
+            [(ngModel)]="analysisFilterVolatility.implied.endValue"
+            [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let endValue of VolatilityList" [ngValue]="endValue">
+                {{ endValue }}
+                </option>
+            </select>
+            <span style="font-size: 13px; margin-top: 20px;">%</span>
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: Implied Volatility that 
+        <span *ngIf="analysisFilterVolatility.implied.impliedOperator === 'between'">
+            ranges <span class="blue-text">{{analysisFilterVolatility.implied.impliedOperator}} {{analysisFilterVolatility.implied.startValue}}</span>% and <span class="blue-text">{{analysisFilterVolatility.implied.endValue}}</span>%.
+        </span>
+        <span *ngIf="analysisFilterVolatility.implied.impliedOperator !== 'between'">
+            is <span class="blue-text">{{analysisFilterVolatility.implied.impliedOperator}}</span> than <span class="blue-text">{{analysisFilterVolatility.implied.endValue}}</span>%.
+        </span>
+    </div>
+</div>
+<!-- Historical Volatility -->
+<div *ngIf="item === 'HistoricalVolatility'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">Historical Volatility</h3>
+        <button (click)="hideVolatilityHistoricalOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4" style="justify-content: space-between;">
+            <span style="line-height: 38px; font-size: 14px;">Period (Days)</span>
+            <input type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterVolatility.historical.period"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setVolatilityHistoricalDays()"
+            > 
+            </div>
+        </div>
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <label>Volatility</label>
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setVolatilityHistoricalOperator()"
+            [(ngModel)]="analysisFilterVolatility.historical.historicalOperator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="between">Between</option>
+                <option value="higher">Higher</option>
+                <option value="lower">Lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <div *ngIf="analysisFilterVolatility.historical.historicalOperator === 'between'" class="d-flex">
+                <select class="form-select selectPrimary"
+                (change)="setVolatilityHistoricalStartValue()"
+                [(ngModel)]="analysisFilterVolatility.historical.startValue"
+                [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let startValue of StepNumberList" [ngValue]="startValue">
+                    {{ startValue }}
+                </option>
+                </select>
+                <span style="font-size: 13px; margin-top: 20px; margin-left: 4px;">%</span>
+                <span style="line-height: 38px;">-  </span>
+            </div>
+
+            <select class="form-select selectPrimary"
+            (change)="setVolatilityHistoricalEndValue()"
+            [(ngModel)]="analysisFilterVolatility.historical.endValue"
+            [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let endValue of StepNumberList" [ngValue]="endValue">
+                {{ endValue }}
+                </option>
+            </select>
+            <span style="font-size: 13px; margin-top: 20px;">%</span>
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: A <span class="blue-text">{{analysisFilterVolatility.historical.period}}</span> day(s) Historical Volatility that 
+        <span *ngIf="analysisFilterVolatility.historical.historicalOperator === 'between'">
+            ranges <span class="blue-text">{{analysisFilterVolatility.historical.historicalOperator}} {{analysisFilterVolatility.historical.startValue}}</span>% and <span class="blue-text">{{analysisFilterVolatility.historical.endValue}}</span> percent.
+        </span>
+        <span *ngIf="analysisFilterVolatility.historical.historicalOperator !== 'between'">
+            is <span class="blue-text">{{analysisFilterVolatility.historical.historicalOperator}}</span> than <span class="blue-text">{{analysisFilterVolatility.historical.endValue}}</span> percent.
+        </span>
+    </div>
+</div>
+<!-- IV Perccentile start-->
+<div *ngIf="item === 'IVPercentile'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">IV Percentile</h3>
+        <button (click)="hideVolatilityIVPercentileOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <label>Implied Volatility</label>
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setVolatilityIVPercentileOperator()"
+            [(ngModel)]="analysisFilterVolatility.ivPercentile.operator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="between">Between</option>
+                <option value="higher">Higher</option>
+                <option value="lower">Lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <div *ngIf="analysisFilterVolatility.ivPercentile.operator === 'between'" class="d-flex">
+                <select class="form-select selectPrimary"
+                (change)="setVolatilityIVPercentileStartValue()"
+                [(ngModel)]="analysisFilterVolatility.ivPercentile.startValue"
+                [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let startValue of VolatilityList" [ngValue]="startValue">
+                    {{ startValue }}
+                </option>
+                </select>
+                <span style="font-size: 13px; margin-top: 20px; margin-left: 4px;">%</span>
+                <span style="line-height: 38px;">-  </span>
+            </div>
+
+            <select class="form-select selectPrimary"
+            (change)="setVolatilityIVPercentileEndValue()"
+            [(ngModel)]="analysisFilterVolatility.ivPercentile.endValue"
+            [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let endValue of VolatilityList" [ngValue]="endValue">
+                {{ endValue }}
+                </option>
+            </select>
+            <span style="font-size: 13px; margin-top: 20px;">%</span>
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: Implied Volatility that  
+        <span *ngIf="analysisFilterVolatility.ivPercentile.operator === 'between'">
+            ranges <span class="blue-text">{{analysisFilterVolatility.ivPercentile.operator}} {{analysisFilterVolatility.ivPercentile.startValue}}</span>% and <span class="blue-text">{{analysisFilterVolatility.ivPercentile.endValue}}</span>% percentile.
+        </span>
+        <span *ngIf="analysisFilterVolatility.ivPercentile.operator !== 'between'">
+            is <span class="blue-text">{{analysisFilterVolatility.ivPercentile.operator}}</span> than <span class="blue-text">{{analysisFilterVolatility.ivPercentile.endValue}}</span>% percentile.
+        </span>
+    </div>
+</div>
+<!-- IV Perccentile end-->
+<!-- HV Percentile -->
+<div *ngIf="item === 'HVPercentile'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">HV Percentile</h3>
+        <button (click)="hideVolatilityHVPercentileOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4" style="justify-content: space-between;">
+            <span style="line-height: 38px; font-size: 14px;">Period (Days)</span>
+            <input type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterVolatility.hvPercentile.period"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setVolatilityHVPercentileDays()"
+            > 
+            </div>
+        </div>
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setVolatilityHVPercentileOperator()"
+            [(ngModel)]="analysisFilterVolatility.hvPercentile.operator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="between">Between</option>
+                <option value="higher">Higher</option>
+                <option value="lower">Lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <div *ngIf="analysisFilterVolatility.hvPercentile.operator === 'between'" class="d-flex">
+                <select class="form-select selectPrimary"
+                (change)="setVolatilityHVPercentileStartValue()"
+                [(ngModel)]="analysisFilterVolatility.hvPercentile.startValue"
+                [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let startValue of VolatilityList" [ngValue]="startValue">
+                    {{ startValue }}
+                </option>
+                </select>
+                <span style="font-size: 13px; margin-top: 20px; margin-left: 4px;">%</span>
+                <span style="line-height: 38px;">-  </span>
+            </div>
+
+            <select class="form-select selectPrimary"
+            (change)="setVolatilityHVPercentileEndValue()"
+            [(ngModel)]="analysisFilterVolatility.hvPercentile.endValue"
+            [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let endValue of VolatilityList" [ngValue]="endValue">
+                {{ endValue }}
+                </option>
+            </select>
+            <span style="font-size: 13px; margin-top: 20px;">%</span>
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: A <span class="blue-text">{{analysisFilterVolatility.hvPercentile.period}}</span> day(s) Historical Volatility that 
+        <span *ngIf="analysisFilterVolatility.hvPercentile.operator === 'between'">
+            ranges <span class="blue-text">{{analysisFilterVolatility.hvPercentile.operator}} {{analysisFilterVolatility.hvPercentile.startValue}}</span>% and <span class="blue-text">{{analysisFilterVolatility.hvPercentile.endValue}}</span>% percentile.
+        </span>
+        <span *ngIf="analysisFilterVolatility.hvPercentile.operator !== 'between'">
+            is <span class="blue-text">{{analysisFilterVolatility.hvPercentile.operator}}</span> than <span class="blue-text">{{analysisFilterVolatility.hvPercentile.endValue}}</span>% percentile.
+        </span>
+    </div>
+</div>
+<!-- ATR Percent -->
+<div *ngIf="item === 'ATRPercent'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">ATR Percent</h3>
+        <button (click)="hideVolatilityATRPercentOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4" style="justify-content: space-between;">
+            <span style="line-height: 38px; font-size: 14px;">Period (Days)</span>
+            <input type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterVolatility.atrPercent.period"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setVolatilityATRPercentDays()"
+            > 
+            </div>
+        </div>
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setVolatilityATRPercentOperator()"
+            [(ngModel)]="analysisFilterVolatility.atrPercent.operator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="between">Between</option>
+                <option value="higher">Higher</option>
+                <option value="lower">Lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <div *ngIf="analysisFilterVolatility.atrPercent.operator === 'between'" class="d-flex">
+                <select class="form-select selectPrimary"
+                (change)="setVolatilityATRPercentStartValue()"
+                [(ngModel)]="analysisFilterVolatility.atrPercent.startValue"
+                [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let startValue of StepNumberList" [ngValue]="startValue">
+                    {{ startValue }}
+                </option>
+                </select>
+                <span style="font-size: 13px; margin-top: 20px; margin-left: 4px;">%</span>
+                <span style="line-height: 38px;">-  </span>
+            </div>
+
+            <select class="form-select selectPrimary"
+            (change)="setVolatilityATRPercentEndValue()"
+            [(ngModel)]="analysisFilterVolatility.atrPercent.endValue"
+            [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let endValue of StepNumberList" [ngValue]="endValue">
+                {{ endValue }}
+                </option>
+            </select>
+            <span style="font-size: 13px; margin-top: 20px;">%</span>
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: A <span class="blue-text">{{analysisFilterVolatility.atrPercent.period}}</span> day(s) ATR that 
+        <span *ngIf="analysisFilterVolatility.atrPercent.operator === 'between'">
+            ranges <span class="blue-text">{{analysisFilterVolatility.atrPercent.operator}} {{analysisFilterVolatility.atrPercent.startValue}}</span>% and <span class="blue-text">{{analysisFilterVolatility.atrPercent.endValue}}</span> percent.
+        </span>
+        <span *ngIf="analysisFilterVolatility.atrPercent.operator !== 'between'">
+            is <span class="blue-text">{{analysisFilterVolatility.atrPercent.operator}}</span> than <span class="blue-text">{{analysisFilterVolatility.atrPercent.endValue}}</span> percent.
+        </span>
+    </div>
+</div>
+<!-- IV Change -->
+<div *ngIf="item === 'IVChange'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">IV Change</h3>
+        <button (click)="hideVolatilityIVChangeOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4" style="justify-content: space-between;">
+            <span style="line-height: 38px; font-size: 14px;">Period (Days)</span>
+            <input type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterVolatility.ivChange.period"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setVolatilityIVChangeDays()"
+            > 
+            </div>
+        </div>
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setVolatilityIVChangeOperator()"
+            [(ngModel)]="analysisFilterVolatility.ivChange.operator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="between">Between</option>
+                <option value="higher">Higher</option>
+                <option value="lower">Lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <div *ngIf="analysisFilterVolatility.ivChange.operator === 'between'" class="d-flex">
+                <select class="form-select selectPrimary"
+                (change)="setVolatilityIVChangeStartValue()"
+                [(ngModel)]="analysisFilterVolatility.ivChange.startValue"
+                [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let startValue of StepNumberList" [ngValue]="startValue">
+                    {{ startValue }}
+                </option>
+                </select>
+                <span style="font-size: 13px; margin-top: 20px; margin-left: 4px;">%</span>
+                <span style="line-height: 38px;">-  </span>
+            </div>
+
+            <select class="form-select selectPrimary"
+            (change)="setVolatilityIVChangeEndValue()"
+            [(ngModel)]="analysisFilterVolatility.ivChange.endValue"
+            [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let endValue of StepNumberList" [ngValue]="endValue">
+                {{ endValue }}
+                </option>
+            </select>
+            <span style="font-size: 13px; margin-top: 20px;">%</span>
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: <span class="blue-text">{{analysisFilterVolatility.ivChange.period}}</span> day(s) Implied Volatility Change that 
+        <span *ngIf="analysisFilterVolatility.ivChange.operator === 'between'">
+            ranges <span class="blue-text">{{analysisFilterVolatility.ivChange.operator}} {{analysisFilterVolatility.ivChange.startValue}}</span> and <span class="blue-text">{{analysisFilterVolatility.ivChange.endValue}}</span>.
+        </span>
+        <span *ngIf="analysisFilterVolatility.ivChange.operator !== 'between'">
+            is <span class="blue-text">{{analysisFilterVolatility.ivChange.operator}}</span> than <span class="blue-text">{{analysisFilterVolatility.ivChange.endValue}}</span>.
+        </span>
+    </div>
+</div>
+<!-- HV Change -->
+<div *ngIf="item === 'HVChange'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">HV Change</h3>
+        <button (click)="hideVolatilityHVChangeOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4" style="justify-content: space-between;">
+            <span style="line-height: 38px; font-size: 14px;">Period (Days)</span>
+            <input type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterVolatility.hvChange.period"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setVolatilityHVChangeDays()"
+            > 
+            </div>
+        </div>
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setVolatilityHVChangeOperator()"
+            [(ngModel)]="analysisFilterVolatility.hvChange.operator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="between">Between</option>
+                <option value="higher">Higher</option>
+                <option value="lower">Lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <div *ngIf="analysisFilterVolatility.hvChange.operator === 'between'" class="d-flex">
+                <select class="form-select selectPrimary"
+                (change)="setVolatilityHVChangeStartValue()"
+                [(ngModel)]="analysisFilterVolatility.hvChange.startValue"
+                [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let startValue of StepNumberList" [ngValue]="startValue">
+                    {{ startValue }}
+                </option>
+                </select>
+                <span style="font-size: 13px; margin-top: 20px; margin-left: 4px;">%</span>
+                <span style="line-height: 38px;">-  </span>
+            </div>
+
+            <select class="form-select selectPrimary"
+            (change)="setVolatilityHVChangeEndValue()"
+            [(ngModel)]="analysisFilterVolatility.hvChange.endValue"
+            [ngModelOptions]="{standalone: true}" style="width: 60px;">
+                <option *ngFor="let endValue of StepNumberList" [ngValue]="endValue">
+                {{ endValue }}
+                </option>
+            </select>
+            <span style="font-size: 13px; margin-top: 20px;">%</span>
+            </div>
+        </div>
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <span style="line-height: 38px; font-size: 14px;">Period of</span>
+            <input type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterVolatility.hvChange.periodAgo"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setVolatilityHVChangePeriodAgo()"
+            > 
+            <span style="line-height: 38px; font-size: 14px;">Days ago</span>
+            </div>
+        </div>
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: <span class="blue-text">{{analysisFilterVolatility.hvChange.period}}</span> day(s) Historical Volatility Change that 
+        <span *ngIf="analysisFilterVolatility.hvChange.operator === 'between'">
+            ranges <span class="blue-text">{{analysisFilterVolatility.hvChange.operator}} {{analysisFilterVolatility.hvChange.startValue}}</span> and <span class="blue-text">{{analysisFilterVolatility.hvChange.endValue}}</span>
+        </span>
+        <span *ngIf="analysisFilterVolatility.hvChange.operator !== 'between'">
+            is <span class="blue-text">{{analysisFilterVolatility.hvChange.operator}}</span> than <span class="blue-text">{{analysisFilterVolatility.hvChange.endValue}}</span>
+        </span>
+        as of <span class="blue-text">{{analysisFilterVolatility.hvChange.periodAgo}}</span> ago.
+    </div>
+</div>
+<!-- Volatility End-->
+
+<!-- ATM Start-->
+<!-- PutCall Ratio -->
+<div *ngIf="item === 'PutCallRatio'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">PutCall Ratio</h3>
+        <button (click)="hideATMPutCallRatioOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <label>Ratio</label>
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setATMPutCallRatioOperator()"
+            [(ngModel)]="analysisFilterATM.putCallRatio.operator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="between">Between</option>
+                <option value="higher">Higher</option>
+                <option value="lower">Lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <input *ngIf="analysisFilterATM.putCallRatio.operator === 'between'" type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterATM.putCallRatio.startValue"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setATMPutCallRatioStartValue()"
+            > 
+            <span *ngIf="analysisFilterATM.putCallRatio.operator === 'between'" style="line-height: 38px; font-size: 14px; margin: 0 5px;">-</span>
+            <input type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterATM.putCallRatio.endValue"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setATMPutCallRatioEndValue()"
+            > 
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: Put/Call Ratio that
+        <span *ngIf="analysisFilterATM.putCallRatio.operator === 'between'">
+            ranges <span class="blue-text">{{analysisFilterATM.putCallRatio.operator}} {{analysisFilterATM.putCallRatio.startValue}}</span> and <span class="blue-text">{{analysisFilterATM.putCallRatio.endValue}}</span>
+        </span>
+        <span *ngIf="analysisFilterATM.putCallRatio.operator !== 'between'">
+            is <span class="blue-text">{{analysisFilterATM.putCallRatio.operator}}</span> than <span class="blue-text">{{analysisFilterATM.putCallRatio.endValue}}</span>
+        </span>.
+    </div>
+</div>
+<!-- Open Interest Rank -->
+<div *ngIf="item === 'OpenInterestRank'" class="card-custom">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 style="color:#264f7e;">Open Interest Rank</h3>
+        <button (click)="hideATMOpenInterestRankOptions()" class="CloseCard">
+        <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <form class="w-100 SideBarForm">
+
+        <div class="form-control w-100 selectPrimaryMain">
+            <label>Rank</label>
+            <div class="d-flex gap-4">
+            <select class="form-select-main selectPrimary"
+            (change)="setATMOpenInterestRankOperator()"
+            [(ngModel)]="analysisFilterATM.openInterestRank.operator"
+            [ngModelOptions]="{standalone: true}">
+                <option value="between">Between</option>
+                <option value="higher">Higher</option>
+                <option value="lower">Lower</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-control selectPrimaryMain">
+            <div class="d-flex gap-4">
+            <input *ngIf="analysisFilterATM.openInterestRank.operator === 'between'" type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+            [(ngModel)]="analysisFilterATM.openInterestRank.startValue"
+            [ngModelOptions]="{standalone: true}"
+            (change)="setATMOpenInterestRankStartValue()"
+            > 
+            <span *ngIf="analysisFilterATM.openInterestRank.operator === 'between'" style="line-height: 38px; font-size: 14px; margin: 0 5px;">-</span>
+            <input type="text" style="width: 60px; height: 38px; margin: 0 10px;"
+                [(ngModel)]="analysisFilterATM.openInterestRank.endValue"
+                [ngModelOptions]="{standalone: true}"
+                (change)="setATMOpenInterestRankEndValue()"
+            > 
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <div class="card-bottom">
+        Expression: Open Interest Rank that
+        <span *ngIf="analysisFilterATM.openInterestRank.operator === 'between'">
+            ranges <span class="blue-text">{{analysisFilterATM.openInterestRank.operator}} {{analysisFilterATM.openInterestRank.startValue}}</span> and <span class="blue-text">{{analysisFilterATM.openInterestRank.endValue}}</span>
+        </span>
+        <span *ngIf="analysisFilterATM.openInterestRank.operator !== 'between'">
+            is <span class="blue-text">{{analysisFilterATM.openInterestRank.operator}}</span> than <span class="blue-text">{{analysisFilterATM.openInterestRank.endValue}}</span>
+        </span>.
+    </div>
+</div>

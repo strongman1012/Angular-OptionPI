@@ -1,0 +1,213 @@
+
+
+<div class="tab-pane fade show active HeatmapMain" id="Heatmap" role="tabpanel" aria-labelledby="Heatmap-tab">
+    <div class="HeatmapMain SideBarContain">
+      <div class="HeatmapLft SideBarLft" [ngClass]="{'Addwidth' : !isCollapsed}">
+        <div class="HeatmapTop"><i class="bi bi-arrow-left"></i> Time to Expiry (days) <i class="bi bi-arrow-right"></i>
+        </div>
+        <div class="HeatmapTable EqHight">
+          <div class="HeatmapSide">
+            <div><i class="bi bi-arrow-up"></i> Strike Price <i class="bi bi-arrow-down"></i> </div>
+          </div>
+          <div class="table-responsive w-100">
+            <table class="table m-0 table-borderless text-center" >
+              <thead>
+                <tr>
+                  <th ></th>
+                  <th *ngFor="let expiry of HeatmapColHeaders">{{expiry}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let price of HeatmapRowHeaders; let i = index">
+                  <th>{{price}}</th>
+                  <td *ngFor="let expiry of HeatmapColHeaders; let j = index"
+                    [ngStyle]="{'background' : getColorValue(HeatmapData[i][j])}"
+                  >{{HeatmapData[i][j]}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="HeatmapRgt SideBarMain EqHight collapse" [ngClass]="{'show' : !isCollapsed}">
+        <!-- <a class="close" (click)="toggleCollapsed()"> <i class="bi bi-x-lg"></i> </a> -->
+        <form class="w-100 SideBarForm" [formGroup]="ConfigForm" (ngSubmit)="confirmConfigChange()">
+          <!-- <div class="SideBarFormSub w-100">
+            <div class="form-control w-50">
+              <label>Strategy</label>
+              <select (change)='onStrategyChanged(ConfigForm.value.SelectedStrategy)'
+                formControlName="SelectedStrategy" class="selectDefault w-100" aria-label="Default select example" >
+                <option *ngFor="let strategy of StrategyList" [ngValue]="strategy">
+                  {{ strategy.Display }}
+                </option>
+              </select>
+            </div>
+            <div class="form-control w-50">
+              <label>Parameter</label>
+              <select formControlName="SelectedParameter" class="form-select selectDefault w-100" aria-label="Default select example">
+                <option *ngFor="let parameter of OptionParameterList" [ngValue]="parameter">
+                  {{ parameter.Display }}
+                </option>
+              </select>
+            </div>
+          </div> -->
+          <!-- <div class="form-control w-100">
+            <label>Leg 1 distance (new)</label>
+            <ngx-slider formControlName="LegDistanceNew" [options]="LegDistanceNewOptions"></ngx-slider>
+            <div class="rangeData">
+              <span>2.5</span>
+              <span>25</span>
+            </div>
+          </div> -->
+          <!-- <div class="form-control w-100">
+            <label>Leg 2 distance (further)</label>
+            <ngx-slider formControlName="LegDistanceFurther" [options]="LegDistanceFurtherOptions"></ngx-slider>
+            <div class="rangeData">
+              <span>2.5</span>
+              <span>25</span>
+            </div>
+          </div> -->
+          <!-- <div class="form-control w-100">
+            <label>Time to Expiry</label>
+            <ngx-slider formControlName="TimeToExpiry" [options]="TimeToExpiryOptions"></ngx-slider>
+            <div class="rangeData">
+              <span>15</span>
+              <span>90</span>
+            </div>
+          </div> -->
+          <div class="form-control w-100">
+            <!-- <label>IV</label> -->
+            <!-- <ul class="nav nav-tabs ScreenerTabs" id="myTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button (click)='onIVToggle("Uniform")' class="nav-link active" id="Uniform-tab" data-bs-toggle="tab" data-bs-target="#Uniform"
+                  type="button" role="tab" aria-controls="Uniform" aria-selected="true">Uniform</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button (click)='onIVToggle("Granular")' class="nav-link" id="Granular-tab" data-bs-toggle="tab" data-bs-target="#Granular" type="button"
+                  role="tab" aria-controls="Granular" aria-selected="false">Granular</button>
+              </li>
+            </ul> -->
+            <div class="tab-content DashboardTabContent" id="myTabContent">
+              <!-- Uniform Content -->
+              <div class="tab-pane fade show active " id="Uniform" role="tabpanel" aria-labelledby="Uniform-tab">
+                <div class="form-control w-100">
+                  <label>IV</label>
+                  <ngx-slider formControlName="IVValue"  [options]="IVValueOptions"></ngx-slider>
+                  <div class="rangeData">
+                    <span>15</span>
+                    <span>90</span>
+                  </div>
+                </div>
+              </div>
+              <!-- Granular Content -->
+              <!-- <div class="tab-pane fade" id="Granular" role="tabpanel" aria-labelledby="Granular-tab">
+                <div class="table-responsive w-100">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                        <th>8</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><input type="text" name="" value="700"></td>
+                        <td><input type="text" name="" value="700"></td>
+                        <td><input type="text" name="" value="700"></td>
+                        <td><input type="text" name="" value="700"></td>
+                        <td><input type="text" name="" value="700"></td>
+                        <td><input type="text" name="" value="700"></td>
+                        <td><input type="text" name="" value="700"></td>
+                        <td><input type="text" name="" value="700"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div> -->
+            </div>
+          </div>
+          <div class="form-control w-100">
+            <label>Risk Free Rate</label>
+            <ngx-slider formControlName="RiskFreeRate" [options]="RiskFreeRateOptions"></ngx-slider>
+            <div class="rangeData">
+              <span>0</span>
+              <span>100</span>
+            </div>
+          </div>
+          <div class="form-control w-100">
+            <label>Dividend Yield</label>
+            <ngx-slider formControlName="DividendYield" [options]="DividendYieldOptions"></ngx-slider>
+            <div class="rangeData">
+              <span>0</span>
+              <span>100</span>
+            </div>
+          </div>
+          
+          <!-- <div class="form-control w-100">
+            <label>IV Skew Rate</label>
+            <ngx-slider formControlName="IVSkewRate" [options]="IVSkewRateOptions"></ngx-slider>
+            <div class="rangeData">
+              <span>0</span>
+              <span>2</span>
+            </div>
+          </div> -->
+          <div class="SideBarFormSub w-100">
+            <div class="form-control w-50">
+              <label>Amount</label>
+              <input formControlName="Amount" type="text" name="amount" class="w-100">
+            </div>
+            <!-- <div class="form-control">
+              <label>Unit</label>
+              <ul class="nav nav-tabs ScreenerTabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button (click)='onUnitToggle("Standard")' class="nav-link active" id="Standard-tab" data-bs-toggle="tab" data-bs-target="#Standard"
+                    type="button" role="tab" aria-controls="Standard" aria-selected="true">Standard</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button (click)='onUnitToggle("Percentage")' class="nav-link" id="Percentage-tab" data-bs-toggle="tab" data-bs-target="#Percentage"
+                    type="button" role="tab" aria-controls="Percentage" aria-selected="false">Percentage</button>
+                </li>
+              </ul>
+            </div> -->
+          </div>
+          <button type="submit" class="BtnDefault w-100">Compute</button>
+        </form>
+      </div>
+    </div>
+</div>
+
+
+<div
+  class="modal fade "
+  id="myModal"
+  tabindex="-1"
+  arial-modal="true"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog  modal-xl modal-dialog-centered Analytic">
+    <div class="modal-content ">
+      <!-- <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">PopUp</h5>
+
+      </div> -->
+      <div class="modal-body">
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h3 style="text-align:center">Hello! PopUp</h3>
+        <h2 > {{ ModalNumber }} </h2>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div> -->
+    </div>
+  </div>
+</div>
+

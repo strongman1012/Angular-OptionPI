@@ -1,0 +1,594 @@
+<div class="tab-pane fade show active PayoffVisualTab" id="PayoffVisual" role="tabpanel"
+  aria-labelledby="PayoffVisual-tab">
+  <div class="PayoffVisualMain SideBarContain">
+    <div class="PayoffVisualLft SideBarLft" [ngClass]="{'Addwidth' : !isCollapsed}">
+       
+      <div class="PayOffVisualOne  " >
+        <form class="w-100 SideBarForm">
+          <div class="form-control w-100">
+            <!-- <label>Payoff Type</label> -->
+            <!-- <ul class="nav nav-tabs ScreenerTabs" id="myTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="WithTime-tab" data-bs-toggle="tab" data-bs-target="#WithTime" type="button" role="tab" aria-controls="WithTime" aria-selected="true">With Time</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="WithIV-tab" data-bs-toggle="tab" data-bs-target="#WithIV" type="button" role="tab" aria-controls="WithIV" aria-selected="false">with IV</button>
+              </li>
+            </ul> -->
+          </div>
+          <div class="tab-content DashboardTabContent" id="myTabContent">
+            <!-- With Time Content -->
+            <div class="tab-pane fade show active WithTimeTab" id="WithTime" role="tabpanel"
+              aria-labelledby="WithTime-tab">
+              <div class="WithTimeTop">
+                <h3>IV %</h3>
+                <ul>
+                  <!-- <li *ngFor="let item of IVList">
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" name="iv[]" id="iv{{item}}" [checked]="IVList[0] === item ? true : false"  (change)="onDrawwithIV($event)">
+                      <label for="iv{{item}}">IV =  {{ item }}</label>
+                    </div>
+                  </li> -->
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" name="iv[]" id="iv10" data-color="#505dee" checked (change)="onDrawwithIV($event)">
+                      <label for="iv10">IV = 10%</label>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 100%;background: #505dee;"
+                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="bg-Main">
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" name="iv[]" id="iv15" data-color="#6fdb60"  (change)="onDrawwithIV($event)">
+                      <label for="iv15">IV = 15%</label>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 100%;background: #6fdb60;"
+                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" name="iv[]"  id="iv20" data-color="#d14e61" (change)="onDrawwithIV($event)">
+                      <label for="iv20">IV = 20%</label>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 100%;background: #d14e61;"
+                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" name="iv[]"  id="iv25" data-color="#4b0ce0" (change)="onDrawwithIV($event)">
+                      <label for="iv25">IV = 25%</label>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 100%;background: #4b0ce0;"
+                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" name="iv[]" id="iv30" data-color="#0cd9e0"  (change)="onDrawwithIV($event)">
+                      <label for="iv30">IV = 30%</label>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 100%;background: #0cd9e0;"
+                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" name="iv[]" id="iv35" data-color="#01120c" (change)="onDrawwithIV($event)">
+                      <label for="iv35">IV = 35%</label>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 100%;background: #01120c;"
+                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" name="iv[]" id="iv40" data-color="#f20e0e" (change)="onDrawwithIV($event)">
+                      <label for="iv40">IV = 40%</label>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 100%;background: #f20e0e;"
+                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" name="iv[]" id="iv45" data-color="#76e45d" (change)="onDrawwithIV($event)">
+                      <label for="iv45">IV = 45%</label>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 100%;background: #76e45d;"
+                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" name="iv[]" id="iv50" data-color="#dcf612" (change)="onDrawwithIV($event)">
+                      <label for="iv50">IV = 50%</label>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 100%;background: #dcf612;"
+                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" name="iv[]" id="iv55" data-color="#2f8de4" (change)="onDrawwithIV($event)">
+                      <label for="iv55">IV = 55%</label>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 100%;background: #2f8de4;"
+                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" name="iv[]" id="iv60" data-color="#f6ee18" (change)="onDrawwithIV($event)">
+                      <label for="iv60">IV = 60%</label>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 100%;background: #f6ee18;"
+                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" id="iv65" data-color="#ccacf7" (change)="onDrawwithIV($event)">
+                      <label for="iv65">IV = 65%</label>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 100%;background: #ccacf7;"
+                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" name="iv[]" id="iv70" data-color="#76daf0" (change)="onDrawwithIV($event)">
+                      <label for="iv70">IV = 70%</label>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 100%;background: #76daf0;"
+                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" name="iv[]" id="iv75" data-color="#442f08" (change)="onDrawwithIV($event)">
+                      <label for="iv75">IV = 75%</label>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 100%;background: #442f08;"
+                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" name="iv[]" id="iv80" data-color="#54274b" (change)="onDrawwithIV($event)">
+                      <label for="iv80">IV = 80%</label>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 100%;background: #54274b;"
+                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" name="iv[]" id="iv85" data-color="#90e45d" (change)="onDrawwithIV($event)">
+                      <label for="iv85">IV = 85%</label>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 100%;background: #90e45d;"
+                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" name="iv[]" id="iv90" data-color="#733ea2" (change)="onDrawwithIV($event)">
+                      <label for="iv90">IV = 90%</label>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 100%;background: #733ea2;"
+                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" name="iv[]" id="iv95" data-color="#40dbc4" (change)="onDrawwithIV($event)">
+                      <label for="iv95">IV = 95%</label>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 100%;background: #40dbc4;"
+                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- Payoff Prediction Content -->
+            <div class="tab-pane fade" id="WithIV" role="tabpanel" aria-labelledby="WithIV-tab">
+              <div class="WithTimeTop">
+                <h3>IVol %</h3>
+                <ul>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="radio" id="d5" >
+                      <label for="d5">5 days</label>
+                    </div>
+                  </li>
+                  <li class="bg-Main">
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" id="d10" >
+                      <label for="d10">10 days</label>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 100%;background: #EF4352;"
+                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" id="d15">
+                      <label for="d15">15 days</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" id="d20">
+                      <label for="d20">20 days</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" id="d25">
+                      <label for="d25">25 days</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" id="d30">
+                      <label for="d30">30 days</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" id="d35">
+                      <label for="d35">35 days</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" id="d40">
+                      <label for="d40">40 days</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" id="d45">
+                      <label for="d45">45 days</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" id="d50">
+                      <label for="d50">50 days</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" id="d55">
+                      <label for="d55">55 days</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" id="d60">
+                      <label for="d60">60 days</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" id="d65">
+                      <label for="d65">65 days</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" id="d70">
+                      <label for="d70">70 days</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" id="d75">
+                      <label for="d75">75 days</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" id="d80">
+                      <label for="d80">80 days</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-group checkbox WithTime">
+                      <input type="checkbox" id="d85">
+                      <label for="d85">85 days</label>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="PayOffVisualTwo">
+        <!-- <img src="//am708403.blob.core.windows.net/images/optionpi/img/PayoffPrediction.png"> -->
+        <div class="PathDiagramSubTop" style="display: flex;align-items: center;justify-content: space-between;">
+          <button class=" BtnDefault settingBtn " (click)="leftsetting()" >
+            <i class="bi bi-gear"></i>
+          </button>
+          <h3>Pay Off Visualiser</h3>
+          <button class="BtnDefault settingBtn "  (click)="rightsetting()">
+            <i class="bi bi-gear"></i>
+          </button>
+            
+            
+          
+          
+        </div>
+
+        <ng-container *ngIf="isLoadingPayoffVisualizerChart">
+          <div class="PayoffLftBtm">
+            <div class="configure">
+              <img src="//am708403.blob.core.windows.net/images/optionpi/img/settings.png">
+              <h2>Please configure the parameter </h2>
+              <p>Please configure the parameter and select the value to show the graph</p>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="!isLoadingPayoffVisualizerChart">
+          <div class="PathDiagramSubBtm">
+            <highcharts-chart [Highcharts]="Highcharts" [options]="payoffVisualizerChartOptions"
+              [(update)]="payoffVisualizerChartUpdateFlag"
+              style="width: 100%; height: 600px; display: block; padding-top: 20px;"></highcharts-chart>
+          </div>
+        </ng-container>
+      </div>
+      <div class="PayOffVisualThree ">
+        <form class="w-100 SideBarForm">
+          <div class="WithTimeTop">
+            <h3>Days to Expiry</h3>
+            <ul>
+              <li class="bg-second">
+                <div class="form-group radio  WithTime">
+                  <input type="radio" name="day_value" checked id="check1" (change)="onDraw($event)">
+                  <label for="check1">1 day</label>
+                
+                </div>
+              </li>
+              <li class="bg-green">
+                <div class="form-group radio  WithTime">
+                  <input type="radio" name="day_value" id="check2" (change)="onDraw($event)">
+                  <label for="check2">2 days</label>
+                  
+                </div>
+              </li>
+              <li class="bg-Main">
+                <div class="form-group radio  WithTime">
+                  <input type="radio" id="check3" name="day_value" (change)="onDraw($event)">
+                  <label for="check3">3 days</label>
+                  
+                </div>
+              </li>
+              <li>
+                <div class="form-group radio WithTime">
+                  <input type="radio" id="check4" name="day_value" (change)="onDraw($event)">
+                  <label for="check4">4 days</label>
+                </div>
+              </li>
+              <li>
+                <div class="form-group radio WithTime">
+                  <input type="radio" id="check5" name="day_value" (change)="onDraw($event)">
+                  <label for="check5">5 days</label>
+                </div>
+              </li>
+              <li>
+                <div class="form-group radio WithTime">
+                  <input type="radio" id="check6" name="day_value" (change)="onDraw($event)">
+                  <label for="check6">6 days</label>
+                </div>
+              </li>
+              <li>
+                <div class="form-group radio WithTime">
+                  <input type="radio" id="check7" name="day_value" (change)="onDraw($event)">
+                  <label for="check7">7 days</label>
+                </div>
+              </li>
+              <li>
+                <div class="form-group radio WithTime">
+                  <input type="radio" id="check8" name="day_value" (change)="onDraw($event)">
+                  <label for="check8">8 days</label>
+                </div>
+              </li>
+              <li>
+                <div class="form-group radio WithTime">
+                  <input type="radio" id="check9" name="day_value" (change)="onDraw($event)">
+                  <label for="check9">9 days</label>
+                </div>
+              </li>
+              <li>
+                <div class="form-group radio WithTime">
+                  <input type="radio" id="check10" name="day_value" (change)="onDraw($event)">
+                  <label for="check10">10 days</label>
+                </div>
+              </li>
+              <li>
+                <div class="form-group radio WithTime">
+                  <input type="radio" id="check11" name="day_value" (change)="onDraw($event)">
+                  <label for="check11">11 days</label>
+                </div>
+              </li>
+              <li>
+                <div class="form-group radio WithTime">
+                  <input type="radio" id="check12" name="day_value" (change)="onDraw($event)">
+                  <label for="check12">12 days</label>
+                </div>
+              </li>
+              <li>
+                <div class="form-group radio WithTime">
+                  <input type="radio" id="check13" name="day_value" (change)="onDraw($event)">
+                  <label for="check13">13 days</label>
+                </div>
+              </li>
+              <li>
+                <div class="form-group radio WithTime">
+                  <input type="radio" id="check14" name="day_value" (change)="onDraw($event)">
+                  <label for="check14">14 days</label>
+                </div>
+              </li>
+              <li>
+                <div class="form-group radio WithTime">
+                  <input type="radio" id="check15" name="day_value" (change)="onDraw($event)">
+                  <label for="check15">15 days</label>
+                </div>
+              </li>
+              <li>
+                <div class="form-group radio WithTime">
+                  <input type="radio" id="check16" name="day_value" (change)="onDraw($event)">
+                  <label for="check16">16 days</label>
+                </div>
+              </li>
+              <li>
+                <div class="form-group radio WithTime">
+                  <input type="radio" id="check17" name="day_value" (change)="onDraw($event)">
+                  <label for="check17">17 days</label>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </form>
+      </div>
+       
+    </div>
+    <!-- <div class="PayoffVisualRgt SideBarMain collapse" [ngClass]="{'show' : isCollapsed}"> -->
+      <!-- <a class="close" (click)="toggleCollapsed()"> <i class="bi bi-x-lg"></i> </a> -->
+      <!-- <form class="w-100 SideBarForm" [formGroup]="ConfigForm" (ngSubmit)="confirmConfigChange()">
+
+        <div class="form-control w-100">
+          <label>Target Variable</label>
+          <div class="select2Style">
+            <select formControlName="SelectedTargetVariable" class="form-select selectMain">
+              <option *ngFor="let targetVariable of TargetVariableList" [ngValue]="targetVariable">
+                {{ targetVariable.Display }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="SideBarFormSub w-100">
+          <div class="form-control w-50">
+            <label>Strategy</label>
+            <select (change)='onStrategyChanged(ConfigForm.value.SelectedStrategy)' formControlName="SelectedStrategy"
+              class="selectDefault w-100" aria-label="Default select example">
+              <option *ngFor="let strategy of StrategyList" [ngValue]="strategy">
+                {{ strategy.Display }}
+              </option>
+            </select>
+          </div>
+          <div class="form-control w-50">
+            <label>Parameter</label>
+            <select formControlName="SelectedParameter" class="form-select selectDefault w-100"
+              aria-label="Default select example">
+              <option *ngFor="let parameter of OptionParameterList" [ngValue]="parameter">
+                {{ parameter.Display }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-control w-100">
+          <label>Leg 1 distance (new)</label>
+          <ngx-slider formControlName="LegDistanceNew" [options]="LegDistanceNewOptions"></ngx-slider>
+          <div class="rangeData">
+            <span>2.5</span>
+            <span>25</span>
+          </div>
+        </div>
+        <div class="form-control w-100">
+          <label>Leg 2 distance (further)</label>
+          <ngx-slider formControlName="LegDistanceFurther" [options]="LegDistanceFurtherOptions"></ngx-slider>
+          <div class="rangeData">
+            <span>2.5</span>
+            <span>25</span>
+          </div>
+        </div>
+        <div class="form-control w-100">
+          <label>Risk Free Rate</label>
+          <ngx-slider formControlName="RiskFreeRate" [options]="RiskFreeRateOptions"></ngx-slider>
+          <div class="rangeData">
+            <span>0</span>
+            <span>100</span>
+          </div>
+        </div>
+        <div class="form-control w-100">
+          <label>DividendYield Yield</label>
+          <ngx-slider formControlName="DividendYield" [options]="DividendYieldOptions"></ngx-slider>
+          <div class="rangeData">
+            <span>0</span>
+            <span>100</span>
+          </div>
+        </div>
+        <div class="form-control w-100">
+          <label>Time to Expiry</label>
+          <ngx-slider formControlName="TimeToExpiry" [options]="TimeToExpiryOptions"></ngx-slider>
+          <div class="rangeData">
+            <span>15</span>
+            <span>90</span>
+          </div>
+        </div>
+        <div class="form-control w-100">
+          <label>IV Skew Rate</label>
+          <ngx-slider formControlName="IVSkewRate" [options]="IVSkewRateOptions"></ngx-slider>
+          <div class="rangeData">
+            <span>0</span>
+            <span>2</span>
+          </div>
+        </div>
+        <div class="form-control w-100">
+          <label>Amount</label>
+          <input type="text" formControlName="Amount" class="w-100">
+        </div>
+        <button type="submit" class="BtnDefault w-100">Confirm</button>
+      </form>
+      
+    </div> -->
+    <label   class="display_text_mobile">The assumption is made based on the capital of $1000</label>
+  </div>
+  <label   class="display_text">The assumption is made based on the capital of $1000</label>
+</div>
+
+
+
+<!-- <div class="modal fade " id="myModalVisual" tabindex="-1" arial-modal="true" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog  modal-xl modal-dialog-centered Analytic">
+    <div class="modal-content ">
+   
+      <div class="modal-body" style="position:relative">
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h3 style="text-align:center">Hello! PopUp</h3>
+        <h3> {{ ModalNumberVisual }} </h3>
+        <label style="position: absolute;bottom:10px;">The assumption is made based on the capital of $1000</label>
+      </div>
+  
+    </div>
+  </div>
+</div> -->

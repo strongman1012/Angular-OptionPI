@@ -1,0 +1,22 @@
+<div class="tab-pane HistoricalTransactionTab show active " role="tabpanel" aria-labelledby="HistoricalTransaction-tab">
+  <ul class="nav nav-tabs  ScreenerTabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button [ngClass]="{'active' : currentTab === 'historical-position'}" class="nav-link" id="HistoricalPosition-tab"
+      type="button" (click)="setTab('historical-position')"  aria-selected="true">Historical Position</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button [ngClass]="{'active' : currentTab === 'historical-order'}" class="nav-link" id="HistoricalOrder-tab"
+      type="button" (click)="setTab('historical-order')"  aria-selected="true">Historical Order</button>
+    </li>
+  </ul>
+  <div class="tab-content DashboardTabContent" id="myTabContent">
+    <!-- Historical Position -->
+    <div *ngIf="currentTab === 'historical-position'">
+      <ow-main-trade-historicaltransactions-historicalposition-tab [SelectedBrokerAccount]="SelectedBrokerAccount"></ow-main-trade-historicaltransactions-historicalposition-tab>
+    </div>
+    <!-- Historical Order -->
+    <div *ngIf="currentTab === 'historical-order'">
+      <ow-main-trade-historicaltransactions-historicalorder-tab [SelectedBrokerAccount]="SelectedBrokerAccount"></ow-main-trade-historicaltransactions-historicalorder-tab>
+    </div>
+  </div>
+</div>

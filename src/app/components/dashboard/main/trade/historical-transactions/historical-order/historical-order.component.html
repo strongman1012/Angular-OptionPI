@@ -1,0 +1,389 @@
+<div class="tab-pane HistoricalOrderTab show active " role="tabpanel" aria-labelledby="HistoricalOrder-tab">
+  <div class="ActivePositionFilterBar">
+    <form>
+      <div class="form-control">
+        <div class="FilterBarsearch">
+          <input (keydown.enter)="search()" [(ngModel)]='SearchValue' type="text"
+          class="form-control" placeholder="Search" aria-label="" aria-describedby="basic-addon1" [ngModelOptions]="{standalone: true}">
+          <a class="FilterBarSearchIcon">
+            <i class="fa fa-magnifying-glass" (click)="searchHistoricalOrder()" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="ActivePositionTable ActiveOrderTable">
+    <div class="table-responsive" style="min-height: 100px;">
+      <app-loading [status]="isLoadingHistoricalOrder"></app-loading>
+      <table *ngIf="!isLoadingHistoricalOrder" class="table">
+        <thead>
+          <tr>
+            <th class="text-center">Leg</th>
+            <th (click)="sortColumns('Symbol', currentSortedColumn.type === 'Desc' ? 'Asc' : 'Desc')">Symbol
+              <a *ngIf="currentSortedColumn.name === 'Symbol'">
+                <i class="fa" [ngClass]="{'fa-arrow-up' : currentSortedColumn.type === 'Asc', 'fa-arrow-down' : currentSortedColumn.type === 'Desc'}"></i>
+              </a>
+            </th>
+            <th (click)="sortColumns('Currency', currentSortedColumn.type === 'Desc' ? 'Asc' : 'Desc')">Currency
+              <a *ngIf="currentSortedColumn.name === 'Currency'">
+                <i class="fa" [ngClass]="{'fa-arrow-up' : currentSortedColumn.type === 'Asc', 'fa-arrow-down' : currentSortedColumn.type === 'Desc'}"></i>
+              </a>
+            </th>
+            <th (click)="sortColumns('Action', currentSortedColumn.type === 'Desc' ? 'Asc' : 'Desc')">Action
+              <a *ngIf="currentSortedColumn.name === 'Action'">
+                <i class="fa" [ngClass]="{'fa-arrow-up' : currentSortedColumn.type === 'Asc', 'fa-arrow-down' : currentSortedColumn.type === 'Desc'}"></i>
+              </a>
+            </th>
+            <th class="text-center" (click)="sortColumns('Quantity', currentSortedColumn.type === 'Desc' ? 'Asc' : 'Desc')">Qty
+              <a *ngIf="currentSortedColumn.name === 'Quantity'">
+                <i class="fa" [ngClass]="{'fa-arrow-up' : currentSortedColumn.type === 'Asc', 'fa-arrow-down' : currentSortedColumn.type === 'Desc'}"></i>
+              </a>
+            </th>
+            <th (click)="sortColumns('Status', currentSortedColumn.type === 'Desc' ? 'Asc' : 'Desc')">Status
+              <a *ngIf="currentSortedColumn.name === 'Status'">
+                <i class="fa" [ngClass]="{'fa-arrow-up' : currentSortedColumn.type === 'Asc', 'fa-arrow-down' : currentSortedColumn.type === 'Desc'}"></i>
+              </a>
+            </th>
+            <th (click)="sortColumns('Type', currentSortedColumn.type === 'Desc' ? 'Asc' : 'Desc')">Type
+              <a *ngIf="currentSortedColumn.name === 'Type'">
+                <i class="fa" [ngClass]="{'fa-arrow-up' : currentSortedColumn.type === 'Asc', 'fa-arrow-down' : currentSortedColumn.type === 'Desc'}"></i>
+              </a>
+            </th>
+            <th (click)="sortColumns('LimitPrice', currentSortedColumn.type === 'Desc' ? 'Asc' : 'Desc')">Price
+              <a *ngIf="currentSortedColumn.name === 'LimitPrice'">
+                <i class="fa" [ngClass]="{'fa-arrow-up' : currentSortedColumn.type === 'Asc', 'fa-arrow-down' : currentSortedColumn.type === 'Desc'}"></i>
+              </a>
+            </th>
+            <th (click)="sortColumns('ContractType', currentSortedColumn.type === 'Desc' ? 'Asc' : 'Desc')">Contract Type
+              <a *ngIf="currentSortedColumn.name === 'ContractType'">
+                <i class="fa" [ngClass]="{'fa-arrow-up' : currentSortedColumn.type === 'Asc', 'fa-arrow-down' : currentSortedColumn.type === 'Desc'}"></i>
+              </a>
+            </th>
+            <th (click)="sortColumns('Expiry', currentSortedColumn.type === 'Desc' ? 'Asc' : 'Desc')">Expiry
+              <a *ngIf="currentSortedColumn.name === 'Expiry'">
+                <i class="fa" [ngClass]="{'fa-arrow-up' : currentSortedColumn.type === 'Asc', 'fa-arrow-down' : currentSortedColumn.type === 'Desc'}"></i>
+              </a>
+            </th>
+            <th (click)="sortColumns('StrikePrice', currentSortedColumn.type === 'Desc' ? 'Asc' : 'Desc')">Strike
+              <a *ngIf="currentSortedColumn.name === 'StrikePrice'">
+                <i class="fa" [ngClass]="{'fa-arrow-up' : currentSortedColumn.type === 'Asc', 'fa-arrow-down' : currentSortedColumn.type === 'Desc'}"></i>
+              </a>
+            </th>
+            <th (click)="sortColumns('Multiplier', currentSortedColumn.type === 'Desc' ? 'Asc' : 'Desc')">Multiplier
+              <a *ngIf="currentSortedColumn.name === 'Multiplier'">
+                <i class="fa" [ngClass]="{'fa-arrow-up' : currentSortedColumn.type === 'Asc', 'fa-arrow-down' : currentSortedColumn.type === 'Desc'}"></i>
+              </a>
+            </th>
+            <th (click)="sortColumns('MaxOrderTime', currentSortedColumn.type === 'Desc' ? 'Asc' : 'Desc')">Order Time
+              <a *ngIf="currentSortedColumn.name === 'MaxOrderTime'">
+                <i class="fa" [ngClass]="{'fa-arrow-up' : currentSortedColumn.type === 'Asc', 'fa-arrow-down' : currentSortedColumn.type === 'Desc'}"></i>
+              </a>
+            </th>
+          </tr>
+          <!-- <tr *ngIf="!isCollapsed">
+            <th class="text-center">Leg</th>
+            <th>Symbol
+              <a>
+                <i class="fa fa-arrow-down" aria-hidden="true"></i>
+              </a>
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr> -->
+        </thead>
+        <tbody *ngIf="!isLoadingHistoricalOrder && HistoricalOrderResult.TotalData === 0">
+          <tr>
+            <td style="text-align: center;" colspan="15">There is currently no entries available</td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="!isLoadingHistoricalOrder && HistoricalOrderResult.TotalData > 0">
+          <ng-container *ngFor="let item of HistoricalOrderResult?.Data">
+          <tr class="OnClickAdd">
+            <td class="AddPlus">
+              <!-- <span class="Plus"></span> -->
+              <a (click)="toggleCollapsedHistoricalOrder(item)"><span class="Plus" [ngClass]="{'added' : item.isCollapsed}"></span></a>
+            </td>
+            <td>
+              <h4>{{item.PortfolioName}} </h4>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr class="sub-data" [ngClass]="{'showhide' : !item.isCollapsed}">
+            <!-- Number -->
+            <td class="text-center">
+              <table>
+                <tr *ngIf="item.Leg1||item.Leg2||item.Leg3||item.Leg4">
+                  <td>1</td>
+                </tr>
+                <tr *ngIf="item.Leg2||item.Leg3||item.Leg4">
+                  <td>2</td>
+                </tr>
+                <tr *ngIf="item.Leg3||item.Leg4">
+                  <td>3</td>
+                </tr>
+                <tr *ngIf="item.Leg4">
+                  <td>4</td>
+                </tr>
+              </table>
+            </td>
+            <!-- Symbol -->
+            <td>
+              <table>
+                <tr *ngIf="item.Leg1">
+                  <td>{{item.Leg1.Symbol}}</td>
+                </tr>
+                <tr *ngIf="item.Leg2">
+                  <td>{{item.Leg2.Symbol}}</td>
+                </tr>
+                <tr *ngIf="item.Leg3">
+                  <td>{{item.Leg3.Symbol}}</td>
+                </tr>
+                <tr *ngIf="item.Leg4">
+                  <td>{{item.Leg4.Symbol}}</td>
+                </tr>
+              </table>
+            </td>
+            <!-- Currency -->
+            <td>
+              <table>
+                <tr *ngIf="item.Leg1">
+                  <td>{{item.Leg1.Currency}}</td>
+                </tr>
+                <tr *ngIf="item.Leg2">
+                  <td>{{item.Leg2.Currency}}</td>
+                </tr>
+                <tr *ngIf="item.Leg3">
+                  <td>{{item.Leg3.Currency}}</td>
+                </tr>
+                <tr *ngIf="item.Leg4">
+                  <td>{{item.Leg4.Currency}}</td>
+                </tr>
+              </table>
+            </td>
+            <!-- Action -->
+            <td>
+              <table>
+                <tr *ngIf="item.Leg1">
+                  <td>{{item.Leg1.Action}}</td>
+                </tr>
+                <tr *ngIf="item.Leg2">
+                  <td>{{item.Leg2.Action}}</td>
+                </tr>
+                <tr *ngIf="item.Leg3">
+                  <td>{{item.Leg3.Action}}</td>
+                </tr>
+                <tr *ngIf="item.Leg4">
+                  <td>{{item.Leg4.Action}}</td>
+                </tr>
+              </table>
+            </td>
+            <!-- Quantity -->
+            <td>
+              <table>
+                <tr *ngIf="item.Leg1">
+                  <td>{{item.Leg1.Quantity}}</td>
+                </tr>
+                <tr *ngIf="item.Leg2">
+                  <td>{{item.Leg2.Quantity}}</td>
+                </tr>
+                <tr *ngIf="item.Leg3">
+                  <td>{{item.Leg3.Quantity}}</td>
+                </tr>
+                <tr *ngIf="item.Leg4">
+                  <td>{{item.Leg4.Quantity}}</td>
+                </tr>
+              </table>
+            </td>
+            <!-- Status -->
+            <td class="text-center">
+              <table>
+                <tr *ngIf="item.Leg1">
+                  <td>{{item.Leg1.Status}}</td>
+                </tr>
+                <tr *ngIf="item.Leg2">
+                  <td>{{item.Leg2.Status}}</td>
+                </tr>
+                <tr *ngIf="item.Leg3">
+                  <td>{{item.Leg3.Status}}</td>
+                </tr>
+                <tr *ngIf="item.Leg4">
+                  <td>{{item.Leg4.Status}}</td>
+                </tr>
+              </table>
+            </td>
+            <!-- Type -->
+            <td>
+              <table>
+                <tr *ngIf="item.Leg1">
+                  <td>{{item.Leg1.Type}}</td>
+                </tr>
+                <tr *ngIf="item.Leg2">
+                  <td>{{item.Leg2.Type}}</td>
+                </tr>
+                <tr *ngIf="item.Leg3">
+                  <td>{{item.Leg3.Type}}</td>
+                </tr>
+                <tr *ngIf="item.Leg4">
+                  <td>{{item.Leg4.Type}}</td>
+                </tr>
+              </table>
+            </td>
+            <!-- Price -->
+            <td>
+              <table>
+                <tr *ngIf="item.Leg1">
+                  <td ng-if="item.Leg1.Type == 'MARKET'"></td>
+                  <td ng-if="item.Leg1.Type == 'LIMIT'">{{item.Leg1.LimitPrice | currency:item.Leg1.Currency}}</td>
+                  <td ng-if="item.Leg1.Type == 'STOP'">{{item.Leg1.StopPrice | currency:item.Leg1.Currency}}</td>
+                </tr>
+                <tr *ngIf="item.Leg2">
+                  <td ng-if="item.Leg1.Type == 'MARKET'"></td>
+                  <td ng-if="item.Leg1.Type == 'LIMIT'">{{item.Leg2.LimitPrice | currency:item.Leg2.Currency}}</td>
+                  <td ng-if="item.Leg1.Type == 'STOP'">{{item.Leg2.StopPrice | currency:item.Leg2.Currency}}</td>
+                </tr>
+                <tr *ngIf="item.Leg3">
+                  <td ng-if="item.Leg1.Type == 'MARKET'"></td>
+                  <td ng-if="item.Leg1.Type == 'LIMIT'">{{item.Leg3.LimitPrice | currency:item.Leg3.Currency}}</td>
+                  <td ng-if="item.Leg1.Type == 'STOP'">{{item.Leg3.StopPrice | currency:item.Leg3.Currency}}</td>
+                </tr>
+                <tr *ngIf="item.Leg4">
+                  <td ng-if="item.Leg1.Type == 'MARKET'"></td>
+                  <td ng-if="item.Leg1.Type == 'LIMIT'">{{item.Leg4.LimitPrice | currency:item.Leg4.Currency}}</td>
+                  <td ng-if="item.Leg1.Type == 'STOP'">{{item.Leg4.StopPrice | currency:item.Leg4.Currency}}</td>
+                </tr>
+              </table>
+            </td>
+            <!-- Contract Type -->
+            <td>
+              <table>
+                <tr *ngIf="item.Leg1">
+                  <td>{{item.Leg1.ContractType}}</td>
+                </tr>
+                <tr *ngIf="item.Leg2">
+                  <td>{{item.Leg2.ContractType}}</td>
+                </tr>
+                <tr *ngIf="item.Leg3">
+                  <td>{{item.Leg3.ContractType}}</td>
+                </tr>
+                <tr *ngIf="item.Leg4">
+                  <td>{{item.Leg4.ContractType}}</td>
+                </tr>
+              </table>
+            </td>
+            <!-- Expiry -->
+            <td>
+              <table>
+                <tr *ngIf="item.Leg1">
+                  <td>{{item.Leg1.Expiry | optionExpiryDate}}</td>
+                </tr>
+                <tr *ngIf="item.Leg2">
+                  <td>{{item.Leg2.Expiry | optionExpiryDate}}</td>
+                </tr>
+                <tr *ngIf="item.Leg3">
+                  <td>{{item.Leg3.Expiry | optionExpiryDate}}</td>
+                </tr>
+                <tr *ngIf="item.Leg4">
+                  <td>{{item.Leg4.Expiry | optionExpiryDate}}</td>
+                </tr>
+              </table>
+            </td>
+            <!-- StrikePrice -->
+            <td>
+              <table>
+                <tr *ngIf="item.Leg1">
+                  <td>{{item.Leg1.StrikePrice}}</td>
+                </tr>
+                <tr *ngIf="item.Leg2">
+                  <td>{{item.Leg2.StrikePrice}}</td>
+                </tr>
+                <tr *ngIf="item.Leg3">
+                  <td>{{item.Leg3.StrikePrice}}</td>
+                </tr>
+                <tr *ngIf="item.Leg4">
+                  <td>{{item.Leg4.StrikePrice}}</td>
+                </tr>
+              </table>
+            </td>
+            <!-- Multiplier -->
+            <td>
+              <table class="white-break">
+                <tr *ngIf="item.Leg1">
+                  <td>{{item.Leg1.Multiplier}}</td>
+                </tr>
+                <tr *ngIf="item.Leg2">
+                  <td>{{item.Leg2.Multiplier}}</td>
+                </tr>
+                <tr *ngIf="item.Leg3">
+                  <td>{{item.Leg3.Multiplier}}</td>
+                </tr>
+                <tr *ngIf="item.Leg4">
+                  <td>{{item.Leg4.Multiplier}}</td>
+                </tr>
+              </table>
+            </td>
+            <!-- Order Time -->
+            <td>
+              <table class="white-break">
+                <tr *ngIf="item.Leg1">
+                  <td>{{item.Leg1.OrderTime | date: 'dd MMM yyyy, hh:mm:ss a' }}</td>
+                </tr>
+                <tr *ngIf="item.Leg2">
+                  <td>{{item.Leg2.OrderTime | date: 'dd MMM yyyy, hh:mm:ss a' }}</td>
+                </tr>
+                <tr *ngIf="item.Leg3">
+                  <td>{{item.Leg3.OrderTime | date: 'dd MMM yyyy, hh:mm:ss a' }}</td>
+                </tr>
+                <tr *ngIf="item.Leg4">
+                  <td>{{item.Leg4.OrderTime | date: 'dd MMM yyyy, hh:mm:ss a' }}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </ng-container>
+        </tbody>
+      </table>
+    </div>
+    <nav aria-label="..." class="ScreenerPagination">
+      <ul class="pagination" *ngIf="HistoricalOrderResult.TotalData > 0">
+        <li class="page-item" [ngClass]="{disabled: IsFirstPage}">
+          <a class="page-link" (click)="previousPage()">
+            <i class="fa fa-arrow-left"></i>
+            <span>Previous</span>
+          </a>
+        </li>
+        <li>
+          <ul>
+            <li *ngFor="let pageNum of Pages" class="page-item" [ngClass]="{active: CurrentPage===pageNum}">
+              <span class="page-link" (click)="goToPage(pageNum)">{{pageNum}}</span>
+            </li>
+          </ul>
+          <span class="mobPagination">Page {{CurrentPage}} of {{TotalPage}}</span>
+        </li>
+        <li class="page-item" [ngClass]="{disabled: IsLastPage}">
+          <a class="page-link" (click)="nextPage()">
+            <span>Next</span>
+            <i class="fa fa-arrow-right"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
